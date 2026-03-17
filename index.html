@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 서북미 목자연합수련회 | Reset for Restoration</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cinzel:wght@400;700;900&display=swap');
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D48B;
+    --dark: #1A1A2E;
+    --dark2: #16213E;
+    --crimson: #8B0000;
+    --cream: #FFF8F0;
+    --warm-gray: #F5F0EB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: var(--dark);
+    color: #333;
+    overflow-x: hidden;
+  }
+
+  /* ===== COVER PAGE ===== */
+  .cover {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 40%, #2a1a2e 70%, #0a0a1a 100%);
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 30%, rgba(139,0,0,0.06) 0%, transparent 50%);
+    animation: coverGlow 12s ease-in-out infinite alternate;
+  }
+
+  @keyframes coverGlow {
+    0% { transform: translate(0,0) scale(1); }
+    100% { transform: translate(-5%,3%) scale(1.05); }
+  }
+
+  .cover-inner {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2rem;
+    max-width: 900px;
+  }
+
+  .cover-badge {
+    display: inline-block;
+    padding: 0.5rem 2rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    font-family: 'Cinzel', serif;
+    background: rgba(201,168,76,0.05);
+  }
+
+  .cover-title-en {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 60px rgba(201,168,76,0.3);
+  }
+
+  .cover-title-en .highlight {
+    color: var(--gold);
+  }
+
+  .cover-title-ko {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-bottom: 1.5rem;
+  }
+
+  .cover-verse {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-style: italic;
+  }
+
+  .cover-info {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .cover-info-item {
+    text-align: center;
+    color: #fff;
+  }
+
+  .cover-info-item .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+    font-family: 'Cinzel', serif;
+  }
+
+  .cover-info-item .value {
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+
+  .cover-divider {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 2rem auto;
+  }
+
+  .cover-org {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.15em;
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--gold);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-align: center;
+    animation: bounce 2s infinite;
+  }
+
+  .scroll-indicator::after {
+    content: '\25BC';
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+  }
+
+  @keyframes bounce {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ===== POSTER SECTION ===== */
+  .poster-section {
+    background: #000;
+    padding: 0;
+    text-align: center;
+  }
+
+  .poster-frame {
+    max-width: 100%;
+    margin: 0 auto;
+    border: none;
+    padding: 0;
+    background: #000;
+  }
+
+  .poster-frame img {
+    width: 100%;
+    display: block;
+  }
+
+  /* ===== SECTION STYLES ===== */
+  .section {
+    padding: 5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-light {
+    background: var(--cream);
+  }
+
+  .section-warm {
+    background: var(--warm-gray);
+  }
+
+  .section-dark {
+    background: var(--dark);
+    color: #fff;
+  }
+
+  .section-gradient {
+    background: linear-gradient(180deg, var(--cream) 0%, var(--warm-gray) 100%);
+  }
+
+  .full-width {
+    max-width: 100%;
+  }
+
+  .inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-number {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+
+  .section-title-en {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  .section-dark .section-title { color: #fff; }
+
+  .divider {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 1.5rem 0 2rem;
+  }
+
+  .divider-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== THEME SECTION ===== */
+  .theme-content {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.05rem;
+    line-height: 2;
+    color: #444;
+    text-align: justify;
+  }
+
+  .theme-content p {
+    margin-bottom: 1.5rem;
+    text-indent: 1em;
+  }
+
+  .theme-highlight {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+    border-left: 4px solid var(--gold);
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    color: #fff;
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .theme-verse-box {
+    text-align: center;
+    padding: 2.5rem;
+    margin: 2.5rem 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(139,0,0,0.05) 100%);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 12px;
+  }
+
+  .theme-verse-box p {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--dark);
+    text-indent: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .theme-verse-box .ref {
+    font-size: 0.9rem;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* ===== INVITATION ===== */
+  .invitation {
+    position: relative;
+  }
+
+  .invitation-content {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.05rem;
+    line-height: 2.2;
+    color: #444;
+  }
+
+  .invitation-content p {
+    margin-bottom: 1.2rem;
+  }
+
+  .invitation-quote {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--crimson);
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-top: 1px solid rgba(201,168,76,0.3);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .invitation-closing {
+    text-align: center;
+    margin-top: 3rem;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--dark);
+    font-weight: 600;
+  }
+
+  /* ===== SCHEDULE ===== */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .schedule-table thead th {
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+    color: var(--gold);
+    padding: 1rem;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-align: left;
+  }
+
+  .schedule-table tbody td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    vertical-align: top;
+  }
+
+  .schedule-table tbody tr:nth-child(even) {
+    background: rgba(201,168,76,0.04);
+  }
+
+  .schedule-table tbody tr:hover {
+    background: rgba(201,168,76,0.08);
+    transition: background 0.3s;
+  }
+
+  .schedule-table .time {
+    font-weight: 600;
+    color: var(--dark);
+    white-space: nowrap;
+    width: 140px;
+  }
+
+  .schedule-table .program {
+    font-weight: 500;
+  }
+
+  .schedule-table .person {
+    color: var(--gold);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .schedule-table .break-row {
+    background: rgba(201,168,76,0.1) !important;
+    font-style: italic;
+    color: #888;
+  }
+
+  .schedule-table .highlight-row {
+    background: rgba(139,0,0,0.04) !important;
+    font-weight: 600;
+  }
+
+  .schedule-date-header {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.3rem;
+  }
+
+  .schedule-date-sub {
+    text-align: center;
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  /* ===== LYRICS ===== */
+  .lyrics-container {
+    background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3e 50%, #2a1a2e 100%);
+    padding: 5rem 2rem;
+    color: #fff;
+  }
+
+  .lyrics-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .lyrics-song-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .lyrics-song-subtitle {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .lyrics-credits {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  .lyrics-body {
+    max-width: 750px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .lyrics-col {
+    font-family: 'Noto Serif KR', serif;
+    line-height: 2;
+    font-size: 1rem;
+  }
+
+  .lyrics-col.en {
+    font-family: 'Playfair Display', 'Noto Serif KR', serif;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .lyrics-col.ko {
+    color: var(--gold-light);
+  }
+
+  .lyrics-section-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding-bottom: 0.3rem;
+    display: inline-block;
+  }
+
+  .lyrics-section-label:first-child {
+    margin-top: 0;
+  }
+
+  /* ===== POSTER EXPLANATION ===== */
+  .explanation-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .explanation-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    border-top: 3px solid var(--gold);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .explanation-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  }
+
+  .explanation-card .icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .explanation-card h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .explanation-card h3 .en {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--gold);
+    display: block;
+    margin-top: 0.2rem;
+  }
+
+  .explanation-card p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #555;
+  }
+
+  /* ===== DIRECTIONS ===== */
+  .directions-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+    margin-top: 2rem;
+  }
+
+  .directions-map {
+    width: 100%;
+    height: 320px;
+    border: none;
+    display: block;
+  }
+  .map-open-btn-wrap {
+    text-align: center;
+    padding: 0.8rem;
+    background: #f5f0eb;
+    border-top: 1px solid #e0d8cf;
+  }
+  .map-open-btn {
+    display: inline-block;
+    padding: 0.55rem 1.4rem;
+    background: var(--dark);
+    color: var(--gold);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .map-open-btn:hover { background: var(--dark2); }
+
+  .directions-info {
+    padding: 2.5rem;
+  }
+
+  .directions-info h3 {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.3rem;
+    color: var(--dark);
+    margin-bottom: 1rem;
+  }
+
+  .directions-detail {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .directions-detail .d-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  .directions-detail .d-text {
+    flex: 1;
+  }
+
+  .directions-detail .d-text .d-label {
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+
+  .directions-detail .d-text .d-value {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 3rem 2rem;
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+
+  .footer .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .cover-title-en { font-size: 2rem; }
+    .cover-title-ko { font-size: 1.5rem; }
+    .cover-info { gap: 1.5rem; }
+    .explanation-grid { grid-template-columns: 1fr; }
+    .lyrics-body { grid-template-columns: 1fr; }
+    .section { padding: 3rem 1.5rem; }
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    .scroll-indicator { display: none; }
+    .cover { min-height: auto; padding: 3rem 2rem; page-break-after: always; }
+    .section { page-break-inside: avoid; }
+    body { background: #fff; }
+  }
+
+  /* ===== TAB PANEL NAVIGATION ===== */
+  .tab-nav-wrapper {
+    background: linear-gradient(135deg, #0d0d24 0%, #1a1040 100%);
+    padding: 0.6rem 0.4rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+  .tab-grid {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+    max-width: 820px;
+    margin: 0 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tab-grid::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex: 1;
+    min-width: 0;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 2px solid transparent;
+    border-radius: 4px 4px 0 0;
+    padding: 0.45rem 0.2rem 0.4rem;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    color: rgba(255,255,255,0.55);
+    white-space: nowrap;
+  }
+  .tab-btn:hover { background: rgba(201,168,76,0.08); }
+  .tab-btn.active {
+    background: rgba(201,168,76,0.12);
+    border-bottom-color: var(--gold);
+    color: #fff;
+  }
+  .tab-btn .tb-icon { font-size: 1rem; display: block; margin-bottom: 0.1rem; }
+  .tab-btn .tb-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.52rem;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 0.08rem;
+  }
+  .tab-btn .tb-ko {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    display: block;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tab-btn .tb-en { display: none; }
+  .tab-indicator-bar {
+    height: 2px;
+    background: var(--gold);
+    margin-top: 0.25rem;
+  }
+
+  /* ===== TAB CONTENT PANELS ===== */
+  .tab-panels {
+    position: relative;
+  }
+  .tab-panel {
+    display: none;
+    animation: fadeSlideIn 0.35s ease;
+  }
+  .tab-panel.active { display: block; }
+  @keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+
+  /* ===== SUB-TABS (찬양 섹션) ===== */
+  .sub-tab-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.2rem 1rem 0;
+  }
+  .sub-tab-btn {
+    flex: 1;
+    max-width: 160px;
+    padding: 0.6rem 0.5rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-bottom: 2px solid transparent;
+    border-radius: 10px 10px 0 0;
+    color: rgba(255,255,255,0.55);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .sub-tab-btn.active {
+    background: rgba(201,168,76,0.12);
+    border-bottom-color: var(--gold);
+    color: #fff;
+  }
+  .sub-tab-btn:hover { background: rgba(201,168,76,0.1); }
+
+  .sub-tab-panels {
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding: 0;
+  }
+  .sub-tab-panel { display: none; }
+  .sub-tab-panel.active {
+    display: block;
+    animation: fadeSlideIn 0.3s ease;
+  }
+  .st-content {
+    padding: 0.6rem 0.4rem;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .st-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  /* YouTube 인라인 플레이어 */
+  .yt-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    min-height: 220px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.5), 0 0 20px rgba(232,93,4,0.15);
+    background: #000;
+    margin: 0 -0.4rem;
+  }
+  .yt-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+  .yt-poster {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    cursor: pointer;
+    z-index: 5;
+  }
+  .yt-poster img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .yt-play-btn {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px; height: 68px;
+    background: rgba(201,168,76,0.92);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    color: #0a0a18;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    transition: transform 0.2s, background 0.2s;
+  }
+  .yt-poster:hover .yt-play-btn {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: rgba(255,200,80,1);
+  }
+
+  /* 악보 섹션 */
+  .score-info {
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.83rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+  }
+  .score-sections { display: flex; flex-direction: column; gap: 0.6rem; }
+  .score-sec-card {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 0.7rem 1rem;
+  }
+  .score-sec-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    color: var(--gold);
+    font-weight: 700;
+    min-width: 2.2rem;
+  }
+  .score-sec-name {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.75);
+    flex: 1;
+  }
+  .score-sec-ko {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(201,168,76,0.7);
+  }
+  .score-dl-btn {
+    display: inline-block;
+    padding: 0.7rem 1.8rem;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    border-radius: 4px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .score-dl-btn:hover { background: rgba(201,168,76,0.25); color: #fff; }
+
+
+  /* ===== INFO BAR ===== */
+  .info-bar {
+    background: linear-gradient(135deg, #0d0d24 0%, #1a1040 100%);
+    border-bottom: 2px solid var(--gold);
+    padding: 1rem 1rem;
+  }
+  .info-bar-inner {
+    max-width: 820px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 0.4rem 0;
+  }
+  .info-item {
+    text-align: center;
+    padding: 0.3rem 0.5rem;
+    flex: 1;
+    min-width: 80px;
+  }
+  .info-lbl {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+  .info-val {
+    display: block;
+    color: #fff;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .info-val small {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+  }
+  .info-sep {
+    width: 1px;
+    height: 2rem;
+    background: rgba(201,168,76,0.25);
+    flex-shrink: 0;
+  }
+  @media (max-width: 480px) {
+    .info-sep { display: none; }
+    .info-item { min-width: 44%; }
+  }
+
+
+  /* ===== REDESIGNED LAYOUT ===== */
+  body { margin:0; }
+
+  /* 포스터 꽉 차게 */
+  .poster-section { background:#000; padding:0; margin:0; }
+  .poster-frame   { max-width:100%; margin:0; border:none; padding:0; }
+  .poster-frame img { width:100%; display:block; }
+
+  /* INFO BAR - 포스터 바로 밑 */
+  .info-bar {
+    background: linear-gradient(135deg, #0d0d24 0%, #1a0a00 100%);
+    border-top: 2px solid var(--gold);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding: 0.9rem 0.8rem;
+  }
+  .info-bar-inner {
+    max-width:820px; margin:0 auto;
+    display:flex; align-items:stretch;
+    justify-content:space-around; flex-wrap:wrap; gap:0.2rem 0;
+  }
+  .info-item { text-align:center; padding:0.3rem 0.6rem; flex:1; min-width:70px; }
+  .info-lbl {
+    display:block; font-family:'Cinzel',serif;
+    font-size:0.58rem; letter-spacing:0.15em;
+    color:var(--gold); text-transform:uppercase; margin-bottom:0.2rem;
+  }
+  .info-val {
+    display:block; color:#fff;
+    font-size:0.8rem; font-weight:600; line-height:1.4;
+  }
+  .info-val small { font-size:0.68rem; color:rgba(255,255,255,0.5); font-weight:400; }
+  .info-sep { width:1px; background:rgba(201,168,76,0.2); flex-shrink:0; align-self:stretch; }
+  @media(max-width:400px){ .info-sep{display:none;} .info-item{min-width:44%;} }
+
+  /* TAB NAV - 한 줄, info bar 바로 밑 sticky */
+  .tab-nav-wrapper {
+    background: #0a0a18;
+    border-bottom: 2px solid rgba(201,168,76,0.35);
+    padding: 0.4rem 0.4rem 0;
+    position: sticky; top:0; z-index:100;
+    box-shadow: 0 3px 16px rgba(0,0,0,0.6);
+  }
+  .tab-grid {
+    display:flex; flex-direction:row; gap:0.2rem;
+    max-width:820px; margin:0 auto;
+    overflow-x:auto; -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .tab-grid::-webkit-scrollbar { display:none; }
+  .tab-btn {
+    flex:1; min-width:0;
+    background: rgba(255,255,255,0.03);
+    border:1px solid rgba(201,168,76,0.15);
+    border-bottom:2px solid transparent;
+    border-radius:8px 8px 0 0;
+    padding:0.4rem 0.15rem 0.35rem;
+    cursor:pointer; text-align:center;
+    transition:all 0.18s;
+    -webkit-tap-highlight-color:transparent;
+    color:rgba(255,255,255,0.5);
+  }
+  .tab-btn:active, .tab-btn:hover { background:rgba(201,168,76,0.08); }
+  .tab-btn.active {
+    background:rgba(201,168,76,0.13);
+    border-bottom-color:var(--gold); color:#fff;
+  }
+  .tab-btn .tb-icon { font-size:0.95rem; display:block; margin-bottom:0.06rem; }
+  .tab-btn .tb-num {
+    font-family:'Cinzel',serif; font-size:0.5rem;
+    letter-spacing:0.08em; color:var(--gold); display:block;
+  }
+  .tab-btn .tb-ko {
+    font-family:'Noto Sans KR',sans-serif; font-size:0.58rem;
+    font-weight:700; display:block; line-height:1.2;
+    word-break:keep-all; overflow:hidden; text-overflow:ellipsis;
+  }
+  .tab-btn .tb-en { display:none; }
+  .tab-indicator-bar { height:2px; background:var(--gold); margin-top:0.2rem; }
+
+
+  /* ── 영상 캡션 바 ── */
+  .yt-caption-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.65rem;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .yt-caption-text {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+    font-style: italic;
+    flex: 1;
+  }
+  .yt-ext-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: var(--gold);
+    text-decoration: none;
+    border: 1px solid rgba(201,168,76,0.35);
+    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .yt-ext-link:hover {
+    background: rgba(201,168,76,0.15);
+    color: #fff;
+  }
+
+</style>
+<body>
+
+<section class="poster-section">
+  <div class="poster-frame">
+    <img src="poster_2026.jpg" alt="2026 서북미 목자연합수련회 포스터">
+  </div>
+</section>
+<div class="info-bar">
+  <div class="info-bar-inner">
+    <div class="info-item">
+      <span class="info-lbl">📅 Date</span>
+      <span class="info-val">2026. 7. 18 (Sat)</span>
+    </div>
+    <div class="info-sep"></div>
+    <div class="info-item">
+      <span class="info-lbl">🕙 Time</span>
+      <span class="info-val">9:30 AM – 5:00 PM</span>
+    </div>
+    <div class="info-sep"></div>
+    <div class="info-item">
+      <span class="info-lbl">📍 Venue</span>
+      <span class="info-val">시애틀지구촌교회<br><small>Lynnwood, WA</small></span>
+    </div>
+    <div class="info-sep"></div>
+    <div class="info-item">
+      <span class="info-lbl">🎤 Speaker</span>
+      <span class="info-val">성승현 총무<br><small>국제가사원 사역개발원</small></span>
+    </div>
+  </div>
+</div>
+<div class="tab-nav-wrapper">
+  <div class="tab-grid">
+    <button class="tab-btn" onclick="switchTab(0)"><span class="tb-icon">🖼️</span><span class="tb-num">I</span><span class="tb-ko">포스터 해설</span><span class="tb-en">Poster</span></button>
+    <button class="tab-btn" onclick="switchTab(1)"><span class="tb-icon">✉️</span><span class="tb-num">II</span><span class="tb-ko">초청의 글</span><span class="tb-en">Invite</span></button>
+    <button class="tab-btn" onclick="switchTab(2)"><span class="tb-icon">📅</span><span class="tb-num">III</span><span class="tb-ko">수련회 일정</span><span class="tb-en">Schedule</span></button>
+    <button class="tab-btn" onclick="switchTab(3)"><span class="tb-icon">🎵</span><span class="tb-num">IV</span><span class="tb-ko">찬양</span><span class="tb-en">Praise</span></button>
+    <button class="tab-btn" onclick="switchTab(4)"><span class="tb-icon">📍</span><span class="tb-num">V</span><span class="tb-ko">오시는 길</span><span class="tb-en">Directions</span></button>
+    <button class="tab-btn" onclick="switchTab(5)"><span class="tb-icon">📖</span><span class="tb-num">VI</span><span class="tb-ko">주제 설정 배경</span><span class="tb-en">Theme</span></button>
+    <button class="tab-btn" onclick="switchTab(6)"><span class="tb-icon">🏨</span><span class="tb-num">VII</span><span class="tb-ko">숙소 안내</span><span class="tb-en">Hotels</span></button>
+  </div>
+  <div class="tab-indicator-bar"></div>
+</div>
+<div class="tab-panels">
+  <div class="tab-panel" id="panel-0">
+    <section class="section-gradient full-width">
+  <div class="section" style="padding-top:4rem;padding-bottom:4rem;">
+    <div class="inner">
+      <div class="section-number">V</div>
+      <h2 class="section-title">포스터 의미 해설</h2>
+      <div class="section-title-en">Understanding the Poster</div>
+      <div class="divider"></div>
+
+      <p style="font-family:'Noto Serif KR',serif; font-size:1rem; line-height:1.8; color:#555; margin-bottom:2rem;">
+        2026 서북미 목자연합수련회 포스터는 "Reset for Restoration / 리셋을 통한 회복"이라는 주제를 시각적으로 표현합니다. 포스터의 각 요소는 목자, 목녀들의 사역 여정과 영적 회복의 메시지를 담고 있습니다.
+      </p>
+
+      <div class="explanation-grid">
+        <div class="explanation-card">
+          <div class="icon">🧎</div>
+          <h3>무릎 꿇은 사람 <span class="en">The Kneeling Figure</span></h3>
+          <p>세상의 무게와 사역의 피로 아래 지쳐 무릎 꿇은 목자의 모습입니다. 그러나 이 무릎 꿇음은 포기가 아니라, 하나님 앞에 다시 엎드리는 <strong>"리셋"의 시작점</strong>입니다.</p>
+        </div>
+
+        <div class="explanation-card">
+          <div class="icon">🙏</div>
+          <h3>기도하는 두 손 <span class="en">The Praying Hands</span></h3>
+          <p>간절히 모아 올린 기도의 손은 하나님께 다시 돌아가는 회복의 핵심을 상징합니다. 이 기도는 개인의 회복이자 <strong>가정교회 사역의 영적 재출발</strong>입니다.</p>
+        </div>
+
+        <div class="explanation-card">
+          <div class="icon">✝️</div>
+          <h3>십자가와 붉은 천 <span class="en">The Cross & Crimson Cloth</span></h3>
+          <p>웅장한 십자가에 걸린 붉은 천은 그리스도의 보혈과 은혜를 나타냅니다. 우리의 회복은 오직 <strong>십자가의 은혜</strong> 위에 세워지며, 원래의 상태를 뛰어넘는 완전한 새로움의 약속입니다.</p>
+        </div>
+
+        <div class="explanation-card">
+          <div class="icon">🌅</div>
+          <h3>도시 실루엣과 빛 <span class="en">The Cityscape & Light</span></h3>
+          <p>어둠에서 빛으로 전환되는 도시의 실루엣은, 리셋을 통해 회복된 목자들이 세상 속으로 다시 나아가 <strong>빛과 소금의 역할</strong>을 감당할 것을 보여줍니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </div>
+
+  <div class="tab-panel" id="panel-1">
+    <section class="section-warm full-width">
+  <div class="section" style="padding-top:4rem;padding-bottom:4rem;">
+    <div class="inner invitation">
+      <div class="section-number">II</div>
+      <h2 class="section-title">초청의 글</h2>
+      <div class="section-title-en">A Letter of Invitation</div>
+      <div class="divider"></div>
+
+      <div class="invitation-content">
+        <p style="font-size:1.15rem; font-weight:600; color:var(--dark);">
+          목자님, 잠시 짐을 내려놓고 쉬어가세요.
+        </p>
+
+        <p>사랑하는 목자, 목녀님, 평안하신지요?</p>
+
+        <p>매주 목장을 섬기며 영혼들을 돌보느라 얼마나 애쓰고 계신지 잘 알고 있습니다. 때로는 기쁨보다 버거움이 앞설 때도 있고, 내 안의 사랑이 고갈된 것 같아 남몰래 한숨 짓던 순간들도 있으셨으리라 생각합니다.</p>
+
+        <div class="invitation-quote">
+          "목자도 위로가 필요합니다."
+        </div>
+
+        <p>이번 2026 서북미 목자연합수련회는 무언가를 더 배우고 훈련받는 시간이 아닙니다. 오직 목자님들의 <strong>지친 마음을 위로하고, 잃어버린 소명을 다시 회복하는 시간</strong>으로 준비했습니다. Reset(리셋)을 함으로 Restoration(회복)을 이루어, 가정교회의 본질로 다시 돌아가자는 하나님의 부르심에 함께 응답하는 자리입니다.</p>
+
+        <p>특별히 이번에는 같은 평신도 목자의 자리에서 사역의 현장을 경험하신 <strong>성승현 총무님</strong>(국제가사원 사역개발원, 휴스턴서울교회)을 강사로 모셨습니다. 목회자의 언어가 아닌, 같은 평신도 목자의 언어로 전해지는 그 생생한 이야기들이 여러분의 가슴에 깊은 울림과 공감을 선물할 것입니다.</p>
+
+        <p>캐나다 밴쿠버에서 오레곤까지, 서북미의 모든 목자님들이 시애틀지구촌교회에 모여 서로의 손을 잡고, 따뜻한 밥 한 끼 나누며, 하나님이 주시는 새 힘을 얻어가시길 소망합니다.</p>
+
+        <div class="invitation-closing">
+          그날, 당신의 자리를 비워두고 기다리겠습니다.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </div>
+  <div class="tab-panel" id="panel-2">
+    <section class="section-light full-width">
+  <div class="section" style="padding-top:4rem;padding-bottom:4rem;">
+    <div class="inner">
+      <div class="section-number">III</div>
+      <h2 class="section-title">수련회 일정</h2>
+      <div class="section-title-en">Conference Schedule</div>
+      <div class="divider"></div>
+
+      <div class="schedule-date-header">Saturday, July 18, 2026</div>
+      <div class="schedule-date-sub">2026년 7월 18일 (토) &middot; 시애틀지구촌교회</div>
+
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th>시간 (Time)</th>
+            <th>프로그램 (Program)</th>
+            <th>담당 (Leader)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="time">8:00 – 8:50</td>
+            <td class="program">도착 및 등록</td>
+            <td class="person">목회자 도우미</td>
+          </tr>
+          <tr class="highlight-row">
+            <td class="time">9:00 – 9:30</td>
+            <td class="program">찬양 및 개회사</td>
+            <td class="person">김성수 목사</td>
+          </tr>
+          <tr>
+            <td class="time">9:30 – 10:45</td>
+            <td class="program"><strong>강의 I</strong></td>
+            <td class="person">성승현 총무</td>
+          </tr>
+          <tr class="break-row">
+            <td class="time">10:50 – 11:20</td>
+            <td class="program">휴식 및 간식</td>
+            <td class="person"></td>
+          </tr>
+          <tr>
+            <td class="time">11:20 – 11:40</td>
+            <td class="program">간증 1</td>
+            <td class="person">미정</td>
+          </tr>
+          <tr>
+            <td class="time">11:40 – 12:55</td>
+            <td class="program"><strong>강의 II</strong></td>
+            <td class="person">성승현 총무</td>
+          </tr>
+          <tr>
+            <td class="time">12:55 – 1:00</td>
+            <td class="program">단체사진 촬영 및 광고</td>
+            <td class="person"></td>
+          </tr>
+          <tr class="break-row">
+            <td class="time">1:00 – 2:20</td>
+            <td class="program">점심식사(1:40분 까지) 및 조별나눔</td>
+            <td class="person"></td>
+          </tr>
+          <tr class="break-row">
+            <td class="time">2:20 – 2:50</td>
+            <td class="program">휴식 및 간식</td>
+            <td class="person"></td>
+          </tr>
+          <tr>
+            <td class="time">2:50 – 3:00</td>
+            <td class="program">목회자 퍼포먼스</td>
+            <td class="person"></td>
+          </tr>
+          <tr>
+            <td class="time">3:00 – 3:20</td>
+            <td class="program">간증 2</td>
+            <td class="person">미정</td>
+          </tr>
+          <tr>
+            <td class="time">3:20 – 4:10</td>
+            <td class="program"><strong>조별발표 및 질의응답</strong></td>
+            <td class="person">성승현 총무</td>
+          </tr>
+          <tr class="highlight-row">
+            <td class="time">4:10 – 4:50</td>
+            <td class="program"><strong>결단의 시간</strong></td>
+            <td class="person">성승현 총무</td>
+          </tr>
+          <tr>
+            <td class="time">4:50</td>
+            <td class="program">광고 및 귀가<br><small style="color:var(--gold);">목장 모임: 목양지를 향하여</small></td>
+            <td class="person"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top:2rem; padding:1.5rem; background:rgba(201,168,76,0.08); border-radius:8px; font-size:0.9rem; color:#666; line-height:1.8;">
+        <strong style="color:var(--dark);">참고사항</strong><br>
+        주제곡: El Shaddai, God Most High (Composed by Suliko Kheladze)<br>
+        오겹줄 기도회: 수련회 전 사전 편성 (타 교회 성도와 함께, 같은 성별로 편성)<br>
+        행정 간사: 박보라 &nbsp;|&nbsp; ✉️ <a href="mailto:enjoyusa@naver.com" style="color:var(--gold);">enjoyusa@naver.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+  </div>
+  <div class="tab-panel" id="panel-3">
+    <section class="lyrics-container">
+
+      <!-- ── 찬양 헤더 ── -->
+      <div class="lyrics-header">
+        <div class="section-number" style="color:var(--gold);">IV</div>
+        <div class="lyrics-song-title">El Shaddai, God Most High</div>
+        <div class="lyrics-song-subtitle">엘 샤다이 &middot; 지존하신 하나님</div>
+        <div class="lyrics-credits">
+          Composed by Suliko Kheladze &nbsp;|&nbsp; Performed by Natalie Grace<br>
+          Korean Translation: S.J Kim &amp; S.H Sung
+        </div>
+        <div class="cover-divider" style="margin:1.2rem auto;"></div>
+      </div>
+
+      <!-- ── 서브탭 네비게이션 ── -->
+      <div class="sub-tab-nav">
+        <button class="sub-tab-btn active" onclick="switchSubTab(0)">🎬 영상</button>
+        <button class="sub-tab-btn" onclick="switchSubTab(1)">🎵 악보</button>
+        <button class="sub-tab-btn" onclick="switchSubTab(2)">📖 가사</button>
+      </div>
+
+      <!-- ── 서브탭 콘텐츠 ── -->
+      <div class="sub-tab-panels">
+
+        <!-- 영상 탭 -->
+        <div class="sub-tab-panel active" id="st-0">
+          <div class="st-content">
+            <div class="st-label">🎬 찬양 영상</div>
+            <div class="yt-wrapper" id="yt-wrapper">
+              <div class="yt-poster" id="yt-poster" onclick="loadYTPlayer()">
+                <img src="https://img.youtube.com/vi/cJa6Ef07wLU/maxresdefault.jpg" alt="El Shaddai 찬양 영상">
+                <div class="yt-play-btn">&#9654;</div>
+              </div>
+              <iframe
+                id="yt-player"
+                src=""
+                data-src="https://www.youtube.com/embed/cJa6Ef07wLU?enablejsapi=1&playsinline=1&autoplay=1&rel=0&modestbranding=1"
+                title="El Shaddai, God Most High – Natalie Grace"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                webkit-playsinline
+                playsinline>
+              </iframe>
+            </div>
+            <div class="yt-caption-row">
+              <span class="yt-caption-text">El Shaddai, God Most High — Natalie Grace</span>
+              <a class="yt-ext-link"
+                 href="https://youtu.be/cJa6Ef07wLU"
+                 target="_blank" rel="noopener">
+                ▶ YouTube에서 보기
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 악보 탭 -->
+        <div class="sub-tab-panel" id="st-1">
+          <div class="st-content">
+            <div class="st-label">🎵 악보 (Sheet Music)</div>
+            <div class="score-pages">
+              <div class="score-info">
+                <p>Key: E Major &nbsp;|&nbsp; ♩= 71 &nbsp;|&nbsp; 3 Pages</p>
+                <p style="margin-top:0.3rem;">Composed by Suliko Kheladze &nbsp;|&nbsp; Korean: S.J Kim &amp; S.H Sung</p>
+              </div>
+              <!-- 악보 3페이지 섹션 안내 -->
+              <div class="score-sections">
+                <div class="score-sec-card">
+                  <span class="score-sec-label">p.1</span>
+                  <span class="score-sec-name">Intro · Verse 1 · Chorus</span>
+                  <span class="score-sec-ko">서주 · 1절 · 후렴</span>
+                </div>
+                <div class="score-sec-card">
+                  <span class="score-sec-label">p.2</span>
+                  <span class="score-sec-name">Interlude · Verse 2 · Chorus · Bridge</span>
+                  <span class="score-sec-ko">간주 · 2절 · 후렴 · 브릿지</span>
+                </div>
+                <div class="score-sec-card">
+                  <span class="score-sec-label">p.3</span>
+                  <span class="score-sec-name">Bridge (cont.) · Final Chorus · Outro</span>
+                  <span class="score-sec-ko">브릿지 이어 · 마지막 후렴 · 아웃트로</span>
+                </div>
+              </div>
+              <div style="text-align:center;margin-top:1.2rem;">
+                <a class="score-dl-btn" href="2026 목자컨퍼런스 영상/El Shaddai 영한_최종.pdf" download>
+                  📥 악보 PDF 다운로드
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 가사 탭 -->
+        <div class="sub-tab-panel" id="st-2">
+          <div class="st-content">
+            <div class="st-label">📖 가사 (Lyrics)</div>
+            <div class="lyrics-body">
+              <div class="lyrics-col en">
+                <div class="lyrics-section-label">Verse 1</div><br>
+                El Shaddai, my strength, my song,<br>
+                You've been my refuge all along.<br>
+                El Elyon, forever You reign,<br>
+                Your mercy flows like endless rain.<br><br>
+                <div class="lyrics-section-label">Chorus</div><br>
+                El Shaddai, God Most High,<br>
+                We lift our hearts; we lift our cry.<br>
+                El Elyon, forever You'll be,<br>
+                Our strength, our hope, eternally.<br><br>
+                <div class="lyrics-section-label">Verse 2</div><br>
+                You speak and oceans find their rest,<br>
+                Your hand upholds the earth, so blessed.<br>
+                No power can stand, no shadow can hide,<br>
+                Your glory shines on every side.<br><br>
+                <div class="lyrics-section-label">Bridge</div><br>
+                From age to age, Your love remains,<br>
+                Your promises will never fade.<br>
+                You break my chains, You set me free,<br>
+                Your Spirit lives and dwells in me.<br><br>
+                <div class="lyrics-section-label">Final Chorus</div><br>
+                Oh El Shaddai, God most High,<br>
+                All Creation lifts Your name on high.<br>
+                El Elyon, forever You'll be,<br>
+                Our peace, our light, our victory.<br>
+                El Shaddai — Forever You'll be near.<br>
+                El Shaddai — Forever, You'll be near.
+              </div>
+              <div class="lyrics-col ko">
+                <div class="lyrics-section-label">1절</div><br>
+                나의 힘 나의 노래<br>
+                언제나 나의 피난처<br>
+                엘 엘리온 주다 스리네<br>
+                주의 자비 끝없이 흘러<br><br>
+                <div class="lyrics-section-label">후렴</div><br>
+                엘 샤다이 하나님<br>
+                우리 마음 주께 드려<br>
+                엘 엘리온 영원한 주님<br>
+                영원히<br><br>
+                <div class="lyrics-section-label">2절</div><br>
+                말씀에 고요한 바다<br>
+                주의 손 이 땅 축복해<br>
+                어떤 권세도 어떤 어둠에도<br>
+                주의 영광 온 땅 빛나네<br><br>
+                <div class="lyrics-section-label">브릿지</div><br>
+                변치 않는 주의 사랑<br>
+                주의 약속 영원하리<br>
+                죄 사슬 끊고 자유 주셨네<br>
+                안에 살아계신 주<br><br>
+                <div class="lyrics-section-label">마지막 후렴</div><br>
+                오 엘 샤다이 하나님<br>
+                온 세상 주님 높이네<br>
+                엘 엘리온 영원한 주님<br>
+                우리 평화 빛 승리<br>
+                엘 샤다이 영원히 곁에 영원히<br>
+                엘 샤다이 영원히 영원히
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /sub-tab-panels -->
+    </section>
+  </div>
+
+  <div class="tab-panel" id="panel-4">
+    <section class="section-light full-width">
+  <div class="section" style="padding-top:4rem;padding-bottom:4rem;">
+    <div class="inner">
+      <div class="section-number">VI</div>
+      <h2 class="section-title">오시는 길</h2>
+      <div class="section-title-en">Directions</div>
+      <div class="divider"></div>
+
+      <div class="directions-card">
+        <iframe class="directions-map"
+          src="https://maps.google.com/maps?q=4900+168th+St+SW,+Lynnwood,+WA+98037&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-open-btn-wrap">
+          <a class="map-open-btn"
+             href="https://maps.google.com/?q=4900+168th+St+SW,+Lynnwood,+WA+98037"
+             target="_blank">
+            🗺️ Google Maps에서 열기
+          </a>
+        </div>
+
+        <div class="directions-info">
+          <h3>시애틀지구촌교회</h3>
+          <p style="font-size:0.9rem; color:var(--gold); margin-bottom:1.5rem;">
+            Global Mission Church of Greater Seattle
+          </p>
+
+          <div class="directions-detail">
+            <div class="d-icon">📍</div>
+            <div class="d-text">
+              <div class="d-label">Address</div>
+              <div class="d-value">4900 168th St. SW., Lynnwood, WA 98037</div>
+            </div>
+          </div>
+
+          <div class="directions-detail">
+            <div class="d-icon">📅</div>
+            <div class="d-text">
+              <div class="d-label">Date & Time</div>
+              <div class="d-value">2026년 7월 18일 (토) 9:00 AM – 5:00 PM</div>
+            </div>
+          </div>
+
+          <div class="directions-detail">
+            <div class="d-icon">🎤</div>
+            <div class="d-text">
+              <div class="d-label">Speaker</div>
+              <div class="d-value">성승현 총무 (국제가사원 사역개발원 · 휴스턴서울교회)</div>
+            </div>
+          </div>
+
+          <div class="directions-detail">
+            <div class="d-icon">🚗</div>
+            <div class="d-text">
+              <div class="d-label">Parking</div>
+              <div class="d-value">교회 주차장 이용 가능</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </div>
+<div class="tab-panel" id="panel-5">
+    <section class="section-light full-width">
+  <div class="section" style="padding-top:4rem;padding-bottom:4rem;">
+    <div class="inner">
+      <div class="section-number">I</div>
+      <h2 class="section-title">주제 설정 배경</h2>
+      <div class="section-title-en">Background for Setting the Theme</div>
+      <div class="divider"></div>
+
+      <div class="theme-content">
+        <p>컴퓨터에 바이러스가 들어와서 더 이상 쓸 수 없게 되었을 때 우리는 그 컴퓨터를 처분해 버리지 않습니다. 컴퓨터를 리셋시켜서 다시 포맷하고 원래의 상태로 복원시켜서 새롭게 만들어 다시 사용하기 시작합니다.</p>
+
+        <p>하나님의 목표는 각 사람을 그 분이 원래 의도하신 삶으로 회복시키는 것입니다. 그렇기 때문에 우리 모두는 하나님의 회복의 대상이고, 현재 회복의 과정 중에 있습니다. 하나님의 원래 의도는 우리가 단지 구원받는 것에 그치지 아니하고, 우리가 그 분의 영광 가운데 살도록 하는 것이었습니다.</p>
+
+        <div class="theme-highlight">
+          이 세상에 죄악이 가득하고 도덕적으로 완전히 타락하면서 하나님과의 관계가 끊어지고 세상이 혼란과 절망의 상태에 놓였을 때 (창 6:5), 하나님께서는 노아를 사용하셔서 이 땅을 리셋하고 포맷하셔서 새로운 세상을 여셨습니다. 세상을 물로 심판하신 것은 바로 <strong>회복과 새 출발을 위한 리셋</strong>이었습니다.
+        </div>
+
+        <p>하나님께서는 믿음의 사람, 목자, 목녀를 통해서 이 세상을 회복해 가기를 원하십니다. 그런데 하나님의 일에 온전히 사용되어지기 위해서는 목자, 목녀의 사역과 신앙의 여정 가운데 리셋이 필요합니다.</p>
+
+        <p>지난 시간 우리는 팬데믹과 세상의 빠른 변화속에서 목장 사역과 영적 삶에 많은 도전과 부담을 느껴왔습니다. 때로는 열정이 식고, 사명의 본질이 희미해진 채, 목자와 목녀로서의 부르심을 감당하는 것이 버겁게 느껴지기도 하였습니다.</p>
+
+        <div class="theme-highlight" style="border-left-color: var(--crimson);">
+          그러나 이제는 다시, <strong>처음 부르심의 자리로 돌아갈 때</strong>입니다.
+        </div>
+
+        <p><strong>Reset(리셋)</strong>은 우리 사역의 방향과 동기를 점검하고, 다시금 영혼 구원과 제자 삼는 사명에 초점을 맞추는 회복의 시작점입니다.</p>
+
+        <p><strong>Restoration(회복)</strong>은 지친 마음을 위로받고, 깨어진 열정과 사랑, 그리고 헌신을 다시 회복하여 성령의 능력으로 새롭게 세워지는 과정입니다. 이것은 단지 회복이 아니라 하나님 나라를 꿈꾸는 목자, 목녀들이 사역의 전열을 정비하고 하나님의 대사명을 붙드는 <strong>영적 재출발</strong>입니다.</p>
+
+        <div class="theme-verse-box">
+          <p>"누구든지 그리스도 안에 있으면, 그는 새로운 피조물입니다.<br>옛 것은 지나갔습니다. 보십시오, 새 것이 되었습니다."</p>
+          <div class="ref">— 고린도후서 5:17</div>
+          <br>
+          <p>"보아라, 내가 모든 것을 새롭게 한다."</p>
+          <div class="ref">— 요한계시록 21:5</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </div>
+  <div class="tab-panel" id="panel-6">
+    <section class="section-light full-width">
+      <div class="section-inner">
+        <h2 class="section-title">🏨 숙소 안내</h2>
+        <p class="section-sub" style="margin-bottom:1.5rem;">밴쿠버·오레곤 등 원거리에서 오시는 목자·목녀님들을 위해 교회 근처 숙소를 안내합니다. 아래 호텔들은 모두 시애틀지구촌교회에서 <strong>차로 5분 이내</strong>에 위치합니다.</p>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+
+          <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
+            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Hilton Garden Inn Seattle/Lynnwood</div>
+            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;">도보 가능 거리 · I-5 바로 옆 · 피트니스센터 · 무료 주차</div>
+            <a href="https://www.hilton.com/en/hotels/sealngi-hilton-garden-inn-seattle-lynnwood/" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
+          </div>
+
+          <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
+            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Embassy Suites by Hilton – Lynnwood</div>
+            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;">약 1마일 · 스위트룸 · 무료 풀코스 조식 · 실내 수영장</div>
+            <a href="https://www.hilton.com/en/hotels/sealnes-embassy-suites-seattle-north-lynnwood/" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
+          </div>
+
+          <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
+            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Hampton Inn &amp; Suites – Lynnwood</div>
+            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;">약 5분 · 무료 조식 · 평점 4.5/5 · 가성비 우수</div>
+            <a href="https://www.hilton.com/en/hotels/sealyhx-hampton-seattle-north-lynnwood/" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
+          </div>
+
+          <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
+            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Holiday Inn Express &amp; Suites – Lynnwood</div>
+            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;">약 5분 · 무료 조식 · 무료 Wi-Fi · 합리적 가격</div>
+            <a href="https://www.ihg.com/holidayinnexpress/hotels/us/en/lynnwood/sealy/hoteldetail" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
+          </div>
+
+          <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
+            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Extended Stay America – Seattle/Lynnwood</div>
+            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;">약 5분 · 주방 완비 · 무료 조식 · 장기숙박 최적</div>
+            <a href="https://www.extendedstayamerica.com/hotels/wa/seattle/lynnwood" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
+          </div>
+
+        </div>
+        <div style="margin-top:1.2rem;padding:0.9rem 1rem;background:rgba(201,168,76,0.08);border-radius:8px;font-size:0.83rem;color:#666;line-height:1.8;">
+          💡 <strong>예약 팁:</strong> 7월 17일(금) 체크인을 권장합니다.<br>
+          숙소 예약은 개별적으로 진행하시고, 문의는 행정 간사 <strong>박보라</strong> (<a href="mailto:enjoyusa@naver.com" style="color:var(--gold);">enjoyusa@naver.com</a>)에게 연락해 주세요.
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ==================== END TAB PANELS ==================== -->
+<footer class="footer">
+  <div class="footer-logo">House Church Shepherds International</div>
+  <div>국제가사원 &middot; 2026 서북미 목자연합수련회</div>
+  <div style="margin-top:0.5rem;">시애틀지구촌교회 &middot; Global Mission Church of Greater Seattle</div>
+  <div style="margin-top:1rem; font-size:0.75rem; color:rgba(255,255,255,0.3);">
+    "보아라, 내가 모든 것을 새롭게 한다." — 요한계시록 21:5
+  </div>
+</footer>
+
+<script>
+function switchTab(idx) {
+  document.querySelectorAll('.tab-btn').forEach(function(b, i){
+    b.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.tab-panel').forEach(function(p, i){
+    p.classList.toggle('active', i === idx);
+  });
+  // 콘텐츠 맨 위로 부드럽게 스크롤
+  var navTop = document.querySelector('.tab-nav-wrapper').getBoundingClientRect().top + window.scrollY;
+  window.scrollTo({ top: navTop - 8, behavior: 'smooth' });
+}
+// 초기: 첫 탭 활성화
+document.addEventListener('DOMContentLoaded', function(){
+  switchTab(0);
+});
+</script>
+<script>
+function loadYTPlayer() {
+  var poster = document.getElementById('yt-poster');
+  var frame = document.getElementById('yt-player');
+  if (poster) poster.style.display = 'none';
+  if (frame) frame.src = frame.getAttribute('data-src');
+}
+function switchSubTab(idx) {
+  // 탭 버튼
+  document.querySelectorAll('.sub-tab-btn').forEach(function(b, i){
+    b.classList.toggle('active', i === idx);
+  });
+  // 패널
+  document.querySelectorAll('.sub-tab-panel').forEach(function(p, i){
+    p.classList.toggle('active', i === idx);
+  });
+  // 영상 탭이 아닐 때 유튜브 정지 및 포스터 복원
+  if (idx !== 0) {
+    var iframe = document.getElementById('yt-player');
+    var poster = document.getElementById('yt-poster');
+    if (iframe) iframe.src = '';
+    if (poster) poster.style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>
