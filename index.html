@@ -668,6 +668,36 @@
     .explanation-grid { grid-template-columns: 1fr; }
     .lyrics-body { grid-template-columns: 1fr; }
     .section { padding: 3rem 1.5rem; }
+
+    /* 일정 테이블 모바일 최적화 */
+    .schedule-table { font-size: 0.82rem; }
+    .schedule-table thead { display: none; }
+    .schedule-table tbody tr {
+      display: block;
+      margin-bottom: 0.6rem;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+      border: 1px solid rgba(201,168,76,0.15);
+    }
+    .schedule-table td {
+      display: flex;
+      align-items: center;
+      padding: 0.45rem 0.8rem;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+    }
+    .schedule-table td:last-child { border-bottom: none; }
+    .schedule-table td::before {
+      content: attr(data-label);
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      min-width: 52px;
+      margin-right: 0.6rem;
+      flex-shrink: 0;
+    }
+    .schedule-table .time { width: auto; white-space: normal; }
   }
 
   /* ===== PRINT ===== */
@@ -1098,7 +1128,7 @@
     <div class="info-sep"></div>
     <div class="info-item">
       <span class="info-lbl">🕙 Time</span>
-      <span class="info-val">9:30 AM – 5:00 PM</span>
+      <span class="info-val">9:00 AM – 5:00 PM</span>
     </div>
     <div class="info-sep"></div>
     <div class="info-item">
@@ -1226,74 +1256,74 @@
         </thead>
         <tbody>
           <tr>
-            <td class="time">8:00 – 8:50</td>
-            <td class="program">도착 및 등록</td>
-            <td class="person">목회자 도우미</td>
+            <td class="time" data-label="시간">8:00 – 8:50</td>
+            <td class="program" data-label="프로그램">도착 및 등록</td>
+            <td class="person" data-label="담당">목회자 도우미</td>
           </tr>
           <tr class="highlight-row">
-            <td class="time">9:00 – 9:30</td>
-            <td class="program">찬양 및 개회사</td>
-            <td class="person">김성수 목사</td>
+            <td class="time" data-label="시간">9:00 – 9:30</td>
+            <td class="program" data-label="프로그램">찬양 및 개회사</td>
+            <td class="person" data-label="담당">김성수 목사</td>
           </tr>
           <tr>
-            <td class="time">9:30 – 10:45</td>
-            <td class="program"><strong>강의 I</strong></td>
-            <td class="person">성승현 총무</td>
+            <td class="time" data-label="시간">9:30 – 10:45</td>
+            <td class="program" data-label="프로그램"><strong>강의 I</strong></td>
+            <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr class="break-row">
-            <td class="time">10:50 – 11:20</td>
-            <td class="program">휴식 및 간식</td>
-            <td class="person"></td>
+            <td class="time" data-label="시간">10:50 – 11:20</td>
+            <td class="program" data-label="프로그램">휴식 및 간식</td>
+            <td class="person" data-label="담당"></td>
           </tr>
           <tr>
-            <td class="time">11:20 – 11:40</td>
-            <td class="program">간증 1</td>
-            <td class="person">미정</td>
+            <td class="time" data-label="시간">11:20 – 11:40</td>
+            <td class="program" data-label="프로그램">간증 1</td>
+            <td class="person" data-label="담당">미정</td>
           </tr>
           <tr>
-            <td class="time">11:40 – 12:55</td>
-            <td class="program"><strong>강의 II</strong></td>
-            <td class="person">성승현 총무</td>
+            <td class="time" data-label="시간">11:40 – 12:55</td>
+            <td class="program" data-label="프로그램"><strong>강의 II</strong></td>
+            <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr>
-            <td class="time">12:55 – 1:00</td>
-            <td class="program">단체사진 촬영 및 광고</td>
-            <td class="person"></td>
+            <td class="time" data-label="시간">12:55 – 1:00</td>
+            <td class="program" data-label="프로그램">단체사진 촬영 및 광고</td>
+            <td class="person" data-label="담당"></td>
           </tr>
           <tr class="break-row">
-            <td class="time">1:00 – 2:20</td>
-            <td class="program">점심식사(1:40분 까지) 및 조별나눔</td>
-            <td class="person"></td>
+            <td class="time" data-label="시간">1:00 – 2:20</td>
+            <td class="program" data-label="프로그램">점심식사(1:40분 까지) 및 조별나눔</td>
+            <td class="person" data-label="담당"></td>
           </tr>
           <tr class="break-row">
-            <td class="time">2:20 – 2:50</td>
-            <td class="program">휴식 및 간식</td>
-            <td class="person"></td>
+            <td class="time" data-label="시간">2:20 – 2:50</td>
+            <td class="program" data-label="프로그램">휴식 및 간식</td>
+            <td class="person" data-label="담당"></td>
           </tr>
           <tr>
-            <td class="time">2:50 – 3:00</td>
-            <td class="program">목회자 퍼포먼스</td>
-            <td class="person"></td>
+            <td class="time" data-label="시간">2:50 – 3:00</td>
+            <td class="program" data-label="프로그램">목회자 퍼포먼스</td>
+            <td class="person" data-label="담당"></td>
           </tr>
           <tr>
-            <td class="time">3:00 – 3:20</td>
-            <td class="program">간증 2</td>
-            <td class="person">미정</td>
+            <td class="time" data-label="시간">3:00 – 3:20</td>
+            <td class="program" data-label="프로그램">간증 2</td>
+            <td class="person" data-label="담당">미정</td>
           </tr>
           <tr>
-            <td class="time">3:20 – 4:10</td>
-            <td class="program"><strong>조별발표 및 질의응답</strong></td>
-            <td class="person">성승현 총무</td>
+            <td class="time" data-label="시간">3:20 – 4:10</td>
+            <td class="program" data-label="프로그램"><strong>조별발표 및 질의응답</strong></td>
+            <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr class="highlight-row">
-            <td class="time">4:10 – 4:50</td>
-            <td class="program"><strong>결단의 시간</strong></td>
-            <td class="person">성승현 총무</td>
+            <td class="time" data-label="시간">4:10 – 4:50</td>
+            <td class="program" data-label="프로그램"><strong>결단의 시간</strong></td>
+            <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr>
-            <td class="time">4:50</td>
-            <td class="program">광고 및 귀가<br><small style="color:var(--gold);">목장 모임: 목양지를 향하여</small></td>
-            <td class="person"></td>
+            <td class="time" data-label="시간">4:50</td>
+            <td class="program" data-label="프로그램">광고 및 귀가<br><small style="color:var(--gold);">목장 모임: 목양지를 향하여</small></td>
+            <td class="person" data-label="담당"></td>
           </tr>
         </tbody>
       </table>
@@ -1302,7 +1332,7 @@
         <strong style="color:var(--dark);">참고사항</strong><br>
         주제곡: El Shaddai, God Most High (Composed by Suliko Kheladze)<br>
         오겹줄 기도회: 수련회 전 사전 편성 (타 교회 성도와 함께, 같은 성별로 편성)<br>
-        행정 간사: 박보라 &nbsp;|&nbsp; ✉️ <a href="mailto:enjoyusa@naver.com" style="color:var(--gold);">enjoyusa@naver.com</a>
+        찬양인도: 벨뷰 우리교회 &nbsp;&nbsp;|&nbsp;&nbsp; 간증 1: &nbsp;&nbsp;|&nbsp;&nbsp; 간증 2: &nbsp;&nbsp;|&nbsp;&nbsp; 사진촬영:
       </div>
     </div>
   </div>
@@ -1617,7 +1647,7 @@
         </div>
         <div style="margin-top:1.2rem;padding:0.9rem 1rem;background:rgba(201,168,76,0.08);border-radius:8px;font-size:0.83rem;color:#666;line-height:1.8;">
           💡 <strong>예약 팁:</strong> 7월 17일(금) 체크인을 권장합니다.<br>
-          숙소 예약은 개별적으로 진행하시고, 문의는 행정 간사 <strong>박보라</strong> (<a href="mailto:enjoyusa@naver.com" style="color:var(--gold);">enjoyusa@naver.com</a>)에게 연락해 주세요.
+          숙소 예약은 개별적으로 진행하시고, 문의는 행정 간사 <strong>박보라</strong> (<a href="mailto:admin.GMCseattle@gmail.com" style="color:var(--gold);">admin.GMCseattle@gmail.com</a>)에게 연락해 주세요.
         </div>
       </div>
     </section>
@@ -1628,6 +1658,11 @@
   <div class="footer-logo">House Church Shepherds International</div>
   <div>국제가사원 &middot; 2026 서북미 목자연합수련회</div>
   <div style="margin-top:0.5rem;">시애틀지구촌교회 &middot; Global Mission Church of Greater Seattle</div>
+
+  <div style="margin-top:1rem; font-size:0.82rem; color:rgba(255,255,255,0.5);">
+    문의: 박보라 간사 (<a href="mailto:admin.GMCseattle@gmail.com" style="color:var(--gold); text-decoration:none;">admin.GMCseattle@gmail.com</a>) &nbsp;|&nbsp; <a href="https://www.ijiguchon.org" target="_blank" style="color:var(--gold); text-decoration:none;">www.ijiguchon.org</a>
+  </div>
+
   <div style="margin-top:1rem; font-size:0.75rem; color:rgba(255,255,255,0.3);">
     "보아라, 내가 모든 것을 새롭게 한다." — 요한계시록 21:5
   </div>
@@ -1663,17 +1698,4 @@ function switchSubTab(idx) {
     b.classList.toggle('active', i === idx);
   });
   // 패널
-  document.querySelectorAll('.sub-tab-panel').forEach(function(p, i){
-    p.classList.toggle('active', i === idx);
-  });
-  // 영상 탭이 아닐 때 유튜브 정지 및 포스터 복원
-  if (idx !== 0) {
-    var iframe = document.getElementById('yt-player');
-    var poster = document.getElementById('yt-poster');
-    if (iframe) iframe.src = '';
-    if (poster) poster.style.display = 'block';
-  }
-}
-</script>
-</body>
-</html>
+  document.querySelectorAll('.sub-tab-panel').forEach(fun
