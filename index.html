@@ -1432,10 +1432,26 @@
                   <span class="score-sec-ko">브릿지 이어 · 마지막 후렴 · 아웃트로</span>
                 </div>
               </div>
-              <div style="text-align:center;margin-top:1.2rem;">
-                <a class="score-dl-btn" href="ElShaddai_SheetMusic.pdf" download>
-                  📥 악보 PDF 다운로드
-                </a>
+              <div style="margin-top:1.2rem;">
+                <!-- 인라인 PDF 뷰어 -->
+                <iframe
+                  src="ElShaddai_SheetMusic.pdf"
+                  style="width:100%; height:75vh; border:none; border-radius:8px; background:#1a1a2e;"
+                  title="El Shaddai 악보">
+                  <p style="text-align:center;padding:2rem;color:#aaa;">
+                    PDF를 표시할 수 없습니다.
+                    <a href="ElShaddai_SheetMusic.pdf" target="_blank" style="color:var(--gold);">새 탭에서 열기</a>
+                  </p>
+                </iframe>
+                <!-- 다운로드 + 새탭 버튼 -->
+                <div style="display:flex;gap:0.8rem;justify-content:center;margin-top:0.8rem;flex-wrap:wrap;">
+                  <a class="score-dl-btn" href="ElShaddai_SheetMusic.pdf" download>
+                    📥 PDF 다운로드
+                  </a>
+                  <a class="score-dl-btn" href="ElShaddai_SheetMusic.pdf" target="_blank" rel="noopener" style="background:rgba(201,168,76,0.08);">
+                    🔗 새 탭에서 보기
+                  </a>
+                </div>
               </div>
             </div>
           </div>
