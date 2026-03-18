@@ -1237,6 +1237,9 @@
         <div class="invitation-closing">
           그날, 당신의 자리를 비워두고 기다리겠습니다.
         </div>
+        <div style="text-align:right; margin-top:2rem; font-family:'Noto Serif KR',serif; color:var(--gold); font-size:1rem; letter-spacing:0.05em; opacity:0.85;">
+          — 서북미 목자연합수련회 준비팀 —
+        </div>
       </div>
     </div>
   </div>
@@ -1430,7 +1433,7 @@
                 </div>
               </div>
               <div style="text-align:center;margin-top:1.2rem;">
-                <a class="score-dl-btn" href="2026 목자컨퍼런스 영상/El Shaddai 영한_최종.pdf" download>
+                <a class="score-dl-btn" href="ElShaddai_SheetMusic.pdf" download>
                   📥 악보 PDF 다운로드
                 </a>
               </div>
@@ -1677,6 +1680,24 @@
 </footer>
 
 <script>
+function loadYTPlayer() {
+  var poster = document.getElementById('yt-poster');
+  var player = document.getElementById('yt-player');
+  if (poster && player) {
+    poster.style.display = 'none';
+    player.src = player.getAttribute('data-src');
+  }
+}
+
+function switchSubTab(idx) {
+  document.querySelectorAll('.sub-tab-btn').forEach(function(b, i) {
+    b.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.sub-tab-panel').forEach(function(p, i) {
+    p.classList.toggle('active', i === idx);
+  });
+}
+
 function switchTab(idx) {
   document.querySelectorAll('.tab-btn').forEach(function(b, i){
     b.classList.toggle('active', i === idx);
