@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 서북미 목자연합수련회 등록서</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Noto+Serif+KR:wght@400;600;700;900&family=Cinzel:wght@400;700;900&display=swap');
+
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8D48B;
+  --gold-dark: #A07830;
+  --dark: #0D0D1A;
+  --dark2: #1A1A2E;
+  --navy: #16213E;
+  --bg: #F8F4EF;
+  --card: #FFFFFF;
+  --border: #E8E0D5;
+  --text: #1A1A2E;
+  --sub: #7A7060;
+  --green: #16A34A;
+  --red: #DC2626;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family:'Noto Sans KR', sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  background:linear-gradient(160deg, #080810 0%, #1A1A2E 45%, #16213E 100%);
+  padding:2.2rem 1.4rem 2rem;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.header::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse at 50% 80%, rgba(201,168,76,0.13) 0%, transparent 60%);
+  pointer-events:none;
+}
+.header::after {
+  content:'✝';
+  position:absolute;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  font-size:12rem;
+  color:rgba(201,168,76,0.03);
+  pointer-events:none;
+  font-family:serif;
+}
+.badge {
+  display:inline-block;
+  border:1px solid rgba(201,168,76,0.55);
+  color:var(--gold);
+  font-family:'Cinzel',serif;
+  font-size:0.62rem;
+  letter-spacing:0.28em;
+  padding:0.28rem 1.1rem;
+  margin-bottom:0.9rem;
+  border-radius:2px;
+  background:rgba(201,168,76,0.05);
+}
+.header-title {
+  font-family:'Noto Serif KR', serif;
+  font-size:1.5rem;
+  font-weight:900;
+  color:#fff;
+  line-height:1.35;
+  margin-bottom:0.35rem;
+  position:relative;
+}
+.header-title span { color:var(--gold-light); }
+.header-sub {
+  font-size:0.78rem;
+  color:rgba(255,255,255,0.45);
+  letter-spacing:0.04em;
+  line-height:1.7;
+  position:relative;
+}
+.divider-gold {
+  width:48px; height:1.5px;
+  background:linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin:1rem auto 0;
+}
+
+/* ── INFO STRIP ── */
+.info-strip {
+  background:rgba(201,168,76,0.08);
+  border-top:1px solid rgba(201,168,76,0.2);
+  border-bottom:1px solid rgba(201,168,76,0.2);
+  padding:0.7rem 1.2rem;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:0.8rem 1.8rem;
+  font-size:0.78rem;
+  color:var(--gold-light);
+  background-color:#0D0D1A;
+}
+.info-item { display:flex; align-items:center; gap:0.35rem; }
+
+/* ── MAIN ── */
+.main {
+  max-width:600px;
+  margin:0 auto;
+  padding:1.4rem 1rem 3rem;
+}
+
+/* ── NOTICE ── */
+.notice-box {
+  background:linear-gradient(135deg, rgba(201,168,76,0.08), rgba(201,168,76,0.03));
+  border:1.5px solid rgba(201,168,76,0.25);
+  border-radius:10px;
+  padding:1rem 1.2rem;
+  margin-bottom:1.4rem;
+  font-size:0.80rem;
+  color:var(--sub);
+  line-height:1.8;
+}
+.notice-box strong { color:var(--gold-dark); }
+
+/* ── FORM CARD ── */
+.form-card {
+  background:var(--card);
+  border-radius:14px;
+  padding:1.6rem 1.4rem;
+  margin-bottom:1rem;
+  box-shadow:0 3px 20px rgba(0,0,0,0.08);
+  border:1px solid var(--border);
+}
+.form-card-title {
+  font-size:0.95rem;
+  font-weight:700;
+  color:var(--dark);
+  margin-bottom:1.2rem;
+  padding-bottom:0.6rem;
+  border-bottom:2px solid var(--gold);
+  display:flex;
+  align-items:center;
+  gap:0.4rem;
+}
+
+/* ── FORM FIELDS ── */
+.field { margin-bottom:1rem; }
+.field:last-child { margin-bottom:0; }
+.field label {
+  display:block;
+  font-size:0.78rem;
+  font-weight:700;
+  color:var(--sub);
+  margin-bottom:0.35rem;
+  letter-spacing:0.03em;
+}
+.field label span.req { color:var(--red); margin-left:2px; }
+.field input,
+.field select,
+.field textarea {
+  width:100%;
+  padding:0.65rem 0.9rem;
+  border:1.5px solid var(--border);
+  border-radius:8px;
+  font-size:0.88rem;
+  font-family:'Noto Sans KR', sans-serif;
+  color:var(--text);
+  background:#fff;
+  transition:border-color 0.2s, box-shadow 0.2s;
+  appearance:none;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline:none;
+  border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(201,168,76,0.12);
+}
+.field select {
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 0.8rem center;
+  padding-right:2.2rem;
+}
+.field-row {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0.7rem;
+}
+
+/* ── ROLE SELECT ── */
+.role-grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:0.5rem;
+}
+.role-btn {
+  padding:0.6rem 0.5rem;
+  border:1.5px solid var(--border);
+  border-radius:8px;
+  text-align:center;
+  cursor:pointer;
+  font-size:0.82rem;
+  color:var(--sub);
+  transition:all 0.2s;
+  background:#fff;
+  font-family:'Noto Sans KR',sans-serif;
+  font-weight:500;
+}
+.role-btn.selected {
+  border-color:var(--gold);
+  background:rgba(201,168,76,0.08);
+  color:var(--gold-dark);
+  font-weight:700;
+}
+.role-btn .rb-icon { font-size:1.2rem; display:block; margin-bottom:0.2rem; }
+
+/* ── FEE BOX ── */
+.fee-box {
+  background:linear-gradient(135deg, var(--dark2), var(--navy));
+  border-radius:10px;
+  padding:1rem 1.2rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:0.5rem;
+}
+.fee-label { font-size:0.78rem; color:rgba(255,255,255,0.6); }
+.fee-amount {
+  font-family:'Cinzel',serif;
+  font-size:1.5rem;
+  color:var(--gold);
+  font-weight:700;
+}
+.fee-note { font-size:0.68rem; color:rgba(255,255,255,0.4); margin-top:0.2rem; }
+
+/* ── PAYMENT METHOD ── */
+.pay-options {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0.5rem;
+  margin-top:0.5rem;
+}
+.pay-opt {
+  border:1.5px solid var(--border);
+  border-radius:8px;
+  padding:0.7rem;
+  cursor:pointer;
+  transition:all 0.2s;
+  text-align:center;
+  font-size:0.80rem;
+  color:var(--sub);
+  background:#fff;
+}
+.pay-opt.selected {
+  border-color:var(--gold);
+  background:rgba(201,168,76,0.07);
+  color:var(--gold-dark);
+  font-weight:700;
+}
+.pay-opt .po-icon { font-size:1.3rem; display:block; margin-bottom:0.2rem; }
+
+/* ── PRAYER CONSENT ── */
+.consent-box {
+  display:flex;
+  align-items:flex-start;
+  gap:0.7rem;
+  padding:0.9rem;
+  background:rgba(22,163,74,0.05);
+  border:1.5px solid rgba(22,163,74,0.2);
+  border-radius:8px;
+  cursor:pointer;
+}
+.consent-box input[type=checkbox] {
+  width:18px; height:18px;
+  accent-color:var(--green);
+  flex-shrink:0;
+  margin-top:2px;
+  cursor:pointer;
+}
+.consent-text {
+  font-size:0.80rem;
+  color:var(--sub);
+  line-height:1.6;
+}
+.consent-text strong { color:var(--green); }
+
+/* ── SUBMIT BTN ── */
+.submit-wrap { margin-top:1.4rem; }
+.submit-btn {
+  width:100%;
+  padding:1rem;
+  background:linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light), var(--gold));
+  background-size:200% 100%;
+  border:none;
+  border-radius:50px;
+  font-size:1rem;
+  font-family:'Noto Sans KR',sans-serif;
+  font-weight:700;
+  color:var(--dark);
+  cursor:pointer;
+  box-shadow:0 4px 20px rgba(201,168,76,0.35);
+  transition:all 0.3s;
+  letter-spacing:0.03em;
+}
+.submit-btn:hover {
+  background-position:100% 0;
+  box-shadow:0 6px 28px rgba(201,168,76,0.5);
+  transform:translateY(-1px);
+}
+.submit-btn:disabled {
+  opacity:0.5;
+  cursor:not-allowed;
+  transform:none;
+}
+
+/* ── SUCCESS ── */
+.success-screen {
+  display:none;
+  text-align:center;
+  padding:3rem 1.5rem;
+}
+.success-icon {
+  font-size:4rem;
+  margin-bottom:1rem;
+  animation:bounceIn 0.6s ease;
+}
+@keyframes bounceIn {
+  0%{transform:scale(0)} 70%{transform:scale(1.1)} 100%{transform:scale(1)}
+}
+.success-title {
+  font-family:'Noto Serif KR',serif;
+  font-size:1.3rem;
+  font-weight:700;
+  color:var(--dark);
+  margin-bottom:0.5rem;
+}
+.success-sub { font-size:0.85rem; color:var(--sub); line-height:1.8; margin-bottom:1.5rem; }
+.success-card {
+  background:var(--card);
+  border-radius:12px;
+  padding:1.2rem;
+  text-align:left;
+  margin-bottom:1rem;
+  box-shadow:0 2px 12px rgba(0,0,0,0.07);
+}
+.success-card .sc-row {
+  display:flex;
+  justify-content:space-between;
+  padding:0.4rem 0;
+  font-size:0.83rem;
+  border-bottom:1px solid var(--border);
+}
+.success-card .sc-row:last-child { border-bottom:none; }
+.sc-label { color:var(--sub); }
+.sc-val { font-weight:700; color:var(--dark); }
+
+/* ── LOADING ── */
+.loading {
+  display:none;
+  text-align:center;
+  padding:2rem;
+}
+.spinner {
+  width:40px; height:40px;
+  border:3px solid rgba(201,168,76,0.2);
+  border-top-color:var(--gold);
+  border-radius:50%;
+  animation:spin 0.8s linear infinite;
+  margin:0 auto 1rem;
+}
+@keyframes spin { to{transform:rotate(360deg)} }
+
+/* ── CONTACT FOOTER ── */
+.contact-footer {
+  text-align:center;
+  padding:1.5rem 1rem;
+  font-size:0.75rem;
+  color:var(--sub);
+  line-height:2;
+}
+.contact-footer a { color:var(--gold-dark); text-decoration:none; }
+
+@media(max-width:420px){
+  .field-row { grid-template-columns:1fr; }
+  .role-grid { grid-template-columns:repeat(2,1fr); }
+  .pay-options { grid-template-columns:1fr 1fr; }
+  .header-title { font-size:1.25rem; }
+  .info-strip { flex-direction:column; align-items:center; gap:0.4rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<div class="header">
+  <div class="badge">SHEPHERDS UNITED RETREAT 2026</div>
+  <div class="header-title">2026 서북미 목자·목녀 수련회<br><span>참가 등록서</span></div>
+  <div class="header-sub">
+    리셋을 통한 회복 (Reset for Restoration)<br>
+    2026년 7월 18일(토) · 시애틀지구촌교회, Lynnwood WA
+  </div>
+  <div class="divider-gold"></div>
+</div>
+
+<!-- ── INFO STRIP ── -->
+<div class="info-strip">
+  <div class="info-item">🎤 강사: 성승현 총무 (국제가정교회 사역원)</div>
+  <div class="info-item">🎵 찬양: 시애틀우리교회 찬양팀</div>
+  <div class="info-item">💰 참가비: $50/인</div>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+  <div class="notice-box">
+    📋 <strong>등록 안내</strong><br>
+    본 등록서를 작성하시면 <strong>서기 오은석 목사님</strong>과 <strong>회계 안대선 목사님</strong>께 자동으로 전달됩니다.<br>
+    참가비 <strong>$50</strong>은 등록 후 별도 안내에 따라 납부해 주세요.<br>
+    문의: <a href="mailto:woweunsuk@gmail.com" style="color:var(--gold-dark);">woweunsuk@gmail.com</a>
+  </div>
+
+  <!-- 등록 폼 -->
+  <form id="regForm" onsubmit="submitForm(event)">
+
+    <!-- 개인 정보 -->
+    <div class="form-card">
+      <div class="form-card-title">👤 개인 정보</div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>성함 <span class="req">*</span></label>
+          <input type="text" id="f-name" placeholder="홍길동" required />
+        </div>
+        <div class="field">
+          <label>연락처 <span class="req">*</span></label>
+          <input type="tel" id="f-phone" placeholder="010-0000-0000" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>이메일</label>
+        <input type="email" id="f-email" placeholder="example@email.com" />
+      </div>
+
+      <div class="field">
+        <label>소속 교회 <span class="req">*</span></label>
+        <select id="f-church" required>
+          <option value="">-- 교회를 선택해주세요 --</option>
+          <option>시애틀우리교회</option>
+          <option>시애틀지구촌교회</option>
+          <option>온누리성결교회</option>
+          <option>벤쿠버 사랑의 교회</option>
+          <option>두드림교회</option>
+          <option>나의 사랑하는 교회</option>
+          <option value="기타">기타 (직접 입력)</option>
+        </select>
+      </div>
+
+      <div class="field" id="churchOtherWrap" style="display:none;">
+        <label>교회명 직접 입력 <span class="req">*</span></label>
+        <input type="text" id="f-church-other" placeholder="교회명을 입력해주세요" />
+      </div>
+    </div>
+
+    <!-- 역할 -->
+    <div class="form-card">
+      <div class="form-card-title">⛪ 참가 구분 <span style="color:var(--red);font-size:0.75rem;">*</span></div>
+      <div class="role-grid">
+        <div class="role-btn" onclick="selectRole(this,'목자')">
+          <span class="rb-icon">🧑‍💼</span>목자
+        </div>
+        <div class="role-btn" onclick="selectRole(this,'목녀')">
+          <span class="rb-icon">👩‍💼</span>목녀
+        </div>
+        <div class="role-btn" onclick="selectRole(this,'예비목자')">
+          <span class="rb-icon">🌱</span>예비목자
+        </div>
+        <div class="role-btn" onclick="selectRole(this,'스태프')">
+          <span class="rb-icon">⚙️</span>스태프
+        </div>
+      </div>
+      <input type="hidden" id="f-role" required />
+    </div>
+
+    <!-- 참가비 -->
+    <div class="form-card">
+      <div class="form-card-title">💰 참가비 안내</div>
+      <div class="fee-box">
+        <div>
+          <div class="fee-label">1인 참가비</div>
+          <div class="fee-note">현장 납부 또는 사전 송금</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="fee-amount">$50</div>
+        </div>
+      </div>
+
+      <div style="margin-top:1rem; background:rgba(22,163,74,0.08); border:1.5px solid rgba(22,163,74,0.25); border-radius:8px; padding:0.9rem 1rem;">
+        <div style="display:flex; align-items:center; gap:0.6rem;">
+          <span style="font-size:1.5rem;">💵</span>
+          <div>
+            <div style="font-weight:700; font-size:0.88rem; color:#15803D;">당일 현장 납부</div>
+            <div style="font-size:0.75rem; color:#6B7280; margin-top:0.2rem;">수련회 당일 (7월 18일) 등록 접수 시 현금으로 납부해 주세요</div>
+          </div>
+        </div>
+      </div>
+        <input type="hidden" id="f-pay" value="현장납부" />
+    </div>
+
+    <!-- 오겹줄 기도 -->
+    <div class="form-card">
+      <div class="form-card-title">🙏 오겹줄 기도팀</div>
+      <label class="consent-box" for="f-prayer">
+        <input type="checkbox" id="f-prayer" checked />
+        <div class="consent-text">
+          <strong>오겹줄 기도팀 참여에 동의합니다.</strong><br>
+          다른 교회 성도들과 함께 5인 1조로 구성되며, 수련회 전 사전 편성됩니다. 가능한 같은 교회 성도가 섞이지 않도록 자동 배정됩니다.
+        </div>
+      </label>
+
+      <div class="field" style="margin-top:0.8rem;">
+        <label>특이사항 / 요청사항</label>
+        <textarea id="f-note" rows="2" placeholder="알레르기, 건강상태, 기타 요청사항 등"></textarea>
+      </div>
+    </div>
+
+    <!-- 제출 -->
+    <div class="submit-wrap">
+      <button type="submit" class="submit-btn" id="submitBtn">
+        ✝️ 등록 완료하기
+      </button>
+    </div>
+
+  </form>
+
+  <!-- 로딩 -->
+  <div class="loading" id="loadingScreen">
+    <div class="spinner"></div>
+    <p style="font-size:0.85rem;color:var(--sub);">등록 정보를 전송하는 중...</p>
+  </div>
+
+  <!-- 성공 화면 -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">🎉</div>
+    <div class="success-title">등록이 완료됐습니다!</div>
+    <div class="success-sub">
+      서기 오은석 목사님께 자동으로 전달됐습니다.<br>
+      곧 확인 연락을 받으실 수 있습니다.
+    </div>
+    <div class="success-card" id="successSummary"></div>
+    <div class="notice-box" style="text-align:left;margin-top:1rem;">
+      💰 <strong>참가비 $50 납부 안내</strong><br>
+      수련회 당일 <strong>등록 접수 시 현금</strong>으로 납부해 주세요.<br>
+      문의: <a href="mailto:woweunsuk@gmail.com">woweunsuk@gmail.com</a> (서기 오은석 목사)
+    </div>
+    <button class="submit-btn" style="margin-top:1rem;" onclick="resetForm()">
+      ↩️ 다른 분 등록하기
+    </button>
+  </div>
+
+</div>
+
+<!-- ── CONTACT FOOTER ── -->
+<div class="contact-footer">
+  서기 오은석 목사 · <a href="mailto:woweunsuk@gmail.com">woweunsuk@gmail.com</a><br>
+  회계 안대선 목사 · <a href="mailto:adsjhn@gmail.com">adsjhn@gmail.com</a><br>
+  주관: 서북미 목자연합수련회 준비팀 · 장소: 시애틀지구촌교회
+</div>
+
+<script>
+// ══════════════════════════════
+// Google Sheets 연동 설정
+// ══════════════════════════════
+// ⚠️ 아래 SHEET_URL을 설정하는 방법:
+// 1. Google Sheets 새 문서 생성
+// 2. 확장 프로그램 → Apps Script
+// 3. 아래 코드 붙여넣기 후 배포 → 웹 앱으로 배포
+// 4. 생성된 URL을 SHEET_URL에 입력
+
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxtIpDFV_TL1k2qjL49CIzOOez1Q5TxTfufttks-nW2l0m1v-xj_XWqWhDYm5XKAKZtug/exec';
+// ← 이 부분을 실제 URL로 교체하세요
+
+// 서기/회계 이메일
+const SECRETARY_EMAIL = 'woweunsuk@gmail.com';
+const TREASURER_EMAIL = 'adsjhn@gmail.com';
+
+let selectedRole = '';
+let selectedPay = '';
+
+// ── 역할 선택 ──
+function selectRole(el, role) {
+  document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedRole = role;
+  document.getElementById('f-role').value = role;
+}
+
+// ── 납부방법 선택 ──
+function selectPay(el, method) {
+  document.querySelectorAll('.pay-opt').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedPay = method;
+  document.getElementById('f-pay').value = method;
+}
+
+// ── 교회 기타 선택 ──
+document.getElementById('f-church').addEventListener('change', function() {
+  const wrap = document.getElementById('churchOtherWrap');
+  const otherInput = document.getElementById('f-church-other');
+  if (this.value === '기타') {
+    wrap.style.display = 'block';
+    otherInput.required = true;
+  } else {
+    wrap.style.display = 'none';
+    otherInput.required = false;
+  }
+});
+
+// ── 폼 제출 ──
+async function submitForm(e) {
+  e.preventDefault();
+
+  // 유효성 검사
+  if (!selectedRole) { alert('참가 구분을 선택해주세요.'); return; }
+  selectedPay = '현장납부';
+
+  const churchVal = document.getElementById('f-church').value;
+  const churchName = churchVal === '기타'
+    ? document.getElementById('f-church-other').value
+    : churchVal;
+
+  const data = {
+    timestamp: new Date().toLocaleString('ko-KR', {timeZone:'America/Los_Angeles'}),
+    name:    document.getElementById('f-name').value.trim(),
+    phone:   document.getElementById('f-phone').value.trim(),
+    email:   document.getElementById('f-email').value.trim(),
+    church:  churchName,
+    role:    selectedRole,
+    pay:     selectedPay,
+    prayer:  document.getElementById('f-prayer').checked ? '참여' : '불참',
+    note:    document.getElementById('f-note').value.trim(),
+    fee:     '$50',
+  };
+
+  // UI 전환
+  document.getElementById('regForm').style.display = 'none';
+  document.getElementById('loadingScreen').style.display = 'block';
+
+  try {
+    // Google Sheets로 전송
+    if (SHEET_URL !== 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+    }
+
+    // 이메일 전송 (mailto 방식 — Apps Script에서 처리)
+    showSuccess(data);
+
+  } catch(err) {
+    // 오프라인 백업: localStorage 저장
+    const saved = JSON.parse(localStorage.getItem('retreat_reg') || '[]');
+    saved.push(data);
+    localStorage.setItem('retreat_reg', JSON.stringify(saved));
+    showSuccess(data);
+  }
+}
+
+// ── 성공 화면 ──
+function showSuccess(data) {
+  document.getElementById('loadingScreen').style.display = 'none';
+  document.getElementById('successScreen').style.display = 'block';
+
+  document.getElementById('successSummary').innerHTML = `
+    <div class="sc-row"><span class="sc-label">성함</span><span class="sc-val">${data.name}</span></div>
+    <div class="sc-row"><span class="sc-label">교회</span><span class="sc-val">${data.church}</span></div>
+    <div class="sc-row"><span class="sc-label">구분</span><span class="sc-val">${data.role}</span></div>
+    <div class="sc-row"><span class="sc-label">참가비</span><span class="sc-val">${data.fee} (${data.pay})</span></div>
+    <div class="sc-row"><span class="sc-label">오겹줄 기도팀</span><span class="sc-val">${data.prayer}</span></div>
+    <div class="sc-row"><span class="sc-label">등록시각</span><span class="sc-val" style="font-size:0.75rem;">${data.timestamp}</span></div>
+  `;
+}
+
+// ── 폼 초기화 ──
+function resetForm() {
+  document.getElementById('regForm').reset();
+  document.getElementById('regForm').style.display = 'block';
+  document.getElementById('successScreen').style.display = 'none';
+  document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll('.pay-opt').forEach(b => b.classList.remove('selected'));
+  selectedRole = '';
+  selectedPay = '';
+}
+</script>
+
+<!-- ══════════════════════════════
+GOOGLE APPS SCRIPT 설정 안내
+아래 코드를 Google Apps Script에 붙여넣으세요:
+
+function doPost(e) {
+  var sheet = SpreadsheetApp.openById('YOUR_SHEET_ID').getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+
+  // 헤더가 없으면 추가
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(['등록시각','성함','연락처','이메일','소속교회','구분','납부방법','오겹줄','비고','참가비']);
+  }
+
+  // 데이터 추가
+  sheet.appendRow([
+    data.timestamp, data.name, data.phone, data.email,
+    data.church, data.role, data.pay, data.prayer, data.note, data.fee
+  ]);
+
+  // 서기 이메일 발송
+  MailApp.sendEmail({
+    to: 'woweunsuk@gmail.com',
+    cc: 'adsjhn@gmail.com',
+    subject: '[수련회 등록] ' + data.church + ' ' + data.name + ' ' + data.role,
+    body:
+      '새 등록자가 있습니다.\n\n' +
+      '성함: ' + data.name + '\n' +
+      '교회: ' + data.church + '\n' +
+      '구분: ' + data.role + '\n' +
+      '연락처: ' + data.phone + '\n' +
+      '이메일: ' + data.email + '\n' +
+      '참가비: ' + data.fee + ' (' + data.pay + ')\n' +
+      '오겹줄: ' + data.prayer + '\n' +
+      '비고: ' + data.note + '\n' +
+      '등록시각: ' + data.timestamp
+  });
+
+  return ContentService.createTextOutput(JSON.stringify({result:'success'}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+══════════════════════════════ -->
+
+</body>
+</html>
