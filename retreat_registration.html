@@ -420,7 +420,7 @@ body {
 
   <div class="notice-box">
     📋 <strong>등록 안내</strong><br>
-    본 등록서를 작성하시면 <strong>행정간사 박보라</strong>, <strong>서기 오은석 목사님</strong>, <strong>회계 안대선 목사님</strong>께 자동으로 전달됩니다.<br>
+    본 등록서를 작성하시면 <strong>서기 오은석 목사님</strong>과 <strong>회계 안대선 목사님</strong>께 자동으로 전달됩니다.<br>
     참가비 <strong>$50</strong>은 등록 후 별도 안내에 따라 납부해 주세요.<br>
     문의: <a href="mailto:woweunsuk@gmail.com" style="color:var(--gold-dark);">woweunsuk@gmail.com</a>
   </div>
@@ -457,6 +457,7 @@ body {
           <option>온누리성결교회</option>
           <option>벤쿠버 사랑의 교회</option>
           <option>두드림교회</option>
+          <option>마라나타 교회</option>
           <option>나의 사랑하는 교회</option>
           <option value="기타">기타 (직접 입력)</option>
         </select>
@@ -550,7 +551,7 @@ body {
     <div class="success-icon">🎉</div>
     <div class="success-title">등록이 완료됐습니다!</div>
     <div class="success-sub">
-      행정간사 박보라, 서기 오은석 목사님, 회계 안대선 목사님께 자동으로 전달됐습니다.<br>
+      서기 오은석 목사님께 자동으로 전달됐습니다.<br>
       곧 확인 연락을 받으실 수 있습니다.
     </div>
     <div class="success-card" id="successSummary"></div>
@@ -568,7 +569,6 @@ body {
 
 <!-- ── CONTACT FOOTER ── -->
 <div class="contact-footer">
-  행정간사 박보라 · <a href="mailto:enjoyusa@naver.com">enjoyusa@naver.com</a><br>
   서기 오은석 목사 · <a href="mailto:woweunsuk@gmail.com">woweunsuk@gmail.com</a><br>
   회계 안대선 목사 · <a href="mailto:adsjhn@gmail.com">adsjhn@gmail.com</a><br>
   주관: 서북미 목자연합수련회 준비팀 · 장소: 시애틀지구촌교회
@@ -587,11 +587,11 @@ body {
 const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxtIpDFV_TL1k2qjL49CIzOOez1Q5TxTfufttks-nW2l0m1v-xj_XWqWhDYm5XKAKZtug/exec';
 // ← 이 부분을 실제 URL로 교체하세요
 
-// 서기/회계/담임/간사 이메일
+// 서기/회계 이메일
 const SECRETARY_EMAIL = 'woweunsuk@gmail.com';
 const TREASURER_EMAIL = 'adsjhn@gmail.com';
 const PASTOR_EMAIL    = 'ijiguchon@gmail.com';
-const STAFF_EMAIL     = 'enjoyusa@naver.com';
+const ADMIN_EMAIL     = 'enjoyusa@naver.com'; // 박보라 간사
 
 let selectedRole = '';
 let selectedPay = '';
@@ -710,9 +710,8 @@ GOOGLE APPS SCRIPT 설정 안내
 아래 코드를 Google Apps Script에 붙여넣으세요:
 
 function doPost(e) {
-  var ss    = SpreadsheetApp.openById('YOUR_SHEET_ID');
-  var sheet = ss.getActiveSheet();
-  var data  = JSON.parse(e.postData.contents);
+  var sheet = SpreadsheetApp.openById('YOUR_SHEET_ID').getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
 
   // 헤더가 없으면 추가
   if (sheet.getLastRow() === 0) {
@@ -725,18 +724,11 @@ function doPost(e) {
     data.church, data.role, data.pay, data.prayer, data.note, data.fee
   ]);
 
-  // 현재 전체 등록 목록을 엑셀 파일로 변환
-  var today   = Utilities.formatDate(new Date(), 'America/Los_Angeles', 'yyyyMMdd');
-  var xlsBlob = DriveApp.getFileById(ss.getId())
-    .getAs('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-  xlsBlob.setName('수련회_등록현황_' + today + '.xlsx');
-
-  // 이메일 발송 (엑셀 첨부)
+  // 서기 이메일 발송
   MailApp.sendEmail({
     to: 'woweunsuk@gmail.com',
     cc: 'adsjhn@gmail.com,ijiguchon@gmail.com,enjoyusa@naver.com',
-    subject: '[수련회 등록] ' + data.church + ' ' + data.name + ' ' + data.role +
-             ' (총 ' + (sheet.getLastRow() - 1) + '명)',
+    subject: '[수련회 등록] ' + data.church + ' ' + data.name + ' ' + data.role,
     body:
       '새 등록자가 있습니다.\n\n' +
       '성함: ' + data.name + '\n' +
@@ -747,10 +739,7 @@ function doPost(e) {
       '참가비: ' + data.fee + ' (' + data.pay + ')\n' +
       '오겹줄: ' + data.prayer + '\n' +
       '비고: ' + data.note + '\n' +
-      '등록시각: ' + data.timestamp + '\n\n' +
-      '※ 현재까지 총 ' + (sheet.getLastRow() - 1) + '명 등록\n' +
-      '※ 전체 등록 목록이 엑셀 파일로 첨부되어 있습니다.',
-    attachments: [xlsBlob]
+      '등록시각: ' + data.timestamp
   });
 
   return ContentService.createTextOutput(JSON.stringify({result:'success'}))
