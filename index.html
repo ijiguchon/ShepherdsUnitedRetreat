@@ -1119,8 +1119,70 @@
     color: #fff;
   }
 
+
+  /* ══ 언어 전환 시스템 ══ */
+  .lang-switcher {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 9999;
+    display: flex;
+    background: rgba(26,26,46,0.95);
+    border: 1.5px solid var(--gold);
+    border-radius: 50px;
+    padding: 3px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    backdrop-filter: blur(10px);
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .lang-btn {
+    padding: 0.35rem 0.9rem;
+    border: none;
+    background: transparent;
+    color: rgba(255,255,255,0.55);
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: all 0.2s;
+    letter-spacing: 0.03em;
+  }
+  .lang-btn.active {
+    background: var(--gold);
+    color: var(--dark);
+  }
+  .ko-only { display: inline; }
+  .en-only { display: none; }
+  body.lang-en .ko-only { display: none; }
+  body.lang-en .en-only { display: inline; }
+  body.lang-en .tab-btn .tb-ko { display: none; }
+  body.lang-en .tab-btn .tb-en { display: block !important; font-size: 0.72rem; }
+  body.lang-en .section-title { display: none; }
+  body.lang-en .section-title-en {
+    font-size: 2rem !important;
+    font-weight: 900 !important;
+    color: var(--dark) !important;
+    font-family: 'Playfair Display', serif !important;
+    margin-bottom: 0.5rem !important;
+    letter-spacing: -0.01em !important;
+    text-transform: none !important;
+    font-style: normal !important;
+  }
+  body.lang-en .section-dark .section-title-en { color: #fff !important; }
+  @media (max-width: 640px) {
+    .lang-switcher { top: 0.6rem; right: 0.6rem; padding: 2px; }
+    .lang-btn { padding: 0.3rem 0.7rem; font-size: 0.7rem; }
+    body.lang-en .section-title-en { font-size: 1.4rem !important; }
+  }
+
 </style>
 <body>
+<!-- 언어 전환 -->
+<div class="lang-switcher">
+  <button class="lang-btn active" onclick="setLang('ko')" id="lang-ko-btn">한국어</button>
+  <button class="lang-btn" onclick="setLang('en')" id="lang-en-btn">English</button>
+</div>
+
 
 <section class="poster-section">
   <div class="poster-frame">
@@ -1141,12 +1203,12 @@
     <div class="info-sep"></div>
     <div class="info-item">
       <span class="info-lbl">📍 Venue</span>
-      <span class="info-val">시애틀지구촌교회<br><small>Lynnwood, WA</small></span>
+      <span class="info-val"><span class="ko-only">시애틀지구촌교회<br><small>Lynnwood, WA</small></span><span class="en-only">GMC of Greater Seattle<br><small>Lynnwood, WA</small></span></span>
     </div>
     <div class="info-sep"></div>
     <div class="info-item">
       <span class="info-lbl">🎤 Speaker</span>
-      <span class="info-val">성승현 총무<br><small>국제가사원 사역개발원</small></span>
+      <span class="info-val"><span class="ko-only">성승현 총무</span><span class="en-only">Elder Seunghyun Sung</span><br><small>국제가사원 사역개발원</small></span>
     </div>
   </div>
 </div>
@@ -1173,32 +1235,32 @@
       <div class="divider"></div>
 
       <p style="font-family:'Noto Serif KR',serif; font-size:1rem; line-height:1.8; color:#555; margin-bottom:2rem;">
-        2026 서북미 목자연합수련회 포스터는 "Reset for Restoration / 리셋을 통한 회복"이라는 주제를 시각적으로 표현합니다. 포스터의 각 요소는 목자, 목녀들의 사역 여정과 영적 회복의 메시지를 담고 있습니다.
+        <span class="ko-only">2026 서북미 목자연합수련회 포스터는 "Reset for Restoration / 리셋을 통한 회복"이라는 주제를 시각적으로 표현합니다. 포스터의 각 요소는 목자, 목녀들의 사역 여정과 영적 회복의 메시지를 담고 있습니다.</span><span class="en-only">The 2026 Pacific Northwest Shepherds' Retreat poster visually expresses the theme "Reset for Restoration." Each element carries a message about the ministry journey of shepherds and the promise of spiritual restoration.</span>
       </p>
 
       <div class="explanation-grid">
         <div class="explanation-card">
           <div class="icon">🧎</div>
           <h3>무릎 꿇은 사람 <span class="en">The Kneeling Figure</span></h3>
-          <p>세상의 무게와 사역의 피로 아래 지쳐 무릎 꿇은 목자의 모습입니다. 그러나 이 무릎 꿇음은 포기가 아니라, 하나님 앞에 다시 엎드리는 <strong>"리셋"의 시작점</strong>입니다.</p>
+          <p><span class="ko-only">세상의 무게와 사역의 피로 아래 지쳐 무릎 꿇은 목자의 모습입니다. 그러나 이 무릎 꿇음은 포기가 아니라, 하나님 앞에 다시 엎드리는 <strong>"리셋"의 시작점</strong>입니다.</span><span class="en-only">A shepherd kneels, weary under the weight of the world and the fatigue of ministry. Yet this kneeling is not surrender — it is the <strong>starting point of the "Reset,"</strong> bowing again before God.</span></p>
         </div>
 
         <div class="explanation-card">
           <div class="icon">🙏</div>
           <h3>기도하는 두 손 <span class="en">The Praying Hands</span></h3>
-          <p>간절히 모아 올린 기도의 손은 하나님께 다시 돌아가는 회복의 핵심을 상징합니다. 이 기도는 개인의 회복이자 <strong>가정교회 사역의 영적 재출발</strong>입니다.</p>
+          <p><span class="ko-only">간절히 모아 올린 기도의 손은 하나님께 다시 돌아가는 회복의 핵심을 상징합니다. 이 기도는 개인의 회복이자 <strong>가정교회 사역의 영적 재출발</strong>입니다.</span><span class="en-only">The earnestly folded praying hands symbolize the heart of restoration — returning to God. This prayer is both personal restoration and a <strong>spiritual new beginning for house church ministry</strong>.</span></p>
         </div>
 
         <div class="explanation-card">
           <div class="icon">✝️</div>
           <h3>십자가와 붉은 천 <span class="en">The Cross & Crimson Cloth</span></h3>
-          <p>웅장한 십자가에 걸린 붉은 천은 그리스도의 보혈과 은혜를 나타냅니다. 우리의 회복은 오직 <strong>십자가의 은혜</strong> 위에 세워지며, 원래의 상태를 뛰어넘는 완전한 새로움의 약속입니다.</p>
+          <p><span class="ko-only">웅장한 십자가에 걸린 붉은 천은 그리스도의 보혈과 은혜를 나타냅니다. 우리의 회복은 오직 <strong>십자가의 은혜</strong> 위에 세워지며, 원래의 상태를 뛰어넘는 완전한 새로움의 약속입니다.</span><span class="en-only">The crimson cloth on the majestic cross represents the blood and grace of Christ. Our restoration is built solely upon the <strong>grace of the cross</strong> — a promise of complete newness that surpasses our original state.</span></p>
         </div>
 
         <div class="explanation-card">
           <div class="icon">🌅</div>
           <h3>도시 실루엣과 빛 <span class="en">The Cityscape & Light</span></h3>
-          <p>어둠에서 빛으로 전환되는 도시의 실루엣은, 리셋을 통해 회복된 목자들이 세상 속으로 다시 나아가 <strong>빛과 소금의 역할</strong>을 감당할 것을 보여줍니다.</p>
+          <p><span class="ko-only">어둠에서 빛으로 전환되는 도시의 실루엣은, 리셋을 통해 회복된 목자들이 세상 속으로 다시 나아가 <strong>빛과 소금의 역할</strong>을 감당할 것을 보여줍니다.</span><span class="en-only">The cityscape transitioning from darkness to light shows shepherds, restored through the Reset, going back into the world as <strong>the light and salt</strong>.</span></p>
         </div>
       </div>
     </div>
@@ -1217,34 +1279,34 @@
 
       <div class="invitation-content">
         <p style="font-size:1.15rem; font-weight:600; color:var(--dark);">
-          목자님, 잠시 짐을 내려놓고 쉬어가세요.
+          <span class="ko-only">목자님, 잠시 짐을 내려놓고 쉬어가세요.</span><span class="en-only">Dear Shepherd, come lay down your burden and rest a while.</span>
         </p>
 
-        <p>사랑하는 목자, 목녀님, 평안하신지요?</p>
+        <p><span class="ko-only">사랑하는 목자, 목녀님, 평안하신지요?</span><span class="en-only">Beloved Shepherds and Shepherdesses, how are you?</span></p>
 
-        <p>매주 목장을 섬기며 영혼들을 돌보느라 얼마나 애쓰고 계신지 잘 알고 있습니다. 때로는 기쁨보다 버거움이 앞설 때도 있고, 내 안의 사랑이 고갈된 것 같아 남몰래 한숨 짓던 순간들도 있으셨으리라 생각합니다.</p>
+        <p><span class="ko-only">매주 목장을 섬기며 영혼들을 돌보느라 얼마나 애쓰고 계신지 잘 알고 있습니다. 때로는 기쁨보다 버거움이 앞설 때도 있고, 내 안의 사랑이 고갈된 것 같아 남몰래 한숨 짓던 순간들도 있으셨으리라 생각합니다.</span><span class="en-only">We know how tirelessly you have served your flocks and cared for souls. There must have been moments when the weight felt heavier than the joy, when your own well of love seemed to run dry, and you quietly sighed in the silence.</span></p>
 
         <div class="invitation-quote">
-          "목자도 위로가 필요합니다."
+          <span class="ko-only">"목자도 위로가 필요합니다."</span><span class="en-only">"Even shepherds need to be comforted."</span>
         </div>
 
-        <p>이번 2026 서북미 목자연합수련회는 무언가를 더 배우고 훈련받는 시간이 아닙니다. 오직 목자님들의 <strong>지친 마음을 위로하고, 잃어버린 소명을 다시 회복하는 시간</strong>으로 준비했습니다. Reset(리셋)을 함으로 Restoration(회복)을 이루어, 가정교회의 본질로 다시 돌아가자는 하나님의 부르심에 함께 응답하는 자리입니다.</p>
+        <p><span class="ko-only">이번 2026 서북미 목자연합수련회는 무언가를 더 배우고 훈련받는 시간이 아닙니다. 오직 목자님들의 <strong>지친 마음을 위로하고, 잃어버린 소명을 다시 회복하는 시간</strong>으로 준비했습니다. Reset(리셋)을 함으로 Restoration(회복)을 이루어, 가정교회의 본질로 다시 돌아가자는 하나님의 부르심에 함께 응답하는 자리입니다.</span><span class="en-only">The 2026 Pacific Northwest Shepherds' Retreat is not another time for training or learning. It has been prepared solely as a time to <strong>comfort weary hearts and restore lost callings</strong>. Through Reset, we pursue Restoration — responding together to God's call to return to the essence of the house church.</span></p>
 
-        <p>특별히 이번에는 같은 평신도 목자의 자리에서 사역의 현장을 경험하신 <strong>성승현 총무님</strong>(국제가사원 사역개발원, 휴스턴서울교회)을 강사로 모셨습니다. 목회자의 언어가 아닌, 같은 평신도 목자의 언어로 전해지는 그 생생한 이야기들이 여러분의 가슴에 깊은 울림과 공감을 선물할 것입니다.</p>
+        <p><span class="ko-only">특별히 이번에는 같은 평신도 목자의 자리에서 사역의 현장을 경험하신 <strong>성승현 총무님</strong>(국제가사원 사역개발원, 휴스턴서울교회)을 강사로 모셨습니다. 목회자의 언어가 아닌, 같은 평신도 목자의 언어로 전해지는 그 생생한 이야기들이 여러분의 가슴에 깊은 울림과 공감을 선물할 것입니다.</span><span class="en-only">This year we have invited <strong>Elder Seunghyun Sung</strong> (International House Church Ministry, Houston Seoul Church) as our speaker — a lay shepherd who has served on the front lines. His stories, told in the language of a fellow shepherd, will bring deep resonance to your heart.</span></p>
 
-        <p>캐나다 밴쿠버에서 오레곤까지, 서북미의 모든 목자님들이 시애틀지구촌교회에 모여 서로의 손을 잡고, 따뜻한 밥 한 끼 나누며, 하나님이 주시는 새 힘을 얻어가시길 소망합니다.</p>
+        <p><span class="ko-only">캐나다 밴쿠버에서 오레곤까지, 서북미의 모든 목자님들이 시애틀지구촌교회에 모여 서로의 손을 잡고, 따뜻한 밥 한 끼 나누며, 하나님이 주시는 새 힘을 얻어가시길 소망합니다.</span><span class="en-only">From Vancouver, Canada to Oregon, we long to see all the shepherds of the Pacific Northwest gathered at Global Mission Church of Greater Seattle — holding hands, sharing a warm meal, and receiving fresh strength from God.</span></p>
 
         <div class="invitation-closing">
-          그날, 당신의 자리를 비워두고 기다리겠습니다.
+          <span class="ko-only">그날, 당신의 자리를 비워두고 기다리겠습니다.</span><span class="en-only">On that day, we will keep your seat open, and we will be waiting for you.</span>
         </div>
         <div style="text-align:right; margin-top:2rem; font-family:'Noto Serif KR',serif; color:var(--gold); font-size:1rem; letter-spacing:0.05em; opacity:0.85;">
-          — 서북미 목자연합수련회 준비팀 —
+          <span class="ko-only">— 서북미 목자연합수련회 준비팀 —</span><span class="en-only">— The Pacific Northwest Shepherds' Retreat Preparation Team —</span>
         </div>
 
         <!-- 수련회 영상 -->
         <div style="margin-top:2.5rem;">
           <div style="text-align:center; font-family:'Noto Serif KR',serif; color:var(--gold); font-size:0.95rem; letter-spacing:0.08em; margin-bottom:1rem; opacity:0.9;">
-            🎬 서북미 목자연합수련회 초대영상
+            <span class="ko-only">🎬 서북미 목자연합수련회 초대영상</span><span class="en-only">🎬 Retreat Invitation Video</span>
           </div>
           <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px; box-shadow:0 4px 30px rgba(0,0,0,0.5); background:#000;">
             <iframe
@@ -1258,7 +1320,7 @@
           <div style="text-align:right; margin-top:0.6rem;">
             <a href="https://vimeo.com/1174619067" target="_blank" rel="noopener"
                style="font-size:0.82rem; color:var(--gold); text-decoration:none; opacity:0.7;">
-              ▶ Vimeo에서 보기
+              <span class="ko-only">▶ Vimeo에서 보기</span><span class="en-only">▶ Watch on Vimeo</span>
             </a>
           </div>
         </div>
@@ -1282,50 +1344,50 @@
       <table class="schedule-table">
         <thead>
           <tr>
-            <th>시간 (Time)</th>
-            <th>프로그램 (Program)</th>
-            <th>담당 (Leader)</th>
+            <th><span class="ko-only">시간 (Time)</span><span class="en-only">Time</span></th>
+            <th><span class="ko-only">프로그램 (Program)</span><span class="en-only">Program</span></th>
+            <th><span class="ko-only">담당 (Leader)</span><span class="en-only">Leader</span></th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="time" data-label="시간">8:00 – 8:50</td>
-            <td class="program" data-label="프로그램">도착 및 등록</td>
-            <td class="person" data-label="담당">목회자 도우미</td>
+            <td class="program" data-label="프로그램"><span class="ko-only">도착 및 등록</span><span class="en-only">Arrival & Registration</span></td>
+            <td class="person" data-label="담당"><span class="ko-only">목회자 도우미</span><span class="en-only">Pastoral Assistants</span></td>
           </tr>
           <tr class="highlight-row">
             <td class="time" data-label="시간">9:00 – 9:30</td>
-            <td class="program" data-label="프로그램">찬양 및 개회사</td>
-            <td class="person" data-label="담당">김성수 목사</td>
+            <td class="program" data-label="프로그램"><span class="ko-only">개회사 및 찬양</span><span class="en-only">Opening & Praise</span></td>
+            <td class="person" data-label="담당"><span class="ko-only">사회자/시애틀우리교회</span><span class="en-only">MC / Seattle Woori Church</span></td>
           </tr>
           <tr>
             <td class="time" data-label="시간">9:30 – 10:45</td>
-            <td class="program" data-label="프로그램"><strong>강의 I</strong></td>
+            <td class="program" data-label="프로그램"><strong><span class="ko-only">강의 I</span><span class="en-only">Lecture I</span></strong></td>
             <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr class="break-row">
             <td class="time" data-label="시간">10:50 – 11:20</td>
-            <td class="program" data-label="프로그램">휴식 및 간식</td>
+            <td class="program" data-label="프로그램"><span class="ko-only">휴식 및 간식</span><span class="en-only">Break & Refreshments</span></td>
             <td class="person" data-label="담당"></td>
           </tr>
           <tr>
             <td class="time" data-label="시간">11:20 – 11:40</td>
-            <td class="program" data-label="프로그램">간증 1</td>
-            <td class="person" data-label="담당">조신호 목자 (벤쿠버 사랑의 교회)</td>
+            <td class="program" data-label="프로그램"><span class="ko-only">간증 1</span><span class="en-only">Testimony 1</span></td>
+            <td class="person" data-label="담당"><span class="ko-only">조신호 목자 (벤쿠버 사랑의 교회)</span><span class="en-only">Shepherd Shinho Cho (Vancouver Sarang Church)</span></td>
           </tr>
           <tr>
             <td class="time" data-label="시간">11:40 – 12:55</td>
-            <td class="program" data-label="프로그램"><strong>강의 II</strong></td>
+            <td class="program" data-label="프로그램"><strong><span class="ko-only">강의 II</span><span class="en-only">Lecture II</span></strong></td>
             <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr>
             <td class="time" data-label="시간">12:55 – 1:00</td>
-            <td class="program" data-label="프로그램">단체사진 촬영 및 광고</td>
-            <td class="person" data-label="담당">박성건 목자</td>
+            <td class="program" data-label="프로그램"><span class="ko-only">단체사진 촬영 및 광고</span><span class="en-only">Group Photo & Announcements</span></td>
+            <td class="person" data-label="담당"><span class="ko-only">박성건 목사(시애틀지구촌교회)</span><span class="en-only">Pastor Sungkun Park (GMC of Greater Seattle)</span></td>
           </tr>
           <tr class="break-row">
             <td class="time" data-label="시간">1:00 – 2:20</td>
-            <td class="program" data-label="프로그램">점심식사(1:40분 까지) 및 조별나눔</td>
+            <td class="program" data-label="프로그램"><span class="ko-only">점심식사(1:40분 까지) 및 조별나눔</span><span class="en-only">Lunch (until 1:40) & Group Sharing</span></td>
             <td class="person" data-label="담당"></td>
           </tr>
           <tr class="break-row">
@@ -1335,27 +1397,27 @@
           </tr>
           <tr>
             <td class="time" data-label="시간">2:50 – 3:00</td>
-            <td class="program" data-label="프로그램">목회자 퍼포먼스</td>
-            <td class="person" data-label="담당"></td>
+            <td class="program" data-label="프로그램"><span class="ko-only">목회자 퍼포먼스</span><span class="en-only">Pastors' Performance</span></td>
+            <td class="person" data-label="담당"><span class="ko-only">서북미가정교회 목회자부부</span><span class="en-only">Pacific NW House Church Pastor Couples</span></td>
           </tr>
           <tr>
             <td class="time" data-label="시간">3:00 – 3:20</td>
-            <td class="program" data-label="프로그램">간증 2</td>
-            <td class="person" data-label="담당">오규범 목자 (온누리성결교회)</td>
+            <td class="program" data-label="프로그램"><span class="ko-only">간증 2</span><span class="en-only">Testimony 2</span></td>
+            <td class="person" data-label="담당"><span class="ko-only">오규범 목자 (온누리성결교회)</span><span class="en-only">Shepherd Kyubum Oh (Onnuri Sungkyul Church)</span></td>
           </tr>
           <tr>
             <td class="time" data-label="시간">3:20 – 4:10</td>
-            <td class="program" data-label="프로그램"><strong>조별발표 및 질의응답</strong></td>
+            <td class="program" data-label="프로그램"><strong><span class="ko-only">조별발표 및 질의응답</span><span class="en-only">Group Presentations & Q&A</span></strong></td>
             <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr class="highlight-row">
             <td class="time" data-label="시간">4:10 – 4:50</td>
-            <td class="program" data-label="프로그램"><strong>결단의 시간</strong></td>
+            <td class="program" data-label="프로그램"><strong><span class="ko-only">결단의 시간</span><span class="en-only">Time of Commitment</span></strong></td>
             <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr>
             <td class="time" data-label="시간">4:50</td>
-            <td class="program" data-label="프로그램">광고 및 귀가<br><small style="color:var(--gold);">목장 모임: 목양지를 향하여</small></td>
+            <td class="program" data-label="프로그램"><span class="ko-only">광고 및 귀가</span><span class="en-only">Announcements & Departure</span><br><small style="color:var(--gold);">목장 모임: <span class="ko-only">목양지를 향하여</span><span class="en-only">Toward the Pasture</span></small></td>
             <td class="person" data-label="담당"></td>
           </tr>
         </tbody>
@@ -1364,7 +1426,7 @@
       <div style="margin-top:2rem; padding:1.5rem; background:rgba(201,168,76,0.08); border-radius:8px; font-size:0.9rem; color:#666; line-height:1.8;">
         <strong style="color:var(--dark);">행사 담당</strong><br>
         사회 및 진행: 김성수 목사 &nbsp;&nbsp;|&nbsp;&nbsp; 서기: 오은석 목사 &nbsp;&nbsp;|&nbsp;&nbsp; 회계: 안대선 목사 &nbsp;&nbsp;|&nbsp;&nbsp; 홍보 및 목회자 퍼포먼스: 강재원 목사 &nbsp;&nbsp;|&nbsp;&nbsp; 오겹줄 기도: 이은진 목사 &nbsp;&nbsp;|&nbsp;&nbsp; 행정 간사: 박보라 목녀<br>
-        찬양: 시애틀우리교회 &nbsp;&nbsp;|&nbsp;&nbsp; 간증 1: 조신호 목자 (벤쿠버 사랑의 교회) &nbsp;&nbsp;|&nbsp;&nbsp; 간증 2: 오규범 목자 (온누리성결교회) &nbsp;&nbsp;|&nbsp;&nbsp; 사진촬영: 최요환 목사, 박성건 목자
+        찬양: 시애틀우리교회(전성현 목자외 7명) &nbsp;&nbsp;|&nbsp;&nbsp; 간증 1: 조신호 목자 (벤쿠버 사랑의 교회) &nbsp;&nbsp;|&nbsp;&nbsp; 간증 2: 오규범 목자 (온누리성결교회) &nbsp;&nbsp;|&nbsp;&nbsp; 사진: 최요환 목사, 박성건 목자 &nbsp;&nbsp;|&nbsp;&nbsp; 미디어: 박성건 목자, TFC 교회(히스패닉교회) &nbsp;&nbsp;|&nbsp;&nbsp; 호스트: 시애틀지구촌교회
       </div>
     </div>
   </div>
@@ -1387,7 +1449,7 @@
 
       <!-- ── 서브탭 네비게이션 ── -->
       <div class="sub-tab-nav">
-        <button class="sub-tab-btn active" onclick="switchSubTab(0)">🎬 영상</button>
+        <button class="sub-tab-btn active" onclick="switchSubTab(0)"><span class="ko-only">🎬 영상</span><span class="en-only">🎬 Video</span></button>
         <button class="sub-tab-btn" onclick="switchSubTab(1)">🎵 악보</button>
         <button class="sub-tab-btn" onclick="switchSubTab(2)">📖 가사</button>
       </div>
@@ -1400,7 +1462,7 @@
           <div class="st-content">
 
             <!-- 1. 찬양 영상 -->
-            <div class="st-label">🎵 주제 찬양 영상</div>
+            <div class="st-label"><span class="ko-only">🎵 주제 찬양 영상</span><span class="en-only">🎵 Theme Song Video</span></div>
             <div class="yt-wrapper" id="yt-wrapper">
               <div class="yt-poster" id="yt-poster" onclick="loadYTPlayer()">
                 <img src="https://img.youtube.com/vi/3Fl1g8Z3Y0I/maxresdefault.jpg" alt="El Shaddai 찬양 영상">
@@ -1422,7 +1484,7 @@
               <a class="yt-ext-link"
                  href="https://youtu.be/3Fl1g8Z3Y0I"
                  target="_blank" rel="noopener">
-                ▶ YouTube에서 보기
+                <span class="ko-only">▶ YouTube에서 보기</span><span class="en-only">▶ Watch on YouTube</span>
               </a>
             </div>
 
@@ -1432,7 +1494,7 @@
         <!-- 악보 탭 -->
         <div class="sub-tab-panel" id="st-1">
           <div class="st-content">
-            <div class="st-label">🎵 악보 (Sheet Music)</div>
+            <div class="st-label"><span class="ko-only">🎵 악보 (Sheet Music)</span><span class="en-only">🎵 Sheet Music</span></div>
             <div class="score-pages">
               <div class="score-info">
                 <p>Key: E Major &nbsp;|&nbsp; ♩= 71 &nbsp;|&nbsp; 3 Pages</p>
@@ -1470,10 +1532,10 @@
                 <!-- 다운로드 + 새탭 버튼 -->
                 <div style="display:flex;gap:0.8rem;justify-content:center;margin-top:0.8rem;flex-wrap:wrap;">
                   <a class="score-dl-btn" href="ElShaddai_SheetMusic.pdf" download>
-                    📥 PDF 다운로드
+                    <span class="ko-only">📥 PDF 다운로드</span><span class="en-only">📥 Download PDF</span>
                   </a>
                   <a class="score-dl-btn" href="ElShaddai_SheetMusic.pdf" target="_blank" rel="noopener" style="background:rgba(201,168,76,0.08);">
-                    🔗 새 탭에서 보기
+                    <span class="ko-only">🔗 새 탭에서 보기</span><span class="en-only">🔗 Open in New Tab</span>
                   </a>
                 </div>
               </div>
@@ -1484,7 +1546,7 @@
         <!-- 가사 탭 -->
         <div class="sub-tab-panel" id="st-2">
           <div class="st-content">
-            <div class="st-label">📖 가사 (Lyrics)</div>
+            <div class="st-label"><span class="ko-only">📖 가사 (Lyrics)</span><span class="en-only">📖 Lyrics</span></div>
             <div class="lyrics-body">
               <div class="lyrics-col en">
                 <div class="lyrics-section-label">Verse 1</div><br>
@@ -1569,7 +1631,7 @@
           <a class="map-open-btn"
              href="https://maps.google.com/?q=4900+168th+St+SW,+Lynnwood,+WA+98037"
              target="_blank">
-            🗺️ Google Maps에서 열기
+            <span class="ko-only">🗺️ Google Maps에서 열기</span><span class="en-only">🗺️ Open in Google Maps</span>
           </a>
         </div>
 
@@ -1607,7 +1669,7 @@
             <div class="d-icon">🚗</div>
             <div class="d-text">
               <div class="d-label">Parking</div>
-              <div class="d-value">교회 주차장 이용 가능</div>
+              <div class="d-value"><span class="ko-only">교회 주차장 이용 가능</span><span class="en-only">Church parking available</span></div>
             </div>
           </div>
         </div>
@@ -1626,32 +1688,32 @@
       <div class="divider"></div>
 
       <div class="theme-content">
-        <p>컴퓨터에 바이러스가 들어와서 더 이상 쓸 수 없게 되었을 때 우리는 그 컴퓨터를 처분해 버리지 않습니다. 컴퓨터를 리셋시켜서 다시 포맷하고 원래의 상태로 복원시켜서 새롭게 만들어 다시 사용하기 시작합니다.</p>
+        <p><span class="ko-only">컴퓨터에 바이러스가 들어와서 더 이상 쓸 수 없게 되었을 때 우리는 그 컴퓨터를 처분해 버리지 않습니다. 컴퓨터를 리셋시켜서 다시 포맷하고 원래의 상태로 복원시켜서 새롭게 만들어 다시 사용하기 시작합니다.</span><span class="en-only">When a computer becomes unusable due to a virus, we do not throw it away. We reset it, reformat it, and restore it — making it new so it can be used again.</span></p>
 
-        <p>하나님의 목표는 각 사람을 그 분이 원래 의도하신 삶으로 회복시키는 것입니다. 그렇기 때문에 우리 모두는 하나님의 회복의 대상이고, 현재 회복의 과정 중에 있습니다. 하나님의 원래 의도는 우리가 단지 구원받는 것에 그치지 아니하고, 우리가 그 분의 영광 가운데 살도록 하는 것이었습니다.</p>
+        <p><span class="ko-only">하나님의 목표는 각 사람을 그 분이 원래 의도하신 삶으로 회복시키는 것입니다. 그렇기 때문에 우리 모두는 하나님의 회복의 대상이고, 현재 회복의 과정 중에 있습니다. 하나님의 원래 의도는 우리가 단지 구원받는 것에 그치지 아니하고, 우리가 그 분의 영광 가운데 살도록 하는 것이었습니다.</span><span class="en-only">God's goal is to restore each person to the life He originally intended. All of us are objects of God's restoration, and we are currently in the process of being restored. His original intent was not merely for us to be saved, but for us to live in His glory.</span></p>
 
         <div class="theme-highlight">
-          이 세상에 죄악이 가득하고 도덕적으로 완전히 타락하면서 하나님과의 관계가 끊어지고 세상이 혼란과 절망의 상태에 놓였을 때 (창 6:5), 하나님께서는 노아를 사용하셔서 이 땅을 리셋하고 포맷하셔서 새로운 세상을 여셨습니다. 세상을 물로 심판하신 것은 바로 <strong>회복과 새 출발을 위한 리셋</strong>이었습니다.
+          <span class="ko-only">이 세상에 죄악이 가득하고 도덕적으로 완전히 타락하면서 하나님과의 관계가 끊어지고 세상이 혼란과 절망의 상태에 놓였을 때 (창 6:5), 하나님께서는 노아를 사용하셔서 이 땅을 리셋하고 포맷하셔서 새로운 세상을 여셨습니다. 세상을 물로 심판하신 것은 바로 <strong>회복과 새 출발을 위한 리셋</strong>이었습니다.</span><span class="en-only">When the world was filled with sin and morally corrupt, when relationships with God were severed (Gen. 6:5), God used Noah to reset this land and open a new world. Judging the world with water was a <strong>reset for restoration and a new beginning</strong>.</span>
         </div>
 
-        <p>하나님께서는 믿음의 사람, 목자, 목녀를 통해서 이 세상을 회복해 가기를 원하십니다. 그런데 하나님의 일에 온전히 사용되어지기 위해서는 목자, 목녀의 사역과 신앙의 여정 가운데 리셋이 필요합니다.</p>
+        <p><span class="ko-only">하나님께서는 믿음의 사람, 목자, 목녀를 통해서 이 세상을 회복해 가기를 원하십니다. 그런데 하나님의 일에 온전히 사용되어지기 위해서는 목자, 목녀의 사역과 신앙의 여정 가운데 리셋이 필요합니다.</span><span class="en-only">God desires to restore this world through shepherds. To be fully used in God's work, there must be a reset within the ministry and faith journey of shepherds.</span></p>
 
-        <p>지난 시간 우리는 팬데믹과 세상의 빠른 변화속에서 목장 사역과 영적 삶에 많은 도전과 부담을 느껴왔습니다. 때로는 열정이 식고, 사명의 본질이 희미해진 채, 목자와 목녀로서의 부르심을 감당하는 것이 버겁게 느껴지기도 하였습니다.</p>
+        <p><span class="ko-only">지난 시간 우리는 팬데믹과 세상의 빠른 변화속에서 목장 사역과 영적 삶에 많은 도전과 부담을 느껴왔습니다. 때로는 열정이 식고, 사명의 본질이 희미해진 채, 목자와 목녀로서의 부르심을 감당하는 것이 버겁게 느껴지기도 하였습니다.</span><span class="en-only">Amid the pandemic and rapid changes, we have felt many challenges in our house church ministry. At times, passion grew cold, the essence of our calling faded, and bearing our calling felt overwhelming.</span></p>
 
         <div class="theme-highlight" style="border-left-color: var(--crimson);">
-          그러나 이제는 다시, <strong>처음 부르심의 자리로 돌아갈 때</strong>입니다.
+          <span class="ko-only">그러나 이제는 다시, <strong>처음 부르심의 자리로 돌아갈 때</strong>입니다.</span><span class="en-only">But now, it is time to return <strong>to the place of our first calling</strong>.</span>
         </div>
 
-        <p><strong>Reset(리셋)</strong>은 우리 사역의 방향과 동기를 점검하고, 다시금 영혼 구원과 제자 삼는 사명에 초점을 맞추는 회복의 시작점입니다.</p>
+        <p><span class="ko-only"><strong>Reset(리셋)</strong>은 우리 사역의 방향과 동기를 점검하고, 다시금 영혼 구원과 제자 삼는 사명에 초점을 맞추는 회복의 시작점입니다.</span><span class="en-only"><strong>Reset</strong> is the starting point of restoration — examining our ministry direction and refocusing on saving souls and making disciples.</span></p>
 
-        <p><strong>Restoration(회복)</strong>은 지친 마음을 위로받고, 깨어진 열정과 사랑, 그리고 헌신을 다시 회복하여 성령의 능력으로 새롭게 세워지는 과정입니다. 이것은 단지 회복이 아니라 하나님 나라를 꿈꾸는 목자, 목녀들이 사역의 전열을 정비하고 하나님의 대사명을 붙드는 <strong>영적 재출발</strong>입니다.</p>
+        <p><span class="ko-only"><strong>Restoration(회복)</strong>은 지친 마음을 위로받고, 깨어진 열정과 사랑, 그리고 헌신을 다시 회복하여 성령의 능력으로 새롭게 세워지는 과정입니다. 이것은 단지 회복이 아니라 하나님 나라를 꿈꾸는 목자, 목녀들이 사역의 전열을 정비하고 하나님의 대사명을 붙드는 <strong>영적 재출발</strong>입니다.</span><span class="en-only"><strong>Restoration</strong> is the process of being comforted, recovering broken passion and love, and being newly established by the Holy Spirit. This is a <strong>spiritual new beginning</strong> — where shepherds hold fast to God's Great Commission.</span></p>
 
         <div class="theme-verse-box">
-          <p>"누구든지 그리스도 안에 있으면, 그는 새로운 피조물입니다.<br>옛 것은 지나갔습니다. 보십시오, 새 것이 되었습니다."</p>
-          <div class="ref">— 고린도후서 5:17</div>
+          <p><span class="ko-only">"누구든지 그리스도 안에 있으면, 그는 새로운 피조물입니다.<br>옛 것은 지나갔습니다. 보십시오, 새 것이 되었습니다."</span><span class="en-only">"Therefore, if anyone is in Christ, he is a new creation;<br>the old has passed away; behold, the new has come."</span></p>
+          <div class="ref"><span class="ko-only">— 고린도후서 5:17</span><span class="en-only">— 2 Corinthians 5:17</span></div>
           <br>
-          <p>"보아라, 내가 모든 것을 새롭게 한다."</p>
-          <div class="ref">— 요한계시록 21:5</div>
+          <p><span class="ko-only">"보아라, 내가 모든 것을 새롭게 한다."</span><span class="en-only">"Behold, I am making all things new."</span></p>
+          <div class="ref"><span class="ko-only">— 요한계시록 21:5</span><span class="en-only">— Revelation 21:5</span></div>
         </div>
       </div>
     </div>
@@ -1661,37 +1723,37 @@
   <div class="tab-panel" id="panel-6">
     <section class="section-light full-width">
       <div class="section-inner">
-        <h2 class="section-title">🏨 숙소 안내</h2>
-        <p class="section-sub" style="margin-bottom:1.5rem;">밴쿠버·오레곤 등 원거리에서 오시는 목자·목녀님들을 위해 교회 근처 숙소를 안내합니다. 아래 호텔들은 모두 시애틀지구촌교회에서 <strong>차로 5분 이내</strong>에 위치합니다.</p>
+        <h2 class="section-title"><span class="ko-only">🏨 숙소 안내</span><span class="en-only">🏨 Accommodations</span></h2>
+        <p class="section-sub" style="margin-bottom:1.5rem;"><span class="ko-only">밴쿠버·오레곤 등 원거리에서 오시는 목자·목녀님들을 위해 교회 근처 숙소를 안내합니다. 아래 호텔들은 모두 시애틀지구촌교회에서 <strong>차로 5분 이내</strong>에 위치합니다.</span><span class="en-only">For shepherds coming from Vancouver, Oregon, and other distant places, here are accommodations near the church. All hotels are within <strong>5 minutes by car</strong> from Global Mission Church.</span></p>
         <div style="display:flex;flex-direction:column;gap:1rem;">
 
           <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
             <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Hilton Garden Inn Seattle/Lynnwood</div>
-            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;">도보 가능 거리 · I-5 바로 옆 · 피트니스센터 · 무료 주차</div>
+            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;"><span class="ko-only">도보 가능 거리 · I-5 바로 옆 · 피트니스센터 · 무료 주차</span><span class="en-only">Walking distance · Next to I-5 · Fitness center · Free parking</span></div>
             <a href="https://www.hilton.com/en/hotels/sealngi-hilton-garden-inn-seattle-lynnwood/" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
           </div>
 
           <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
             <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Embassy Suites by Hilton – Lynnwood</div>
-            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;">약 1마일 · 스위트룸 · 무료 풀코스 조식 · 실내 수영장</div>
+            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;"><span class="ko-only">약 1마일 · 스위트룸 · 무료 풀코스 조식 · 실내 수영장</span><span class="en-only">About 1 mile · Suite rooms · Free breakfast · Indoor pool</span></div>
             <a href="https://www.hilton.com/en/hotels/sealnes-embassy-suites-seattle-north-lynnwood/" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
           </div>
 
           <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
             <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Hampton Inn &amp; Suites – Lynnwood</div>
-            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;">약 5분 · 무료 조식 · 평점 4.5/5 · 가성비 우수</div>
+            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;"><span class="ko-only">약 5분 · 무료 조식 · 평점 4.5/5 · 가성비 우수</span><span class="en-only">About 5 min · Free breakfast · Rated 4.5/5 · Great value</span></div>
             <a href="https://www.hilton.com/en/hotels/sealyhx-hampton-seattle-north-lynnwood/" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
           </div>
 
           <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
             <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Holiday Inn Express &amp; Suites – Lynnwood</div>
-            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;">약 5분 · 무료 조식 · 무료 Wi-Fi · 합리적 가격</div>
+            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;"><span class="ko-only">약 5분 · 무료 조식 · 무료 Wi-Fi · 합리적 가격</span><span class="en-only">About 5 min · Free breakfast · Free Wi-Fi · Affordable</span></div>
             <a href="https://www.ihg.com/holidayinnexpress/hotels/us/en/lynnwood/sealy/hoteldetail" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
           </div>
 
           <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
             <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Extended Stay America – Seattle/Lynnwood</div>
-            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;">약 5분 · 주방 완비 · 무료 조식 · 장기숙박 최적</div>
+            <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;"><span class="ko-only">약 5분 · 주방 완비 · 무료 조식 · 장기숙박 최적</span><span class="en-only">About 5 min · Full kitchen · Free breakfast · Extended stay</span></div>
             <a href="https://www.extendedstayamerica.com/hotels/wa/seattle/lynnwood" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
           </div>
 
@@ -1707,7 +1769,7 @@
   <!-- ==================== END TAB PANELS ==================== -->
 <footer class="footer">
   <div class="footer-logo">House Church Shepherds International</div>
-  <div>국제가사원 &middot; 2026 서북미 목자연합수련회</div>
+  <div><span class="ko-only">국제가사원 &middot; 2026 서북미 목자연합수련회</span><span class="en-only">International House Church Ministry &middot; 2026 Pacific Northwest Shepherds' Retreat</span></div>
   <div style="margin-top:0.5rem;">시애틀지구촌교회 &middot; Global Mission Church of Greater Seattle</div>
 
   <div style="margin-top:1rem; font-size:0.82rem; color:rgba(255,255,255,0.5);">
@@ -1715,7 +1777,7 @@
   </div>
 
   <div style="margin-top:1rem; font-size:0.75rem; color:rgba(255,255,255,0.3);">
-    "보아라, 내가 모든 것을 새롭게 한다." — 요한계시록 21:5
+    <span class="ko-only">"보아라, 내가 모든 것을 새롭게 한다." — 요한계시록 21:5</span><span class="en-only">"Behold, I am making all things new." — Revelation 21:5</span>
   </div>
 </footer>
 
@@ -1763,5 +1825,24 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+
+<script>
+function setLang(lang) {
+  document.body.classList.remove('lang-ko', 'lang-en');
+  document.body.classList.add('lang-' + lang);
+  document.querySelectorAll('.lang-btn').forEach(function(b){ b.classList.remove('active'); });
+  var activeBtn = document.getElementById('lang-' + lang + '-btn');
+  if (activeBtn) activeBtn.classList.add('active');
+  document.documentElement.setAttribute('lang', lang);
+  try { localStorage.setItem('retreat_lang', lang); } catch(e) {}
+}
+(function(){
+  try {
+    var saved = localStorage.getItem('retreat_lang');
+    setLang(saved === 'en' ? 'en' : 'ko');
+  } catch(e) { setLang('ko'); }
+})();
+</script>
+
 </body>
 </html>
