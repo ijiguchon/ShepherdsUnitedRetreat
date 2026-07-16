@@ -2773,11 +2773,7 @@ function goToLecture(idx) {
   switchTab(4);
   setTimeout(function() {
     switchLectureTab(idx);
-    var el = document.getElementById('lecture-panel-' + idx);
-    if (el) {
-      var navTop = document.querySelector('.tab-nav-wrapper').getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top: navTop - 8, behavior: 'smooth' });
-    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }, 100);
 }
 
@@ -2894,13 +2890,7 @@ function emailLectureNotes(lectureIdx) {
 
 // 강의 노트 맨 위로 스크롤
 function scrollLectureTop(lectureIdx) {
-  var navTop = document.querySelector('.tab-nav-wrapper');
-  if (navTop) {
-    var top = navTop.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top: top - 8, behavior: 'smooth' });
-  } else {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ===== 오디오 녹음 시스템 =====
