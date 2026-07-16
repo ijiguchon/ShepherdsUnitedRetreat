@@ -1212,6 +1212,170 @@
     animation: fadeSlideIn 0.3s ease;
   }
 
+
+  /* ===== 강의안 (Lecture Notes) ===== */
+  .lecture-link { color: var(--gold); text-decoration: underline; cursor: pointer; }
+  .lecture-link:hover { color: var(--gold-light); }
+
+  .lecture-tab-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 0 1rem 1.6rem;
+  }
+  .lecture-tab-btn {
+    padding: 0.55rem 1.3rem;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(201,168,76,0.3);
+    border-radius: 50px;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lecture-tab-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--dark);
+  }
+  .lecture-panel { display: none; }
+  .lecture-panel.active { display: block; animation: fadeSlideIn 0.3s ease; }
+
+  .lecture-doc {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 0.6rem 2rem;
+  }
+  .lecture-doc-title {
+    font-family: 'Noto Serif KR', serif;
+    font-size: 1.3rem;
+    font-weight: 900;
+    color: var(--dark);
+    text-align: center;
+    margin-bottom: 0.3rem;
+  }
+  .lecture-doc-sub {
+    text-align: center;
+    color: var(--gold-dark, #8a6d1f);
+    font-size: 0.88rem;
+    margin-bottom: 1.8rem;
+  }
+  .lecture-q-block {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed rgba(201,168,76,0.35);
+  }
+  .lecture-q-block:last-child { border-bottom: none; }
+  .lecture-q-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    background: var(--gold);
+    color: var(--dark);
+    border-radius: 50%;
+    font-size: 0.7rem;
+    font-weight: 900;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+  }
+  .lecture-q-text {
+    color: var(--dark);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 0.2rem;
+  }
+  .lecture-q-sub {
+    color: #666;
+    font-size: 0.82rem;
+    margin: 0.3rem 0 0.6rem 1.7rem;
+    line-height: 1.6;
+  }
+  .lecture-note-area {
+    width: 100%;
+    min-height: 70px;
+    margin-left: 0;
+    background: #fdfaf3;
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 8px;
+    color: var(--dark);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    padding: 0.7rem 0.9rem;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+  .lecture-note-area:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: #fffdf6;
+  }
+  .lecture-note-area::placeholder { color: #aaa; }
+
+  .lecture-toolbar {
+    display: flex;
+    justify-content: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.6rem;
+  }
+  .lecture-tool-btn {
+    padding: 0.55rem 1.1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: 1.5px solid rgba(201,168,76,0.6);
+    background: #fff;
+    color: var(--gold-dark, #8a6d1f);
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .lecture-tool-btn.primary {
+    background: var(--gold);
+    color: var(--dark);
+    border-color: var(--gold);
+  }
+  .lecture-tool-btn:hover { background: rgba(201,168,76,0.12); }
+  .lecture-save-status {
+    text-align: center;
+    font-size: 0.72rem;
+    color: #999;
+    margin-bottom: 1rem;
+    min-height: 1em;
+  }
+  .lecture-placeholder {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.8;
+  }
+
+  /* 인쇄용 스타일 - PDF 저장 */
+  @media print {
+    body * { visibility: hidden; }
+    .lecture-print-area, .lecture-print-area * { visibility: visible; }
+    .lecture-print-area {
+      position: absolute; left: 0; top: 0; width: 100%;
+      background: #fff !important; color: #000 !important;
+    }
+    .lecture-print-area .lecture-doc-title,
+    .lecture-print-area .lecture-q-text { color: #000 !important; }
+    .lecture-print-area .lecture-doc-sub { color: #8a6d1f !important; }
+    .lecture-print-area .lecture-note-area {
+      background: #fff !important;
+      border: 1px solid #999 !important;
+      color: #000 !important;
+    }
+    .lecture-toolbar, .lang-switcher, .lecture-tab-nav { display: none !important; }
+  }
+
 </style>
 <body>
 <!-- 언어 전환 -->
@@ -1253,11 +1417,12 @@
   <div class="tab-grid">
     <button class="tab-btn" onclick="switchTab(0)"><span class="tb-icon">🖼️</span><span class="tb-num">I</span><span class="tb-ko">포스터 해설</span><span class="tb-en">Poster</span></button>
     <button class="tab-btn" onclick="switchTab(1)"><span class="tb-icon">✉️</span><span class="tb-num">II</span><span class="tb-ko">초청의 글</span><span class="tb-en">Invite</span></button>
-    <button class="tab-btn" onclick="switchTab(2)"><span class="tb-icon">📅</span><span class="tb-num">III</span><span class="tb-ko">수련회 일정</span><span class="tb-en">Schedule</span></button>
-    <button class="tab-btn" onclick="switchTab(3)"><span class="tb-icon">🎵</span><span class="tb-num">IV</span><span class="tb-ko">찬양</span><span class="tb-en">Praise</span></button>
-    <button class="tab-btn" onclick="switchTab(4)"><span class="tb-icon">📍</span><span class="tb-num">V</span><span class="tb-ko">오시는 길</span><span class="tb-en">Directions</span></button>
-    <button class="tab-btn" onclick="switchTab(5)"><span class="tb-icon">📖</span><span class="tb-num">VI</span><span class="tb-ko">주제 설정 배경</span><span class="tb-en">Theme</span></button>
-    <button class="tab-btn" onclick="switchTab(6)"><span class="tb-icon">🏨</span><span class="tb-num">VII</span><span class="tb-ko">숙소 안내</span><span class="tb-en">Hotels</span></button>
+    <button class="tab-btn" onclick="switchTab(2)"><span class="tb-icon">📖</span><span class="tb-num">III</span><span class="tb-ko">주제 설정 배경</span><span class="tb-en">Theme</span></button>
+    <button class="tab-btn" onclick="switchTab(3)"><span class="tb-icon">📅</span><span class="tb-num">IV</span><span class="tb-ko">수련회 일정</span><span class="tb-en">Schedule</span></button>
+    <button class="tab-btn" onclick="switchTab(4)"><span class="tb-icon">📝</span><span class="tb-num">V</span><span class="tb-ko">강의안</span><span class="tb-en">Notes</span></button>
+    <button class="tab-btn" onclick="switchTab(5)"><span class="tb-icon">🎵</span><span class="tb-num">VI</span><span class="tb-ko">찬양</span><span class="tb-en">Praise</span></button>
+    <button class="tab-btn" onclick="switchTab(6)"><span class="tb-icon">📍</span><span class="tb-num">VII</span><span class="tb-ko">오시는 길</span><span class="tb-en">Directions</span></button>
+    <button class="tab-btn" onclick="switchTab(7)"><span class="tb-icon">🏨</span><span class="tb-num">VIII</span><span class="tb-ko">숙소 안내</span><span class="tb-en">Hotels</span></button>
   </div>
   <div class="tab-indicator-bar"></div>
 </div>
@@ -1266,7 +1431,7 @@
     <section class="section-gradient full-width">
   <div class="section" style="padding-top:4rem;padding-bottom:4rem;">
     <div class="inner">
-      <div class="section-number">V</div>
+      <div class="section-number">I</div>
       <h2 class="section-title">포스터 의미 해설</h2>
       <div class="section-title-en">Understanding the Poster</div>
       <div class="divider"></div>
@@ -1366,11 +1531,53 @@
   </div>
 </section>
   </div>
-  <div class="tab-panel" id="panel-2">
+<div class="tab-panel" id="panel-5">
     <section class="section-light full-width">
   <div class="section" style="padding-top:4rem;padding-bottom:4rem;">
     <div class="inner">
       <div class="section-number">III</div>
+      <h2 class="section-title">주제 설정 배경</h2>
+      <div class="section-title-en">Background for Setting the Theme</div>
+      <div class="divider"></div>
+
+      <div class="theme-content">
+        <p><span class="ko-only">컴퓨터에 바이러스가 들어와서 더 이상 쓸 수 없게 되었을 때 우리는 그 컴퓨터를 처분해 버리지 않습니다. 컴퓨터를 리셋시켜서 다시 포맷하고 원래의 상태로 복원시켜서 새롭게 만들어 다시 사용하기 시작합니다.</span><span class="en-only">When a computer becomes unusable due to a virus, we do not throw it away. We reset it, reformat it, and restore it — making it new so it can be used again.</span></p>
+
+        <p><span class="ko-only">하나님의 목표는 각 사람을 그 분이 원래 의도하신 삶으로 회복시키는 것입니다. 그렇기 때문에 우리 모두는 하나님의 회복의 대상이고, 현재 회복의 과정 중에 있습니다. 하나님의 원래 의도는 우리가 단지 구원받는 것에 그치지 아니하고, 우리가 그 분의 영광 가운데 살도록 하는 것이었습니다.</span><span class="en-only">God's goal is to restore each person to the life He originally intended. All of us are objects of God's restoration, and we are currently in the process of being restored. His original intent was not merely for us to be saved, but for us to live in His glory.</span></p>
+
+        <div class="theme-highlight">
+          <span class="ko-only">이 세상에 죄악이 가득하고 도덕적으로 완전히 타락하면서 하나님과의 관계가 끊어지고 세상이 혼란과 절망의 상태에 놓였을 때 (창 6:5), 하나님께서는 노아를 사용하셔서 이 땅을 리셋하고 포맷하셔서 새로운 세상을 여셨습니다. 세상을 물로 심판하신 것은 바로 <strong>회복과 새 출발을 위한 리셋</strong>이었습니다.</span><span class="en-only">When the world was filled with sin and morally corrupt, when relationships with God were severed (Gen. 6:5), God used Noah to reset this land and open a new world. Judging the world with water was a <strong>reset for restoration and a new beginning</strong>.</span>
+        </div>
+
+        <p><span class="ko-only">하나님께서는 믿음의 사람, 목자, 목녀를 통해서 이 세상을 회복해 가기를 원하십니다. 그런데 하나님의 일에 온전히 사용되어지기 위해서는 목자, 목녀의 사역과 신앙의 여정 가운데 리셋이 필요합니다.</span><span class="en-only">God desires to restore this world through shepherds. To be fully used in God's work, there must be a reset within the ministry and faith journey of shepherds.</span></p>
+
+        <p><span class="ko-only">지난 시간 우리는 팬데믹과 세상의 빠른 변화속에서 목장 사역과 영적 삶에 많은 도전과 부담을 느껴왔습니다. 때로는 열정이 식고, 사명의 본질이 희미해진 채, 목자와 목녀로서의 부르심을 감당하는 것이 버겁게 느껴지기도 하였습니다.</span><span class="en-only">Amid the pandemic and rapid changes, we have felt many challenges in our house church ministry. At times, passion grew cold, the essence of our calling faded, and bearing our calling felt overwhelming.</span></p>
+
+        <div class="theme-highlight" style="border-left-color: var(--crimson);">
+          <span class="ko-only">그러나 이제는 다시, <strong>처음 부르심의 자리로 돌아갈 때</strong>입니다.</span><span class="en-only">But now, it is time to return <strong>to the place of our first calling</strong>.</span>
+        </div>
+
+        <p><span class="ko-only"><strong>Reset(리셋)</strong>은 우리 사역의 방향과 동기를 점검하고, 다시금 영혼 구원과 제자 삼는 사명에 초점을 맞추는 회복의 시작점입니다.</span><span class="en-only"><strong>Reset</strong> is the starting point of restoration — examining our ministry direction and refocusing on saving souls and making disciples.</span></p>
+
+        <p><span class="ko-only"><strong>Restoration(회복)</strong>은 지친 마음을 위로받고, 깨어진 열정과 사랑, 그리고 헌신을 다시 회복하여 성령의 능력으로 새롭게 세워지는 과정입니다. 이것은 단지 회복이 아니라 하나님 나라를 꿈꾸는 목자, 목녀들이 사역의 전열을 정비하고 하나님의 대사명을 붙드는 <strong>영적 재출발</strong>입니다.</span><span class="en-only"><strong>Restoration</strong> is the process of being comforted, recovering broken passion and love, and being newly established by the Holy Spirit. This is a <strong>spiritual new beginning</strong> — where shepherds hold fast to God's Great Commission.</span></p>
+
+        <div class="theme-verse-box">
+          <p><span class="ko-only">"누구든지 그리스도 안에 있으면, 그는 새로운 피조물입니다.<br>옛 것은 지나갔습니다. 보십시오, 새 것이 되었습니다."</span><span class="en-only">"Therefore, if anyone is in Christ, he is a new creation;<br>the old has passed away; behold, the new has come."</span></p>
+          <div class="ref"><span class="ko-only">— 고린도후서 5:17</span><span class="en-only">— 2 Corinthians 5:17</span></div>
+          <br>
+          <p><span class="ko-only">"보아라, 내가 모든 것을 새롭게 한다."</span><span class="en-only">"Behold, I am making all things new."</span></p>
+          <div class="ref"><span class="ko-only">— 요한계시록 21:5</span><span class="en-only">— Revelation 21:5</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  </div>
+  <div class="tab-panel" id="panel-2">
+    <section class="section-light full-width">
+  <div class="section" style="padding-top:4rem;padding-bottom:4rem;">
+    <div class="inner">
+      <div class="section-number">IV</div>
       <h2 class="section-title">수련회 일정</h2>
       <div class="section-title-en">Conference Schedule</div>
       <div class="divider"></div>
@@ -1399,7 +1606,7 @@
           </tr>
           <tr>
             <td class="time" data-label="시간">9:30 – 10:45</td>
-            <td class="program" data-label="프로그램"><strong><span class="ko-only">강의 I</span><span class="en-only">Lecture I</span></strong></td>
+            <td class="program" data-label="프로그램"><strong><a href="#" class="lecture-link" onclick="goToLecture(1); return false;"><span class="ko-only">📝 강의 I</span><span class="en-only">📝 Lecture I</span></a></strong></td>
             <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr class="break-row">
@@ -1414,7 +1621,7 @@
           </tr>
           <tr>
             <td class="time" data-label="시간">11:40 – 12:55</td>
-            <td class="program" data-label="프로그램"><strong><span class="ko-only">강의 II</span><span class="en-only">Lecture II</span></strong></td>
+            <td class="program" data-label="프로그램"><strong><a href="#" class="lecture-link" onclick="goToLecture(2); return false;"><span class="ko-only">📝 강의 II</span><span class="en-only">📝 Lecture II</span></a></strong></td>
             <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr>
@@ -1469,12 +1676,243 @@
   </div>
 </section>
   </div>
+  <div class="tab-panel" id="panel-7">
+    <section class="section-light full-width">
+      <div class="section" style="padding-top:4rem;padding-bottom:4rem;">
+        <div class="inner">
+          <div class="section-number">V</div>
+          <h2 class="section-title">강의안</h2>
+          <div class="section-title-en">Lecture Notes</div>
+          <div class="divider"></div>
+
+          <!-- 강의 선택 탭 -->
+          <div class="lecture-tab-nav">
+            <button class="lecture-tab-btn active" onclick="switchLectureTab(1)">강의 I</button>
+            <button class="lecture-tab-btn" onclick="switchLectureTab(2)">강의 II</button>
+          </div>
+
+          <!-- ══ 강의 I ══ -->
+          <div class="lecture-panel active" id="lecture-panel-1">
+            <div class="lecture-toolbar">
+              <button class="lecture-tool-btn" onclick="clearLectureNotes(1)">🗑️ 내용 지우기</button>
+              <button class="lecture-tool-btn" onclick="downloadLectureText(1)"><span class="ko-only">📄 텍스트 다운로드</span><span class="en-only">📄 Download Text</span></button>
+              <button class="lecture-tool-btn" onclick="emailLectureNotes(1)"><span class="ko-only">📧 이메일로 보내기</span><span class="en-only">📧 Email My Notes</span></button>
+              <button class="lecture-tool-btn primary" onclick="printLecture(1)">📥 PDF로 저장</button>
+            </div>
+            <div class="lecture-save-status" id="save-status-1">✓ 자동 저장됨</div>
+
+            <div class="lecture-print-area" id="lecture-print-1">
+              <div class="lecture-doc">
+                <div class="lecture-doc-title">목장 사역의 목적과 수행 요소</div>
+                <div class="lecture-doc-sub">서북미 (시애틀 · 오레곤 · 밴쿠버) 목자·목녀 연합수련회 &middot; 강의 I &middot; 성승현 총무 &middot; 2026년 7월 18일</div>
+
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">1</span><span>이 세상 사람을 향한 '하나님의 소원'은 무엇일까요?</span></div>
+              <div class="lecture-q-sub">
+                <strong>이사야 43:7</strong> "나의 이름을 부르는 나의 백성, 나에게 영광을 돌리라고 창조한 사람들, 내가 빚어 만든 사람들을 모두 오게 하여라' 하고 말하겠다."<br>
+                <strong>고린도전서 10:31</strong> 그러므로 여러분은 먹든지 마시든지, 무슨 일을 하든지, 모든 것을 하나님의 영광을 위하여 하십시오.<br>
+                <strong>데살로니가전서 2:12</strong> 우리는 여러분을 권면하고 격려하고 경고합니다마는, 그것은 여러분을 부르셔서 당신의 나라와 영광에 이르게 하시는 하나님께 합당하게 살아가게 하려는 것입니다.
+              </div>
+              <textarea class="lecture-note-area" id="l1-note-1" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-1')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">2</span><span>하나님께서는 어떻게 (우리들을 통해서) '영광'을 받으실까요?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-2" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-2')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">3</span><span>하나님의 자녀를 통해서 어떻게 하나님이 드러나실 수 있으실까요?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-3" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-3')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">4</span><span>목장 사역을 통하여 우리가 궁극적으로 추구하는 것은 무엇일까요?</span></div>
+              <div class="lecture-q-sub">두 가지 변화</div>
+              <textarea class="lecture-note-area" id="l1-note-4" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-4')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">5</span><span>목장 사역의 목적이란?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-5" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-5')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">6</span><span>사람은 어떻게, 무엇으로 인해서 '변화' 되어 질 수 있을까요?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-6" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-6')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">7</span><span>목장 사역에 있어서 가장 큰 축이 되는 두 가지 리더십이란?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-7" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-7')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">8</span><span>어떻게 하면 이 두 가지 리더십을 잘 수행할 수 있을까요?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-8" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-8')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">9</span><span>'신앙' 생활의 단계가 있다면?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-9" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-9')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">10</span><span>하나님은 어떻게 경험할 수 있을까요?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-10" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-10')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">11</span><span>보통 사람들이 지속적으로 하나님을 경험할 수 있는 방법이 있을까요?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-11" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-11')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">12</span><span>목장 모임의 '나눔'에서 일어나야 하는 Dynamics</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-12" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-12')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">13</span><span>목장 모임 인도 시, 기억하면 좋은 사항들은?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-13" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-13')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">14</span><span>목장 사역 가운데 하나님을 가장 크게 경험하는 때는?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-14" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-14')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">15</span><span>목장 사역의 궁극적인 목표는?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-15" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-15')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">16</span><span>매주 모이는 목장 모임의 목표는?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-16" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-16')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">17</span><span>VIP가 하나님의 자녀가 되기 위하여서 필요한 두 가지란?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-17" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-17')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">18</span><span>목장을 통하여 추구해 가야 할 두 가지 공동체란? 그리고 그를 가능케 하기 위해 필요한 또 하나의 역할(공동체)은?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-18" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-18')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">19</span><span>목장 사역의 "핵심 요소"란?</span></div>
+              
+              <textarea class="lecture-note-area" id="l1-note-19" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-19')"></textarea>
+            </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ 강의 II ══ -->
+          <div class="lecture-panel" id="lecture-panel-2">
+            <div class="lecture-toolbar">
+              <button class="lecture-tool-btn" onclick="clearLectureNotes(2)">🗑️ 내용 지우기</button>
+              <button class="lecture-tool-btn" onclick="downloadLectureText(2)"><span class="ko-only">📄 텍스트 다운로드</span><span class="en-only">📄 Download Text</span></button>
+              <button class="lecture-tool-btn" onclick="emailLectureNotes(2)"><span class="ko-only">📧 이메일로 보내기</span><span class="en-only">📧 Email My Notes</span></button>
+              <button class="lecture-tool-btn primary" onclick="printLecture(2)">📥 PDF로 저장</button>
+            </div>
+            <div class="lecture-save-status" id="save-status-2">✓ 자동 저장됨</div>
+
+            <div class="lecture-print-area" id="lecture-print-2">
+              <div class="lecture-doc">
+                <div class="lecture-doc-title">'교회 평신도 리더'의 역할 및 수행 요소</div>
+                <div class="lecture-doc-sub">서북미 (시애틀 · 오레곤 · 밴쿠버) 목자·목녀 연합수련회 &middot; 강의 II &middot; 성승현 총무 &middot; 2026년 7월 18일</div>
+
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">1</span><span>리더십의 3대 요소란?</span></div>
+              
+              <textarea class="lecture-note-area" id="l2-note-1" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l2-note-1')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">2</span><span>교회를 세우는 (목회적) 리더십</span></div>
+              
+              <textarea class="lecture-note-area" id="l2-note-2" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l2-note-2')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">3</span><span>'교회 리더십'의 일원으로서 해야 할 역할은?</span></div>
+              
+              <textarea class="lecture-note-area" id="l2-note-3" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l2-note-3')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">4</span><span>계승(繼承)의 좋은 사례들</span></div>
+              
+              <textarea class="lecture-note-area" id="l2-note-4" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l2-note-4')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">5</span><span>왜 계승(繼承)하는 것이 중요한가?</span></div>
+              
+              <textarea class="lecture-note-area" id="l2-note-5" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l2-note-5')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">6</span><span>무엇을 계승(繼承)해야 하는가?</span></div>
+              
+              <textarea class="lecture-note-area" id="l2-note-6" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l2-note-6')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">7</span><span>어떻게 계승(繼承)해야 하는가?</span></div>
+              
+              <textarea class="lecture-note-area" id="l2-note-7" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l2-note-7')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">8</span><span>'교회 리더십' 모임을 통해서 추구해야 하는 것은?</span></div>
+              
+              <textarea class="lecture-note-area" id="l2-note-8" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l2-note-8')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">9</span><span>'교회 리더십' 모임을 통해서 어떻게 하나님의 뜻을 찾는가?</span></div>
+              
+              <textarea class="lecture-note-area" id="l2-note-9" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l2-note-9')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">10</span><span>'교회 리더십'이 '하나'가 된다는 의미는?</span></div>
+              
+              <textarea class="lecture-note-area" id="l2-note-10" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l2-note-10')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">11</span><span>'교회 리더십'이 '하나'가 되기 위해서 필요한 일은?</span></div>
+              
+              <textarea class="lecture-note-area" id="l2-note-11" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l2-note-11')"></textarea>
+            </div>
+            <div class="lecture-q-block">
+              <div class="lecture-q-text"><span class="lecture-q-num">12</span><span>'하나'가 되기 위해서 어떻게 공(公)과 사(私)를 구별할 수 있는가?</span></div>
+              
+              <textarea class="lecture-note-area" id="l2-note-12" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l2-note-12')"></textarea>
+            </div>
+
+                <!-- 가치관 다이어그램 -->
+                <div class="lecture-q-block">
+                  <div class="lecture-q-text" style="margin-bottom:0.8rem;"><span>📊 사람의 생각과 행동을 지배하는 가치관</span></div>
+                  <div class="lecture-q-sub" style="margin-left:0; margin-bottom:0.9rem;">
+                    1. 성과(업적) – Achievement &nbsp;&nbsp;|&nbsp;&nbsp; 2. 중요(가치) – Significance<br>
+                    3. 자격(위치) – Identity &nbsp;&nbsp;|&nbsp;&nbsp; 4. 인정(존중) – Acceptance
+                  </div>
+                  <img src="lecture2/values_diagram.jpg" alt="사람의 생각과 행동을 지배하는 가치관 다이어그램"
+                       style="max-width:100%; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.3); display:block; margin:0 auto 1rem;">
+                  <textarea class="lecture-note-area" id="l2-note-diagram" style="min-height:100px;" placeholder="다이어그램을 보며 느낀 점을 적어보세요..." oninput="saveLectureNote('l2-note-diagram')"></textarea>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </div>
+
   <div class="tab-panel" id="panel-3">
     <section class="lyrics-container">
 
       <!-- ── 찬양 섹션 타이틀 ── -->
       <div class="lyrics-header" style="padding-bottom:0;">
-        <div class="section-number" style="color:var(--gold);">IV</div>
+        <div class="section-number" style="color:var(--gold);">VI</div>
         <h2 class="section-title" style="margin-bottom:0.3rem;">수련회 찬양</h2>
         <div class="section-title-en">Retreat Praise Songs</div>
         <div class="cover-divider" style="margin:1.2rem auto;"></div>
@@ -1857,7 +2295,7 @@
     <section class="section-light full-width">
   <div class="section" style="padding-top:4rem;padding-bottom:4rem;">
     <div class="inner">
-      <div class="section-number">VI</div>
+      <div class="section-number">VII</div>
       <h2 class="section-title">오시는 길</h2>
       <div class="section-title-en">Directions</div>
       <div class="divider"></div>
@@ -1917,51 +2355,10 @@
   </div>
 </section>
   </div>
-<div class="tab-panel" id="panel-5">
-    <section class="section-light full-width">
-  <div class="section" style="padding-top:4rem;padding-bottom:4rem;">
-    <div class="inner">
-      <div class="section-number">I</div>
-      <h2 class="section-title">주제 설정 배경</h2>
-      <div class="section-title-en">Background for Setting the Theme</div>
-      <div class="divider"></div>
-
-      <div class="theme-content">
-        <p><span class="ko-only">컴퓨터에 바이러스가 들어와서 더 이상 쓸 수 없게 되었을 때 우리는 그 컴퓨터를 처분해 버리지 않습니다. 컴퓨터를 리셋시켜서 다시 포맷하고 원래의 상태로 복원시켜서 새롭게 만들어 다시 사용하기 시작합니다.</span><span class="en-only">When a computer becomes unusable due to a virus, we do not throw it away. We reset it, reformat it, and restore it — making it new so it can be used again.</span></p>
-
-        <p><span class="ko-only">하나님의 목표는 각 사람을 그 분이 원래 의도하신 삶으로 회복시키는 것입니다. 그렇기 때문에 우리 모두는 하나님의 회복의 대상이고, 현재 회복의 과정 중에 있습니다. 하나님의 원래 의도는 우리가 단지 구원받는 것에 그치지 아니하고, 우리가 그 분의 영광 가운데 살도록 하는 것이었습니다.</span><span class="en-only">God's goal is to restore each person to the life He originally intended. All of us are objects of God's restoration, and we are currently in the process of being restored. His original intent was not merely for us to be saved, but for us to live in His glory.</span></p>
-
-        <div class="theme-highlight">
-          <span class="ko-only">이 세상에 죄악이 가득하고 도덕적으로 완전히 타락하면서 하나님과의 관계가 끊어지고 세상이 혼란과 절망의 상태에 놓였을 때 (창 6:5), 하나님께서는 노아를 사용하셔서 이 땅을 리셋하고 포맷하셔서 새로운 세상을 여셨습니다. 세상을 물로 심판하신 것은 바로 <strong>회복과 새 출발을 위한 리셋</strong>이었습니다.</span><span class="en-only">When the world was filled with sin and morally corrupt, when relationships with God were severed (Gen. 6:5), God used Noah to reset this land and open a new world. Judging the world with water was a <strong>reset for restoration and a new beginning</strong>.</span>
-        </div>
-
-        <p><span class="ko-only">하나님께서는 믿음의 사람, 목자, 목녀를 통해서 이 세상을 회복해 가기를 원하십니다. 그런데 하나님의 일에 온전히 사용되어지기 위해서는 목자, 목녀의 사역과 신앙의 여정 가운데 리셋이 필요합니다.</span><span class="en-only">God desires to restore this world through shepherds. To be fully used in God's work, there must be a reset within the ministry and faith journey of shepherds.</span></p>
-
-        <p><span class="ko-only">지난 시간 우리는 팬데믹과 세상의 빠른 변화속에서 목장 사역과 영적 삶에 많은 도전과 부담을 느껴왔습니다. 때로는 열정이 식고, 사명의 본질이 희미해진 채, 목자와 목녀로서의 부르심을 감당하는 것이 버겁게 느껴지기도 하였습니다.</span><span class="en-only">Amid the pandemic and rapid changes, we have felt many challenges in our house church ministry. At times, passion grew cold, the essence of our calling faded, and bearing our calling felt overwhelming.</span></p>
-
-        <div class="theme-highlight" style="border-left-color: var(--crimson);">
-          <span class="ko-only">그러나 이제는 다시, <strong>처음 부르심의 자리로 돌아갈 때</strong>입니다.</span><span class="en-only">But now, it is time to return <strong>to the place of our first calling</strong>.</span>
-        </div>
-
-        <p><span class="ko-only"><strong>Reset(리셋)</strong>은 우리 사역의 방향과 동기를 점검하고, 다시금 영혼 구원과 제자 삼는 사명에 초점을 맞추는 회복의 시작점입니다.</span><span class="en-only"><strong>Reset</strong> is the starting point of restoration — examining our ministry direction and refocusing on saving souls and making disciples.</span></p>
-
-        <p><span class="ko-only"><strong>Restoration(회복)</strong>은 지친 마음을 위로받고, 깨어진 열정과 사랑, 그리고 헌신을 다시 회복하여 성령의 능력으로 새롭게 세워지는 과정입니다. 이것은 단지 회복이 아니라 하나님 나라를 꿈꾸는 목자, 목녀들이 사역의 전열을 정비하고 하나님의 대사명을 붙드는 <strong>영적 재출발</strong>입니다.</span><span class="en-only"><strong>Restoration</strong> is the process of being comforted, recovering broken passion and love, and being newly established by the Holy Spirit. This is a <strong>spiritual new beginning</strong> — where shepherds hold fast to God's Great Commission.</span></p>
-
-        <div class="theme-verse-box">
-          <p><span class="ko-only">"누구든지 그리스도 안에 있으면, 그는 새로운 피조물입니다.<br>옛 것은 지나갔습니다. 보십시오, 새 것이 되었습니다."</span><span class="en-only">"Therefore, if anyone is in Christ, he is a new creation;<br>the old has passed away; behold, the new has come."</span></p>
-          <div class="ref"><span class="ko-only">— 고린도후서 5:17</span><span class="en-only">— 2 Corinthians 5:17</span></div>
-          <br>
-          <p><span class="ko-only">"보아라, 내가 모든 것을 새롭게 한다."</span><span class="en-only">"Behold, I am making all things new."</span></p>
-          <div class="ref"><span class="ko-only">— 요한계시록 21:5</span><span class="en-only">— Revelation 21:5</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  </div>
   <div class="tab-panel" id="panel-6">
     <section class="section-light full-width">
       <div class="section-inner">
+        <div class="section-number">VIII</div>
         <h2 class="section-title"><span class="ko-only">🏨 숙소 안내</span><span class="en-only">🏨 Accommodations</span></h2>
         <p class="section-sub" style="margin-bottom:1.5rem;"><span class="ko-only">밴쿠버·오레곤 등 원거리에서 오시는 목자·목녀님들을 위해 교회 근처 숙소를 안내합니다. 아래 호텔들은 모두 시애틀지구촌교회에서 <strong>차로 5분 이내</strong>에 위치합니다.</span><span class="en-only">For shepherds coming from Vancouver, Oregon, and other distant places, here are accommodations near the church. All hotels are within <strong>5 minutes by car</strong> from Global Mission Church.</span></p>
         <div style="display:flex;flex-direction:column;gap:1rem;">
@@ -2093,6 +2490,152 @@ function setLang(lang) {
     setLang(saved === 'en' ? 'en' : 'ko');
   } catch(e) { setLang('ko'); }
 })();
+</script>
+
+
+<script>
+// ===== 강의안 시스템 =====
+
+// 강의 탭 전환
+function switchLectureTab(idx) {
+  document.querySelectorAll('.lecture-tab-btn').forEach(function(b, i) {
+    b.classList.toggle('active', i === (idx - 1));
+  });
+  document.querySelectorAll('.lecture-panel').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  var target = document.getElementById('lecture-panel-' + idx);
+  if (target) target.classList.add('active');
+}
+
+// 일정표에서 강의 클릭 시 이동
+function goToLecture(idx) {
+  switchTab(4);
+  setTimeout(function() {
+    switchLectureTab(idx);
+    var el = document.getElementById('lecture-panel-' + idx);
+    if (el) {
+      var navTop = document.querySelector('.tab-nav-wrapper').getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: navTop - 8, behavior: 'smooth' });
+    }
+  }, 100);
+}
+
+// 노트 자동 저장 (localStorage)
+function saveLectureNote(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  try {
+    localStorage.setItem('retreat_' + id, el.value);
+    var statusId = id.startsWith('l1') ? 'save-status-1' : 'save-status-2';
+    var status = document.getElementById(statusId);
+    if (status) {
+      status.textContent = '✓ 저장됨 · ' + new Date().toLocaleTimeString('ko-KR', {hour:'2-digit', minute:'2-digit'});
+    }
+  } catch(e) {}
+}
+
+// 저장된 노트 불러오기
+function loadLectureNotes() {
+  document.querySelectorAll('.lecture-note-area').forEach(function(el) {
+    try {
+      var saved = localStorage.getItem('retreat_' + el.id);
+      if (saved) el.value = saved;
+    } catch(e) {}
+  });
+}
+
+// 노트 전체 지우기
+function clearLectureNotes(lectureIdx) {
+  if (!confirm('강의 ' + (lectureIdx === 1 ? 'I' : 'II') + '의 모든 메모를 삭제하시겠습니까?')) return;
+  var panel = document.getElementById('lecture-panel-' + lectureIdx);
+  if (!panel) return;
+  panel.querySelectorAll('.lecture-note-area').forEach(function(el) {
+    el.value = '';
+    try { localStorage.removeItem('retreat_' + el.id); } catch(e) {}
+  });
+}
+
+// PDF로 저장 (인쇄 다이얼로그 → PDF 저장 선택)
+function printLecture(lectureIdx) {
+  document.querySelectorAll('.lecture-print-area').forEach(function(el) {
+    el.classList.remove('lecture-print-area');
+  });
+  var target = document.getElementById('lecture-print-' + lectureIdx);
+  if (target) target.classList.add('lecture-print-area');
+  window.print();
+}
+
+// 강의 내용 + 필기 메모를 텍스트로 정리
+function compileLectureText(lectureIdx) {
+  var panel = document.getElementById('lecture-panel-' + lectureIdx);
+  if (!panel) return '';
+  var lines = [];
+
+  var titleEl = panel.querySelector('.lecture-doc-title');
+  var subEl = panel.querySelector('.lecture-doc-sub');
+  if (titleEl) lines.push(titleEl.textContent.trim());
+  if (subEl) lines.push(subEl.textContent.trim());
+  lines.push('════════════════════════════');
+  lines.push('');
+
+  panel.querySelectorAll('.lecture-q-block').forEach(function(block, i) {
+    var qEl = block.querySelector('.lecture-q-text');
+    var subEl2 = block.querySelector('.lecture-q-sub');
+    var ta = block.querySelector('.lecture-note-area');
+
+    if (qEl) {
+      var spans = qEl.querySelectorAll(':scope > span');
+      var qText = spans.length > 1 ? spans[1].textContent.trim() : (spans.length === 1 ? spans[0].textContent.trim() : qEl.textContent.trim());
+      lines.push((i + 1) + '. ' + qText);
+    }
+    if (subEl2 && subEl2.textContent.trim()) {
+      lines.push('   ' + subEl2.textContent.trim().replace(/\s+/g, ' '));
+    }
+    if (ta && ta.value.trim()) {
+      lines.push('   ✏️ 나의 메모:');
+      ta.value.trim().split('\n').forEach(function(l) {
+        lines.push('      ' + l);
+      });
+    }
+    lines.push('');
+  });
+
+  lines.push('════════════════════════════');
+  lines.push('2026 서북미 목자연합수련회 · ijiguchon.github.io/ShepherdsUnitedRetreat');
+  return lines.join('\n');
+}
+
+// 텍스트 파일로 다운로드
+function downloadLectureText(lectureIdx) {
+  var text = compileLectureText(lectureIdx);
+  var blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = (lectureIdx === 1 ? '강의I_필기노트' : '강의II_필기노트') + '.txt';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function() { URL.revokeObjectURL(url); }, 1000);
+}
+
+// 이메일로 보내기 (사용자 메일 앱 실행)
+function emailLectureNotes(lectureIdx) {
+  var text = compileLectureText(lectureIdx);
+  var subject = (lectureIdx === 1 ? '강의 I' : '강의 II') + ' 필기 노트 — 2026 서북미 목자연합수련회';
+  var mailto = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
+
+  if (mailto.length > 1800) {
+    alert('메모 내용이 길어 이메일 본문이 잘릴 수 있습니다.\n먼저 "📄 텍스트 다운로드"로 파일을 저장하신 후,\n메일 작성 시 파일로 첨부해서 보내시는 것을 권장합니다.\n\n지금 메일 앱을 열겠습니다 (내용이 잘릴 수 있어요).');
+  }
+  window.location.href = mailto;
+}
+
+// 페이지 로드 시 저장된 노트 복원
+document.addEventListener('DOMContentLoaded', function() {
+  loadLectureNotes();
+});
 </script>
 
 </body>
