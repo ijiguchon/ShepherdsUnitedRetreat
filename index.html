@@ -1175,6 +1175,43 @@
     body.lang-en .section-title-en { font-size: 1.4rem !important; }
   }
 
+
+  /* ===== 곡 선택 탭 (찬양 섹션) ===== */
+  .song-tab-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin: 0 1rem 1.6rem;
+  }
+  .song-tab-btn {
+    padding: 0.55rem 1.1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(201,168,76,0.3);
+    border-radius: 50px;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .song-tab-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--dark);
+  }
+  .song-tab-btn:hover:not(.active) {
+    border-color: var(--gold);
+    color: var(--gold-light);
+  }
+  .song-panel { display: none; }
+  .song-panel.active {
+    display: block;
+    animation: fadeSlideIn 0.3s ease;
+  }
+
 </style>
 <body>
 <!-- 언어 전환 -->
@@ -1435,9 +1472,26 @@
   <div class="tab-panel" id="panel-3">
     <section class="lyrics-container">
 
+      <!-- ── 찬양 섹션 타이틀 ── -->
+      <div class="lyrics-header" style="padding-bottom:0;">
+        <div class="section-number" style="color:var(--gold);">IV</div>
+        <h2 class="section-title" style="margin-bottom:0.3rem;">수련회 찬양</h2>
+        <div class="section-title-en">Retreat Praise Songs</div>
+        <div class="cover-divider" style="margin:1.2rem auto;"></div>
+      </div>
+
+      <!-- ── 곡 선택 탭 ── -->
+      <div class="song-tab-nav">
+        <button class="song-tab-btn active" onclick="switchSongTab(0)">El Shaddai, God Most High</button>
+        <button class="song-tab-btn" onclick="switchSongTab(1)"><span class="ko-only">그 날에</span><span class="en-only">One Day</span></button>
+        <button class="song-tab-btn" onclick="switchSongTab(2)">아무것도 두려워 말라</button>
+      </div>
+
+      <!-- ══════════ 곡 1: El Shaddai ══════════ -->
+      <div class="song-panel active" id="song-panel-0">
+
       <!-- ── 찬양 헤더 ── -->
       <div class="lyrics-header">
-        <div class="section-number" style="color:var(--gold);">IV</div>
         <div class="lyrics-song-title">El Shaddai, God Most High</div>
         <div class="lyrics-song-subtitle">엘 샤다이 &middot; 지존하신 하나님</div>
         <div class="lyrics-credits">
@@ -1449,9 +1503,9 @@
 
       <!-- ── 서브탭 네비게이션 ── -->
       <div class="sub-tab-nav">
-        <button class="sub-tab-btn active" onclick="switchSubTab(0)"><span class="ko-only">🎬 영상</span><span class="en-only">🎬 Video</span></button>
-        <button class="sub-tab-btn" onclick="switchSubTab(1)">🎵 악보</button>
-        <button class="sub-tab-btn" onclick="switchSubTab(2)">📖 가사</button>
+        <button class="sub-tab-btn active" onclick="switchSubTab(0,0)"><span class="ko-only">🎬 영상</span><span class="en-only">🎬 Video</span></button>
+        <button class="sub-tab-btn" onclick="switchSubTab(0,1)">🎵 악보</button>
+        <button class="sub-tab-btn" onclick="switchSubTab(0,2)">📖 가사</button>
       </div>
 
       <!-- ── 서브탭 콘텐츠 ── -->
@@ -1464,7 +1518,7 @@
             <!-- 1. 찬양 영상 -->
             <div class="st-label"><span class="ko-only">🎵 주제 찬양 영상</span><span class="en-only">🎵 Theme Song Video</span></div>
             <div class="yt-wrapper" id="yt-wrapper">
-              <div class="yt-poster" id="yt-poster" onclick="loadYTPlayer()">
+              <div class="yt-poster" id="yt-poster" onclick="loadYTPlayer(0)">
                 <img src="https://img.youtube.com/vi/3Fl1g8Z3Y0I/maxresdefault.jpg" alt="El Shaddai 찬양 영상">
                 <div class="yt-play-btn">&#9654;</div>
               </div>
@@ -1611,6 +1665,191 @@
         </div>
 
       </div><!-- /sub-tab-panels -->
+      </div><!-- /song-panel-0 -->
+
+      <!-- ══════════ 곡 2: 그 날에 (One Day) ══════════ -->
+      <div class="song-panel" id="song-panel-1">
+
+      <!-- ── 찬양 헤더 ── -->
+      <div class="lyrics-header">
+        <div class="lyrics-song-title"><span class="ko-only">그 날에</span><span class="en-only">One Day</span></div>
+        <div class="lyrics-song-subtitle">One Day &middot; 그 날에</div>
+        <div class="lyrics-credits">
+          Composed by Matt Redman, Beth Redman &amp; Leonard Jarman
+        </div>
+        <div class="cover-divider" style="margin:1.2rem auto;"></div>
+      </div>
+
+      <!-- ── 서브탭 네비게이션 ── -->
+      <div class="sub-tab-nav">
+        <button class="sub-tab-btn active" onclick="switchSubTab(1,0)"><span class="ko-only">🎬 영상</span><span class="en-only">🎬 Video</span></button>
+        <button class="sub-tab-btn" onclick="switchSubTab(1,1)">🎵 악보</button>
+      </div>
+
+      <!-- ── 서브탭 콘텐츠 ── -->
+      <div class="sub-tab-panels">
+
+        <!-- 영상 탭 -->
+        <div class="sub-tab-panel active" id="st-1-0">
+          <div class="st-content">
+            <div class="st-label"><span class="ko-only">🎵 주제 찬양 영상</span><span class="en-only">🎵 Theme Song Video</span></div>
+            <div class="yt-wrapper" id="yt-wrapper-1">
+              <div class="yt-poster" id="yt-poster-1" onclick="loadYTPlayer(1)">
+                <img src="https://img.youtube.com/vi/2vbx_4bAoxU/maxresdefault.jpg" alt="그 날에 (One Day) 찬양 영상">
+                <div class="yt-play-btn">&#9654;</div>
+              </div>
+              <iframe
+                id="yt-player-1"
+                src=""
+                data-src="https://www.youtube.com/embed/2vbx_4bAoxU?enablejsapi=1&playsinline=1&autoplay=1&rel=0&modestbranding=1"
+                title="그 날에 (One Day)"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                webkit-playsinline
+                playsinline>
+              </iframe>
+            </div>
+            <div class="yt-caption-row">
+              <span class="yt-caption-text">그 날에 (One Day) — Matt Redman</span>
+              <a class="yt-ext-link"
+                 href="https://youtu.be/2vbx_4bAoxU"
+                 target="_blank" rel="noopener">
+                <span class="ko-only">▶ YouTube에서 보기</span><span class="en-only">▶ Watch on YouTube</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 악보 탭 -->
+        <div class="sub-tab-panel" id="st-1-1">
+          <div class="st-content">
+            <div class="st-label"><span class="ko-only">🎵 악보 (Sheet Music)</span><span class="en-only">🎵 Sheet Music</span></div>
+            <div class="score-pages">
+              <div class="score-info">
+                <p>Matt Redman, Beth Redman &amp; Leonard Jarman</p>
+              </div>
+              <div style="margin-top:1.2rem;">
+                <iframe
+                  src="songs/oneday/One_Day_그날에.pdf"
+                  style="width:100%; height:75vh; border:none; border-radius:8px; background:#1a1a2e;"
+                  title="그 날에 (One Day) 악보">
+                  <p style="text-align:center;padding:2rem;color:#aaa;">
+                    PDF를 표시할 수 없습니다.
+                    <a href="songs/oneday/One_Day_그날에.pdf" target="_blank" style="color:var(--gold);">새 탭에서 열기</a>
+                  </p>
+                </iframe>
+                <div style="display:flex;gap:0.8rem;justify-content:center;margin-top:0.8rem;flex-wrap:wrap;">
+                  <a class="score-dl-btn" href="songs/oneday/One_Day_그날에.pdf" download>
+                    <span class="ko-only">📥 PDF 다운로드</span><span class="en-only">📥 Download PDF</span>
+                  </a>
+                  <a class="score-dl-btn" href="songs/oneday/One_Day_그날에.pdf" target="_blank" rel="noopener" style="background:rgba(201,168,76,0.08);">
+                    <span class="ko-only">🔗 새 탭에서 보기</span><span class="en-only">🔗 Open in New Tab</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /sub-tab-panels -->
+      </div><!-- /song-panel-1 -->
+
+      <!-- ══════════ 곡 3: 아무것도 두려워 말라 ══════════ -->
+      <div class="song-panel" id="song-panel-2">
+
+      <!-- ── 찬양 헤더 ── -->
+      <div class="lyrics-header">
+        <div class="lyrics-song-title">아무것도 두려워 말라</div>
+        <div class="lyrics-song-subtitle"><span class="ko-only">작곡: 현석주</span><span class="en-only">Composed by Hyun Seok-ju</span></div>
+        <div class="cover-divider" style="margin:1.2rem auto;"></div>
+      </div>
+
+      <!-- ── 서브탭 네비게이션 ── -->
+      <div class="sub-tab-nav">
+        <button class="sub-tab-btn active" onclick="switchSubTab(2,0)"><span class="ko-only">🎬 영상</span><span class="en-only">🎬 Video</span></button>
+        <button class="sub-tab-btn" onclick="switchSubTab(2,1)">🎵 악보</button>
+        <button class="sub-tab-btn" onclick="switchSubTab(2,2)">📖 가사</button>
+      </div>
+
+      <!-- ── 서브탭 콘텐츠 ── -->
+      <div class="sub-tab-panels">
+
+        <!-- 영상 탭 -->
+        <div class="sub-tab-panel active" id="st-2-0">
+          <div class="st-content">
+            <div class="st-label"><span class="ko-only">🎵 주제 찬양 영상</span><span class="en-only">🎵 Theme Song Video</span></div>
+            <div class="yt-wrapper" id="yt-wrapper-2">
+              <div class="yt-poster" id="yt-poster-2" onclick="loadYTPlayer(2)">
+                <img src="https://img.youtube.com/vi/hF6p9TVVPRs/maxresdefault.jpg" alt="아무것도 두려워 말라 찬양 영상">
+                <div class="yt-play-btn">&#9654;</div>
+              </div>
+              <iframe
+                id="yt-player-2"
+                src=""
+                data-src="https://www.youtube.com/embed/hF6p9TVVPRs?enablejsapi=1&playsinline=1&autoplay=1&rel=0&modestbranding=1"
+                title="아무것도 두려워 말라"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+                webkit-playsinline
+                playsinline>
+              </iframe>
+            </div>
+            <div class="yt-caption-row">
+              <span class="yt-caption-text">아무것도 두려워 말라 — 현석주</span>
+              <a class="yt-ext-link"
+                 href="https://youtu.be/hF6p9TVVPRs"
+                 target="_blank" rel="noopener">
+                <span class="ko-only">▶ YouTube에서 보기</span><span class="en-only">▶ Watch on YouTube</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 악보 탭 -->
+        <div class="sub-tab-panel" id="st-2-1">
+          <div class="st-content">
+            <div class="st-label"><span class="ko-only">🎵 악보 (Sheet Music)</span><span class="en-only">🎵 Sheet Music</span></div>
+            <div class="score-pages">
+              <div class="score-info">
+                <p><span class="ko-only">작곡: 현석주</span><span class="en-only">Composed by Hyun Seok-ju</span></p>
+              </div>
+              <div style="margin-top:1.2rem; text-align:center;">
+                <img src="songs/dontfear/아무것도_두려워_말라.png"
+                     alt="아무것도 두려워 말라 악보"
+                     style="max-width:100%; border-radius:8px; box-shadow:0 4px 20px rgba(0,0,0,0.4);">
+                <div style="display:flex;gap:0.8rem;justify-content:center;margin-top:0.8rem;flex-wrap:wrap;">
+                  <a class="score-dl-btn" href="songs/dontfear/아무것도_두려워_말라.png" download>
+                    <span class="ko-only">📥 이미지 다운로드</span><span class="en-only">📥 Download Image</span>
+                  </a>
+                  <a class="score-dl-btn" href="songs/dontfear/아무것도_두려워_말라.png" target="_blank" rel="noopener" style="background:rgba(201,168,76,0.08);">
+                    <span class="ko-only">🔗 새 탭에서 보기</span><span class="en-only">🔗 Open in New Tab</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 가사 탭 -->
+        <div class="sub-tab-panel" id="st-2-2">
+          <div class="st-content">
+            <div class="st-label"><span class="ko-only">📖 가사 (Lyrics)</span><span class="en-only">📖 Lyrics</span></div>
+            <div class="lyrics-body">
+              <div class="lyrics-col ko" style="max-width:520px; margin:0 auto; float:none;">
+                아무 것도 두려워말라 주 너의 하나님이 지켜주시네<br>
+                놀라지 마라 겁내지 마라 주님 나를 지켜주시네<br>
+                내 맘이 힘에 겨워 지칠지라도 주님 나를 지켜주시네<br>
+                세상의 험한 풍파 몰아칠 때도 주님 나를 지켜주시네<br><br>
+                주님은 나의 산성 주님은 나의 요새<br>
+                주님은 나의 소망 나의 힘이 되신 여호와
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /sub-tab-panels -->
+      </div><!-- /song-panel-2 -->
+
     </section>
   </div>
 
@@ -1782,21 +2021,33 @@
 </footer>
 
 <script>
-function loadYTPlayer() {
-  var poster = document.getElementById('yt-poster');
-  var player = document.getElementById('yt-player');
+function loadYTPlayer(songIdx) {
+  var suffix = (songIdx === undefined || songIdx === 0) ? '' : ('-' + songIdx);
+  var poster = document.getElementById('yt-poster' + suffix);
+  var player = document.getElementById('yt-player' + suffix);
   if (poster && player) {
     poster.style.display = 'none';
     player.src = player.getAttribute('data-src');
   }
 }
 
-function switchSubTab(idx) {
-  document.querySelectorAll('.sub-tab-btn').forEach(function(b, i) {
+function switchSongTab(idx) {
+  document.querySelectorAll('.song-tab-btn').forEach(function(b, i) {
     b.classList.toggle('active', i === idx);
   });
-  document.querySelectorAll('.sub-tab-panel').forEach(function(p, i) {
+  document.querySelectorAll('.song-panel').forEach(function(p, i) {
     p.classList.toggle('active', i === idx);
+  });
+}
+
+function switchSubTab(songIdx, subIdx) {
+  var panel = document.getElementById('song-panel-' + songIdx);
+  if (!panel) return;
+  panel.querySelectorAll('.sub-tab-btn').forEach(function(b, i) {
+    b.classList.toggle('active', i === subIdx);
+  });
+  panel.querySelectorAll('.sub-tab-panel').forEach(function(p, i) {
+    p.classList.toggle('active', i === subIdx);
   });
 }
 
