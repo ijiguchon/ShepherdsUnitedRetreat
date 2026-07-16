@@ -1376,8 +1376,71 @@
     .lecture-toolbar, .lang-switcher, .lecture-tab-nav { display: none !important; }
   }
 
+
+  .lecture-scroll-top {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.6rem;
+  }
+  .lecture-scroll-top-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 1.3rem;
+    border-radius: 50px;
+    border: 1.5px solid rgba(201,168,76,0.6);
+    background: #fff;
+    color: var(--gold-dark, #8a6d1f);
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lecture-scroll-top-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+
+  .icon-inline {
+    width: 1em; height: 1em;
+    display: inline-block;
+    vertical-align: -0.15em;
+    flex-shrink: 0;
+  }
+
 </style>
 <body>
+<svg style="display:none;" aria-hidden="true">
+  <symbol id="ic-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+  <symbol id="ic-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></symbol>
+  <symbol id="ic-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  <symbol id="ic-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h7a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-7a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h8z"/></symbol>
+  <symbol id="ic-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+  <symbol id="ic-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></symbol>
+  <symbol id="ic-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></symbol>
+  <symbol id="ic-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15 9 22 9.3 17 14.1 18.5 21 12 17.3 5.5 21 7 14.1 2 9.3 9 9"/></symbol>
+  <symbol id="ic-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2 6 12 13 22 6"/></symbol>
+  <symbol id="ic-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="8" y1="3" x2="8" y2="7"/><line x1="16" y1="3" x2="16" y2="7"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.5-7-11a7 7 0 0 1 14 0c0 4.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="ic-hotel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="8" y1="8" x2="8" y2="8.01"/><line x1="12" y1="8" x2="12" y2="8.01"/><line x1="16" y1="8" x2="16" y2="8.01"/><line x1="8" y1="12" x2="8" y2="12.01"/><line x1="12" y1="12" x2="12" y2="12.01"/><line x1="16" y1="12" x2="16" y2="12.01"/><line x1="9" y1="21" x2="9" y2="16" /><line x1="15" y1="21" x2="15" y2="16"/></symbol>
+  <symbol id="ic-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></symbol>
+  <symbol id="ic-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></symbol>
+  <symbol id="ic-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></symbol>
+  <symbol id="ic-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 8 3 16 6 23 3 23 18 16 21 8 18 1 21"/><line x1="8" y1="3" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="21"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></symbol>
+  <symbol id="ic-image" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></symbol>
+  <symbol id="ic-person" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M6 21v-4a6 6 0 0 1 12 0v4"/></symbol>
+  <symbol id="ic-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.35-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.65-9.5 9-9.5 9z"/></symbol>
+  <symbol id="ic-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="12" y1="2" x2="12" y2="22"/><line x1="6" y1="8" x2="18" y2="8"/></symbol>
+  <symbol id="ic-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="2" x2="12" y2="9"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/><line x1="23" y1="22" x2="1" y2="22"/><polyline points="8 6 12 2 16 6"/></symbol>
+  <symbol id="ic-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></symbol>
+  <symbol id="ic-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3 17V11l2-5h14l2 5v6"/></symbol>
+  <symbol id="ic-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></symbol>
+  <symbol id="ic-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></symbol>
+</svg>
+
 <!-- 언어 전환 -->
 <div class="lang-switcher">
   <button class="lang-btn active" onclick="setLang('ko')" id="lang-ko-btn">한국어</button>
@@ -1393,36 +1456,36 @@
 <div class="info-bar">
   <div class="info-bar-inner">
     <div class="info-item">
-      <span class="info-lbl">📅 Date</span>
+      <span class="info-lbl"><svg class="icon-inline"><use href="#ic-calendar"></use></svg> Date</span>
       <span class="info-val">2026. 7. 18 (Sat)</span>
     </div>
     <div class="info-sep"></div>
     <div class="info-item">
-      <span class="info-lbl">🕙 Time</span>
+      <span class="info-lbl"><svg class="icon-inline"><use href="#ic-clock"></use></svg> Time</span>
       <span class="info-val">9:00 AM – 5:00 PM</span>
     </div>
     <div class="info-sep"></div>
     <div class="info-item">
-      <span class="info-lbl">📍 Venue</span>
+      <span class="info-lbl"><svg class="icon-inline"><use href="#ic-pin"></use></svg> Venue</span>
       <span class="info-val"><span class="ko-only">시애틀지구촌교회<br><small>Lynnwood, WA</small></span><span class="en-only">GMC of Greater Seattle<br><small>Lynnwood, WA</small></span></span>
     </div>
     <div class="info-sep"></div>
     <div class="info-item">
-      <span class="info-lbl">🎤 Speaker</span>
+      <span class="info-lbl"><svg class="icon-inline"><use href="#ic-mic"></use></svg> Speaker</span>
       <span class="info-val"><span class="ko-only">성승현 총무</span><span class="en-only">Elder Seunghyun Sung</span><br><small>국제가사원 사역개발원</small></span>
     </div>
   </div>
 </div>
 <div class="tab-nav-wrapper">
   <div class="tab-grid">
-    <button class="tab-btn" onclick="switchTab(0)"><span class="tb-icon">🖼️</span><span class="tb-num">I</span><span class="tb-ko">포스터 해설</span><span class="tb-en">Poster</span></button>
-    <button class="tab-btn" onclick="switchTab(1)"><span class="tb-icon">✉️</span><span class="tb-num">II</span><span class="tb-ko">초청의 글</span><span class="tb-en">Invite</span></button>
-    <button class="tab-btn" onclick="switchTab(2)"><span class="tb-icon">📖</span><span class="tb-num">III</span><span class="tb-ko">주제 설정 배경</span><span class="tb-en">Theme</span></button>
-    <button class="tab-btn" onclick="switchTab(3)"><span class="tb-icon">📅</span><span class="tb-num">IV</span><span class="tb-ko">수련회 일정</span><span class="tb-en">Schedule</span></button>
-    <button class="tab-btn" onclick="switchTab(4)"><span class="tb-icon">📝</span><span class="tb-num">V</span><span class="tb-ko">강의안</span><span class="tb-en">Notes</span></button>
-    <button class="tab-btn" onclick="switchTab(5)"><span class="tb-icon">🎵</span><span class="tb-num">VI</span><span class="tb-ko">찬양</span><span class="tb-en">Praise</span></button>
-    <button class="tab-btn" onclick="switchTab(6)"><span class="tb-icon">📍</span><span class="tb-num">VII</span><span class="tb-ko">오시는 길</span><span class="tb-en">Directions</span></button>
-    <button class="tab-btn" onclick="switchTab(7)"><span class="tb-icon">🏨</span><span class="tb-num">VIII</span><span class="tb-ko">숙소 안내</span><span class="tb-en">Hotels</span></button>
+    <button class="tab-btn" onclick="switchTab(0)"><span class="tb-icon"><svg class="icon-inline"><use href="#ic-image"></use></svg></span><span class="tb-num">I</span><span class="tb-ko">포스터 해설</span><span class="tb-en">Poster</span></button>
+    <button class="tab-btn" onclick="switchTab(1)"><span class="tb-icon"><svg class="icon-inline"><use href="#ic-mail"></use></svg></span><span class="tb-num">II</span><span class="tb-ko">초청의 글</span><span class="tb-en">Invite</span></button>
+    <button class="tab-btn" onclick="switchTab(2)"><span class="tb-icon"><svg class="icon-inline"><use href="#ic-book"></use></svg></span><span class="tb-num">III</span><span class="tb-ko">주제 설정 배경</span><span class="tb-en">Theme</span></button>
+    <button class="tab-btn" onclick="switchTab(3)"><span class="tb-icon"><svg class="icon-inline"><use href="#ic-calendar"></use></svg></span><span class="tb-num">IV</span><span class="tb-ko">수련회 일정</span><span class="tb-en">Schedule</span></button>
+    <button class="tab-btn" onclick="switchTab(4)"><span class="tb-icon"><svg class="icon-inline"><use href="#ic-edit"></use></svg></span><span class="tb-num">V</span><span class="tb-ko">강의안</span><span class="tb-en">Notes</span></button>
+    <button class="tab-btn" onclick="switchTab(5)"><span class="tb-icon"><svg class="icon-inline"><use href="#ic-music"></use></svg></span><span class="tb-num">VI</span><span class="tb-ko">찬양</span><span class="tb-en">Praise</span></button>
+    <button class="tab-btn" onclick="switchTab(6)"><span class="tb-icon"><svg class="icon-inline"><use href="#ic-pin"></use></svg></span><span class="tb-num">VII</span><span class="tb-ko">오시는 길</span><span class="tb-en">Directions</span></button>
+    <button class="tab-btn" onclick="switchTab(7)"><span class="tb-icon"><svg class="icon-inline"><use href="#ic-hotel"></use></svg></span><span class="tb-num">VIII</span><span class="tb-ko">숙소 안내</span><span class="tb-en">Hotels</span></button>
   </div>
   <div class="tab-indicator-bar"></div>
 </div>
@@ -1442,25 +1505,25 @@
 
       <div class="explanation-grid">
         <div class="explanation-card">
-          <div class="icon">🧎</div>
+          <div class="icon"><svg class="icon-inline"><use href="#ic-person"></use></svg></div>
           <h3>무릎 꿇은 사람 <span class="en">The Kneeling Figure</span></h3>
           <p><span class="ko-only">세상의 무게와 사역의 피로 아래 지쳐 무릎 꿇은 목자의 모습입니다. 그러나 이 무릎 꿇음은 포기가 아니라, 하나님 앞에 다시 엎드리는 <strong>"리셋"의 시작점</strong>입니다.</span><span class="en-only">A shepherd kneels, weary under the weight of the world and the fatigue of ministry. Yet this kneeling is not surrender — it is the <strong>starting point of the "Reset,"</strong> bowing again before God.</span></p>
         </div>
 
         <div class="explanation-card">
-          <div class="icon">🙏</div>
+          <div class="icon"><svg class="icon-inline"><use href="#ic-heart"></use></svg></div>
           <h3>기도하는 두 손 <span class="en">The Praying Hands</span></h3>
           <p><span class="ko-only">간절히 모아 올린 기도의 손은 하나님께 다시 돌아가는 회복의 핵심을 상징합니다. 이 기도는 개인의 회복이자 <strong>가정교회 사역의 영적 재출발</strong>입니다.</span><span class="en-only">The earnestly folded praying hands symbolize the heart of restoration — returning to God. This prayer is both personal restoration and a <strong>spiritual new beginning for house church ministry</strong>.</span></p>
         </div>
 
         <div class="explanation-card">
-          <div class="icon">✝️</div>
+          <div class="icon"><svg class="icon-inline"><use href="#ic-cross"></use></svg></div>
           <h3>십자가와 붉은 천 <span class="en">The Cross & Crimson Cloth</span></h3>
           <p><span class="ko-only">웅장한 십자가에 걸린 붉은 천은 그리스도의 보혈과 은혜를 나타냅니다. 우리의 회복은 오직 <strong>십자가의 은혜</strong> 위에 세워지며, 원래의 상태를 뛰어넘는 완전한 새로움의 약속입니다.</span><span class="en-only">The crimson cloth on the majestic cross represents the blood and grace of Christ. Our restoration is built solely upon the <strong>grace of the cross</strong> — a promise of complete newness that surpasses our original state.</span></p>
         </div>
 
         <div class="explanation-card">
-          <div class="icon">🌅</div>
+          <div class="icon"><svg class="icon-inline"><use href="#ic-sunrise"></use></svg></div>
           <h3>도시 실루엣과 빛 <span class="en">The Cityscape & Light</span></h3>
           <p><span class="ko-only">어둠에서 빛으로 전환되는 도시의 실루엣은, 리셋을 통해 회복된 목자들이 세상 속으로 다시 나아가 <strong>빛과 소금의 역할</strong>을 감당할 것을 보여줍니다.</span><span class="en-only">The cityscape transitioning from darkness to light shows shepherds, restored through the Reset, going back into the world as <strong>the light and salt</strong>.</span></p>
         </div>
@@ -1508,7 +1571,7 @@
         <!-- 수련회 영상 -->
         <div style="margin-top:2.5rem;">
           <div style="text-align:center; font-family:'Noto Serif KR',serif; color:var(--gold); font-size:0.95rem; letter-spacing:0.08em; margin-bottom:1rem; opacity:0.9;">
-            <span class="ko-only">🎬 서북미 목자연합수련회 초대영상</span><span class="en-only">🎬 Retreat Invitation Video</span>
+            <span class="ko-only"><svg class="icon-inline"><use href="#ic-play"></use></svg> 서북미 목자연합수련회 초대영상</span><span class="en-only"><svg class="icon-inline"><use href="#ic-play"></use></svg> Retreat Invitation Video</span>
           </div>
           <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px; box-shadow:0 4px 30px rgba(0,0,0,0.5); background:#000;">
             <iframe
@@ -1606,7 +1669,7 @@
           </tr>
           <tr>
             <td class="time" data-label="시간">9:30 – 10:45</td>
-            <td class="program" data-label="프로그램"><strong><a href="#" class="lecture-link" onclick="goToLecture(1); return false;"><span class="ko-only">📝 강의 I</span><span class="en-only">📝 Lecture I</span></a></strong></td>
+            <td class="program" data-label="프로그램"><strong><a href="#" class="lecture-link" onclick="goToLecture(1); return false;"><span class="ko-only"><svg class="icon-inline"><use href="#ic-edit"></use></svg> 강의 I</span><span class="en-only"><svg class="icon-inline"><use href="#ic-edit"></use></svg> Lecture I</span></a></strong></td>
             <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr class="break-row">
@@ -1621,7 +1684,7 @@
           </tr>
           <tr>
             <td class="time" data-label="시간">11:40 – 12:55</td>
-            <td class="program" data-label="프로그램"><strong><a href="#" class="lecture-link" onclick="goToLecture(2); return false;"><span class="ko-only">📝 강의 II</span><span class="en-only">📝 Lecture II</span></a></strong></td>
+            <td class="program" data-label="프로그램"><strong><a href="#" class="lecture-link" onclick="goToLecture(2); return false;"><span class="ko-only"><svg class="icon-inline"><use href="#ic-edit"></use></svg> 강의 II</span><span class="en-only"><svg class="icon-inline"><use href="#ic-edit"></use></svg> Lecture II</span></a></strong></td>
             <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr>
@@ -1694,10 +1757,10 @@
           <!-- ══ 강의 I ══ -->
           <div class="lecture-panel active" id="lecture-panel-1">
             <div class="lecture-toolbar">
-              <button class="lecture-tool-btn" onclick="clearLectureNotes(1)">🗑️ 내용 지우기</button>
-              <button class="lecture-tool-btn" onclick="downloadLectureText(1)"><span class="ko-only">📄 텍스트 다운로드</span><span class="en-only">📄 Download Text</span></button>
-              <button class="lecture-tool-btn" onclick="emailLectureNotes(1)"><span class="ko-only">📧 이메일로 보내기</span><span class="en-only">📧 Email My Notes</span></button>
-              <button class="lecture-tool-btn primary" onclick="printLecture(1)">📥 PDF로 저장</button>
+              <button class="lecture-tool-btn" onclick="clearLectureNotes(1)"><svg class="icon-inline"><use href="#ic-trash"></use></svg> 내용 지우기</button>
+              <button class="lecture-tool-btn" onclick="downloadLectureText(1)"><span class="ko-only"><svg class="icon-inline"><use href="#ic-file"></use></svg> 텍스트 다운로드</span><span class="en-only"><svg class="icon-inline"><use href="#ic-file"></use></svg> Download Text</span></button>
+              <button class="lecture-tool-btn" onclick="emailLectureNotes(1)"><span class="ko-only"><svg class="icon-inline"><use href="#ic-mail"></use></svg> 이메일로 보내기</span><span class="en-only"><svg class="icon-inline"><use href="#ic-mail"></use></svg> Email My Notes</span></button>
+              <button class="lecture-tool-btn primary" onclick="printLecture(1)"><svg class="icon-inline"><use href="#ic-download"></use></svg> PDF로 저장</button>
             </div>
             <div class="lecture-save-status" id="save-status-1">✓ 자동 저장됨</div>
 
@@ -1806,6 +1869,10 @@
               <textarea class="lecture-note-area" id="l1-note-19" placeholder="여기에 필기하세요..." oninput="saveLectureNote('l1-note-19')"></textarea>
             </div>
 
+            <div class="lecture-scroll-top">
+              <button class="lecture-scroll-top-btn" onclick="scrollLectureTop(1)"><svg class="icon-inline"><use href="#ic-home"></use></svg> <span class="ko-only">맨 위로</span><span class="en-only">Back to Top</span></button>
+            </div>
+
               </div>
             </div>
           </div>
@@ -1813,10 +1880,10 @@
           <!-- ══ 강의 II ══ -->
           <div class="lecture-panel" id="lecture-panel-2">
             <div class="lecture-toolbar">
-              <button class="lecture-tool-btn" onclick="clearLectureNotes(2)">🗑️ 내용 지우기</button>
-              <button class="lecture-tool-btn" onclick="downloadLectureText(2)"><span class="ko-only">📄 텍스트 다운로드</span><span class="en-only">📄 Download Text</span></button>
-              <button class="lecture-tool-btn" onclick="emailLectureNotes(2)"><span class="ko-only">📧 이메일로 보내기</span><span class="en-only">📧 Email My Notes</span></button>
-              <button class="lecture-tool-btn primary" onclick="printLecture(2)">📥 PDF로 저장</button>
+              <button class="lecture-tool-btn" onclick="clearLectureNotes(2)"><svg class="icon-inline"><use href="#ic-trash"></use></svg> 내용 지우기</button>
+              <button class="lecture-tool-btn" onclick="downloadLectureText(2)"><span class="ko-only"><svg class="icon-inline"><use href="#ic-file"></use></svg> 텍스트 다운로드</span><span class="en-only"><svg class="icon-inline"><use href="#ic-file"></use></svg> Download Text</span></button>
+              <button class="lecture-tool-btn" onclick="emailLectureNotes(2)"><span class="ko-only"><svg class="icon-inline"><use href="#ic-mail"></use></svg> 이메일로 보내기</span><span class="en-only"><svg class="icon-inline"><use href="#ic-mail"></use></svg> Email My Notes</span></button>
+              <button class="lecture-tool-btn primary" onclick="printLecture(2)"><svg class="icon-inline"><use href="#ic-download"></use></svg> PDF로 저장</button>
             </div>
             <div class="lecture-save-status" id="save-status-2">✓ 자동 저장됨</div>
 
@@ -1888,7 +1955,7 @@
 
                 <!-- 가치관 다이어그램 -->
                 <div class="lecture-q-block">
-                  <div class="lecture-q-text" style="margin-bottom:0.8rem;"><span>📊 사람의 생각과 행동을 지배하는 가치관</span></div>
+                  <div class="lecture-q-text" style="margin-bottom:0.8rem;"><span><svg class="icon-inline"><use href="#ic-chart"></use></svg> 사람의 생각과 행동을 지배하는 가치관</span></div>
                   <div class="lecture-q-sub" style="margin-left:0; margin-bottom:0.9rem;">
                     1. 성과(업적) – Achievement &nbsp;&nbsp;|&nbsp;&nbsp; 2. 중요(가치) – Significance<br>
                     3. 자격(위치) – Identity &nbsp;&nbsp;|&nbsp;&nbsp; 4. 인정(존중) – Acceptance
@@ -1896,6 +1963,10 @@
                   <img src="values_diagram.jpg" alt="사람의 생각과 행동을 지배하는 가치관 다이어그램"
                        style="max-width:100%; border-radius:8px; box-shadow:0 4px 16px rgba(0,0,0,0.3); display:block; margin:0 auto 1rem;">
                   <textarea class="lecture-note-area" id="l2-note-diagram" style="min-height:100px;" placeholder="다이어그램을 보며 느낀 점을 적어보세요..." oninput="saveLectureNote('l2-note-diagram')"></textarea>
+                </div>
+
+                <div class="lecture-scroll-top">
+                  <button class="lecture-scroll-top-btn" onclick="scrollLectureTop(2)"><svg class="icon-inline"><use href="#ic-home"></use></svg> <span class="ko-only">맨 위로</span><span class="en-only">Back to Top</span></button>
                 </div>
 
               </div>
@@ -1941,9 +2012,9 @@
 
       <!-- ── 서브탭 네비게이션 ── -->
       <div class="sub-tab-nav">
-        <button class="sub-tab-btn active" onclick="switchSubTab(0,0)"><span class="ko-only">🎬 영상</span><span class="en-only">🎬 Video</span></button>
-        <button class="sub-tab-btn" onclick="switchSubTab(0,1)">🎵 악보</button>
-        <button class="sub-tab-btn" onclick="switchSubTab(0,2)">📖 가사</button>
+        <button class="sub-tab-btn active" onclick="switchSubTab(0,0)"><span class="ko-only"><svg class="icon-inline"><use href="#ic-play"></use></svg> 영상</span><span class="en-only"><svg class="icon-inline"><use href="#ic-play"></use></svg> Video</span></button>
+        <button class="sub-tab-btn" onclick="switchSubTab(0,1)"><svg class="icon-inline"><use href="#ic-music"></use></svg> 악보</button>
+        <button class="sub-tab-btn" onclick="switchSubTab(0,2)"><svg class="icon-inline"><use href="#ic-book"></use></svg> 가사</button>
       </div>
 
       <!-- ── 서브탭 콘텐츠 ── -->
@@ -1954,7 +2025,7 @@
           <div class="st-content">
 
             <!-- 1. 찬양 영상 -->
-            <div class="st-label"><span class="ko-only">🎵 주제 찬양 영상</span><span class="en-only">🎵 Theme Song Video</span></div>
+            <div class="st-label"><span class="ko-only"><svg class="icon-inline"><use href="#ic-music"></use></svg> 주제 찬양 영상</span><span class="en-only"><svg class="icon-inline"><use href="#ic-music"></use></svg> Theme Song Video</span></div>
             <div class="yt-wrapper" id="yt-wrapper">
               <div class="yt-poster" id="yt-poster" onclick="loadYTPlayer(0)">
                 <img src="https://img.youtube.com/vi/3Fl1g8Z3Y0I/maxresdefault.jpg" alt="El Shaddai 찬양 영상">
@@ -1986,7 +2057,7 @@
         <!-- 악보 탭 -->
         <div class="sub-tab-panel" id="st-1">
           <div class="st-content">
-            <div class="st-label"><span class="ko-only">🎵 악보 (Sheet Music)</span><span class="en-only">🎵 Sheet Music</span></div>
+            <div class="st-label"><span class="ko-only"><svg class="icon-inline"><use href="#ic-music"></use></svg> 악보 (Sheet Music)</span><span class="en-only"><svg class="icon-inline"><use href="#ic-music"></use></svg> Sheet Music</span></div>
             <div class="score-pages">
               <div class="score-info">
                 <p>Key: E Major &nbsp;|&nbsp; ♩= 71 &nbsp;|&nbsp; 3 Pages</p>
@@ -2024,10 +2095,10 @@
                 <!-- 다운로드 + 새탭 버튼 -->
                 <div style="display:flex;gap:0.8rem;justify-content:center;margin-top:0.8rem;flex-wrap:wrap;">
                   <a class="score-dl-btn" href="ElShaddai_SheetMusic.pdf" download>
-                    <span class="ko-only">📥 PDF 다운로드</span><span class="en-only">📥 Download PDF</span>
+                    <span class="ko-only"><svg class="icon-inline"><use href="#ic-download"></use></svg> PDF 다운로드</span><span class="en-only"><svg class="icon-inline"><use href="#ic-download"></use></svg> Download PDF</span>
                   </a>
                   <a class="score-dl-btn" href="ElShaddai_SheetMusic.pdf" target="_blank" rel="noopener" style="background:rgba(201,168,76,0.08);">
-                    <span class="ko-only">🔗 새 탭에서 보기</span><span class="en-only">🔗 Open in New Tab</span>
+                    <span class="ko-only"><svg class="icon-inline"><use href="#ic-link"></use></svg> 새 탭에서 보기</span><span class="en-only"><svg class="icon-inline"><use href="#ic-link"></use></svg> Open in New Tab</span>
                   </a>
                 </div>
               </div>
@@ -2038,7 +2109,7 @@
         <!-- 가사 탭 -->
         <div class="sub-tab-panel" id="st-2">
           <div class="st-content">
-            <div class="st-label"><span class="ko-only">📖 가사 (Lyrics)</span><span class="en-only">📖 Lyrics</span></div>
+            <div class="st-label"><span class="ko-only"><svg class="icon-inline"><use href="#ic-book"></use></svg> 가사 (Lyrics)</span><span class="en-only"><svg class="icon-inline"><use href="#ic-book"></use></svg> Lyrics</span></div>
             <div class="lyrics-body">
               <div class="lyrics-col en">
                 <div class="lyrics-section-label">Verse 1</div><br>
@@ -2120,8 +2191,8 @@
 
       <!-- ── 서브탭 네비게이션 ── -->
       <div class="sub-tab-nav">
-        <button class="sub-tab-btn active" onclick="switchSubTab(1,0)"><span class="ko-only">🎬 영상</span><span class="en-only">🎬 Video</span></button>
-        <button class="sub-tab-btn" onclick="switchSubTab(1,1)">🎵 악보</button>
+        <button class="sub-tab-btn active" onclick="switchSubTab(1,0)"><span class="ko-only"><svg class="icon-inline"><use href="#ic-play"></use></svg> 영상</span><span class="en-only"><svg class="icon-inline"><use href="#ic-play"></use></svg> Video</span></button>
+        <button class="sub-tab-btn" onclick="switchSubTab(1,1)"><svg class="icon-inline"><use href="#ic-music"></use></svg> 악보</button>
       </div>
 
       <!-- ── 서브탭 콘텐츠 ── -->
@@ -2130,7 +2201,7 @@
         <!-- 영상 탭 -->
         <div class="sub-tab-panel active" id="st-1-0">
           <div class="st-content">
-            <div class="st-label"><span class="ko-only">🎵 주제 찬양 영상</span><span class="en-only">🎵 Theme Song Video</span></div>
+            <div class="st-label"><span class="ko-only"><svg class="icon-inline"><use href="#ic-music"></use></svg> 주제 찬양 영상</span><span class="en-only"><svg class="icon-inline"><use href="#ic-music"></use></svg> Theme Song Video</span></div>
             <div class="yt-wrapper" id="yt-wrapper-1">
               <div class="yt-poster" id="yt-poster-1" onclick="loadYTPlayer(1)">
                 <img src="https://img.youtube.com/vi/2vbx_4bAoxU/maxresdefault.jpg" alt="그 날에 (One Day) 찬양 영상">
@@ -2161,7 +2232,7 @@
         <!-- 악보 탭 -->
         <div class="sub-tab-panel" id="st-1-1">
           <div class="st-content">
-            <div class="st-label"><span class="ko-only">🎵 악보 (Sheet Music)</span><span class="en-only">🎵 Sheet Music</span></div>
+            <div class="st-label"><span class="ko-only"><svg class="icon-inline"><use href="#ic-music"></use></svg> 악보 (Sheet Music)</span><span class="en-only"><svg class="icon-inline"><use href="#ic-music"></use></svg> Sheet Music</span></div>
             <div class="score-pages">
               <div class="score-info">
                 <p>Matt Redman, Beth Redman &amp; Leonard Jarman</p>
@@ -2178,10 +2249,10 @@
                 </iframe>
                 <div style="display:flex;gap:0.8rem;justify-content:center;margin-top:0.8rem;flex-wrap:wrap;">
                   <a class="score-dl-btn" href="songs/oneday/One_Day_sheet.pdf" download>
-                    <span class="ko-only">📥 PDF 다운로드</span><span class="en-only">📥 Download PDF</span>
+                    <span class="ko-only"><svg class="icon-inline"><use href="#ic-download"></use></svg> PDF 다운로드</span><span class="en-only"><svg class="icon-inline"><use href="#ic-download"></use></svg> Download PDF</span>
                   </a>
                   <a class="score-dl-btn" href="songs/oneday/One_Day_sheet.pdf" target="_blank" rel="noopener" style="background:rgba(201,168,76,0.08);">
-                    <span class="ko-only">🔗 새 탭에서 보기</span><span class="en-only">🔗 Open in New Tab</span>
+                    <span class="ko-only"><svg class="icon-inline"><use href="#ic-link"></use></svg> 새 탭에서 보기</span><span class="en-only"><svg class="icon-inline"><use href="#ic-link"></use></svg> Open in New Tab</span>
                   </a>
                 </div>
               </div>
@@ -2204,9 +2275,9 @@
 
       <!-- ── 서브탭 네비게이션 ── -->
       <div class="sub-tab-nav">
-        <button class="sub-tab-btn active" onclick="switchSubTab(2,0)"><span class="ko-only">🎬 영상</span><span class="en-only">🎬 Video</span></button>
-        <button class="sub-tab-btn" onclick="switchSubTab(2,1)">🎵 악보</button>
-        <button class="sub-tab-btn" onclick="switchSubTab(2,2)">📖 가사</button>
+        <button class="sub-tab-btn active" onclick="switchSubTab(2,0)"><span class="ko-only"><svg class="icon-inline"><use href="#ic-play"></use></svg> 영상</span><span class="en-only"><svg class="icon-inline"><use href="#ic-play"></use></svg> Video</span></button>
+        <button class="sub-tab-btn" onclick="switchSubTab(2,1)"><svg class="icon-inline"><use href="#ic-music"></use></svg> 악보</button>
+        <button class="sub-tab-btn" onclick="switchSubTab(2,2)"><svg class="icon-inline"><use href="#ic-book"></use></svg> 가사</button>
       </div>
 
       <!-- ── 서브탭 콘텐츠 ── -->
@@ -2215,7 +2286,7 @@
         <!-- 영상 탭 -->
         <div class="sub-tab-panel active" id="st-2-0">
           <div class="st-content">
-            <div class="st-label"><span class="ko-only">🎵 주제 찬양 영상</span><span class="en-only">🎵 Theme Song Video</span></div>
+            <div class="st-label"><span class="ko-only"><svg class="icon-inline"><use href="#ic-music"></use></svg> 주제 찬양 영상</span><span class="en-only"><svg class="icon-inline"><use href="#ic-music"></use></svg> Theme Song Video</span></div>
             <div class="yt-wrapper" id="yt-wrapper-2">
               <div class="yt-poster" id="yt-poster-2" onclick="loadYTPlayer(2)">
                 <img src="https://img.youtube.com/vi/hF6p9TVVPRs/maxresdefault.jpg" alt="아무것도 두려워 말라 찬양 영상">
@@ -2246,7 +2317,7 @@
         <!-- 악보 탭 -->
         <div class="sub-tab-panel" id="st-2-1">
           <div class="st-content">
-            <div class="st-label"><span class="ko-only">🎵 악보 (Sheet Music)</span><span class="en-only">🎵 Sheet Music</span></div>
+            <div class="st-label"><span class="ko-only"><svg class="icon-inline"><use href="#ic-music"></use></svg> 악보 (Sheet Music)</span><span class="en-only"><svg class="icon-inline"><use href="#ic-music"></use></svg> Sheet Music</span></div>
             <div class="score-pages">
               <div class="score-info">
                 <p><span class="ko-only">작곡: 현석주</span><span class="en-only">Composed by Hyun Seok-ju</span></p>
@@ -2257,10 +2328,10 @@
                      style="max-width:100%; border-radius:8px; box-shadow:0 4px 20px rgba(0,0,0,0.4);">
                 <div style="display:flex;gap:0.8rem;justify-content:center;margin-top:0.8rem;flex-wrap:wrap;">
                   <a class="score-dl-btn" href="dont_fear_sheet.png" download>
-                    <span class="ko-only">📥 이미지 다운로드</span><span class="en-only">📥 Download Image</span>
+                    <span class="ko-only"><svg class="icon-inline"><use href="#ic-download"></use></svg> 이미지 다운로드</span><span class="en-only"><svg class="icon-inline"><use href="#ic-download"></use></svg> Download Image</span>
                   </a>
                   <a class="score-dl-btn" href="dont_fear_sheet.png" target="_blank" rel="noopener" style="background:rgba(201,168,76,0.08);">
-                    <span class="ko-only">🔗 새 탭에서 보기</span><span class="en-only">🔗 Open in New Tab</span>
+                    <span class="ko-only"><svg class="icon-inline"><use href="#ic-link"></use></svg> 새 탭에서 보기</span><span class="en-only"><svg class="icon-inline"><use href="#ic-link"></use></svg> Open in New Tab</span>
                   </a>
                 </div>
               </div>
@@ -2271,7 +2342,7 @@
         <!-- 가사 탭 -->
         <div class="sub-tab-panel" id="st-2-2">
           <div class="st-content">
-            <div class="st-label"><span class="ko-only">📖 가사 (Lyrics)</span><span class="en-only">📖 Lyrics</span></div>
+            <div class="st-label"><span class="ko-only"><svg class="icon-inline"><use href="#ic-book"></use></svg> 가사 (Lyrics)</span><span class="en-only"><svg class="icon-inline"><use href="#ic-book"></use></svg> Lyrics</span></div>
             <div class="lyrics-body">
               <div class="lyrics-col ko" style="max-width:520px; margin:0 auto; float:none;">
                 아무 것도 두려워말라 주 너의 하나님이 지켜주시네<br>
@@ -2308,7 +2379,7 @@
           <a class="map-open-btn"
              href="https://maps.google.com/?q=4900+168th+St+SW,+Lynnwood,+WA+98037"
              target="_blank">
-            <span class="ko-only">🗺️ Google Maps에서 열기</span><span class="en-only">🗺️ Open in Google Maps</span>
+            <span class="ko-only"><svg class="icon-inline"><use href="#ic-map"></use></svg> Google Maps에서 열기</span><span class="en-only"><svg class="icon-inline"><use href="#ic-map"></use></svg> Open in Google Maps</span>
           </a>
         </div>
 
@@ -2319,7 +2390,7 @@
           </p>
 
           <div class="directions-detail">
-            <div class="d-icon">📍</div>
+            <div class="d-icon"><svg class="icon-inline"><use href="#ic-pin"></use></svg></div>
             <div class="d-text">
               <div class="d-label">Address</div>
               <div class="d-value">4900 168th St. SW., Lynnwood, WA 98037</div>
@@ -2327,7 +2398,7 @@
           </div>
 
           <div class="directions-detail">
-            <div class="d-icon">📅</div>
+            <div class="d-icon"><svg class="icon-inline"><use href="#ic-calendar"></use></svg></div>
             <div class="d-text">
               <div class="d-label">Date & Time</div>
               <div class="d-value">2026년 7월 18일 (토) 9:00 AM – 5:00 PM</div>
@@ -2335,7 +2406,7 @@
           </div>
 
           <div class="directions-detail">
-            <div class="d-icon">🎤</div>
+            <div class="d-icon"><svg class="icon-inline"><use href="#ic-mic"></use></svg></div>
             <div class="d-text">
               <div class="d-label">Speaker</div>
               <div class="d-value">성승현 총무 (국제가사원 사역개발원 · 휴스턴서울교회)</div>
@@ -2343,7 +2414,7 @@
           </div>
 
           <div class="directions-detail">
-            <div class="d-icon">🚗</div>
+            <div class="d-icon"><svg class="icon-inline"><use href="#ic-car"></use></svg></div>
             <div class="d-text">
               <div class="d-label">Parking</div>
               <div class="d-value"><span class="ko-only">교회 주차장 이용 가능</span><span class="en-only">Church parking available</span></div>
@@ -2359,43 +2430,43 @@
     <section class="section-light full-width">
       <div class="section-inner">
         <div class="section-number">VIII</div>
-        <h2 class="section-title"><span class="ko-only">🏨 숙소 안내</span><span class="en-only">🏨 Accommodations</span></h2>
+        <h2 class="section-title"><span class="ko-only"><svg class="icon-inline"><use href="#ic-hotel"></use></svg> 숙소 안내</span><span class="en-only"><svg class="icon-inline"><use href="#ic-hotel"></use></svg> Accommodations</span></h2>
         <p class="section-sub" style="margin-bottom:1.5rem;"><span class="ko-only">밴쿠버·오레곤 등 원거리에서 오시는 목자·목녀님들을 위해 교회 근처 숙소를 안내합니다. 아래 호텔들은 모두 시애틀지구촌교회에서 <strong>차로 5분 이내</strong>에 위치합니다.</span><span class="en-only">For shepherds coming from Vancouver, Oregon, and other distant places, here are accommodations near the church. All hotels are within <strong>5 minutes by car</strong> from Global Mission Church.</span></p>
         <div style="display:flex;flex-direction:column;gap:1rem;">
 
           <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
-            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Hilton Garden Inn Seattle/Lynnwood</div>
+            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><svg class="icon-inline"><use href="#ic-star"></use></svg> Hilton Garden Inn Seattle/Lynnwood</div>
             <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;"><span class="ko-only">도보 가능 거리 · I-5 바로 옆 · 피트니스센터 · 무료 주차</span><span class="en-only">Walking distance · Next to I-5 · Fitness center · Free parking</span></div>
             <a href="https://www.hilton.com/en/hotels/sealngi-hilton-garden-inn-seattle-lynnwood/" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
           </div>
 
           <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
-            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Embassy Suites by Hilton – Lynnwood</div>
+            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><svg class="icon-inline"><use href="#ic-star"></use></svg> Embassy Suites by Hilton – Lynnwood</div>
             <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;"><span class="ko-only">약 1마일 · 스위트룸 · 무료 풀코스 조식 · 실내 수영장</span><span class="en-only">About 1 mile · Suite rooms · Free breakfast · Indoor pool</span></div>
             <a href="https://www.hilton.com/en/hotels/sealnes-embassy-suites-seattle-north-lynnwood/" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
           </div>
 
           <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
-            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Hampton Inn &amp; Suites – Lynnwood</div>
+            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><svg class="icon-inline"><use href="#ic-star"></use></svg> Hampton Inn &amp; Suites – Lynnwood</div>
             <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;"><span class="ko-only">약 5분 · 무료 조식 · 평점 4.5/5 · 가성비 우수</span><span class="en-only">About 5 min · Free breakfast · Rated 4.5/5 · Great value</span></div>
             <a href="https://www.hilton.com/en/hotels/sealyhx-hampton-seattle-north-lynnwood/" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
           </div>
 
           <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
-            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Holiday Inn Express &amp; Suites – Lynnwood</div>
+            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><svg class="icon-inline"><use href="#ic-star"></use></svg> Holiday Inn Express &amp; Suites – Lynnwood</div>
             <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;"><span class="ko-only">약 5분 · 무료 조식 · 무료 Wi-Fi · 합리적 가격</span><span class="en-only">About 5 min · Free breakfast · Free Wi-Fi · Affordable</span></div>
             <a href="https://www.ihg.com/holidayinnexpress/hotels/us/en/lynnwood/sealy/hoteldetail" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
           </div>
 
           <div style="background:#fff;border-radius:10px;padding:1rem 1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.08);border-left:4px solid var(--gold);">
-            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;">🌟 Extended Stay America – Seattle/Lynnwood</div>
+            <div style="font-weight:700;color:var(--dark);margin-bottom:0.3rem;"><svg class="icon-inline"><use href="#ic-star"></use></svg> Extended Stay America – Seattle/Lynnwood</div>
             <div style="font-size:0.85rem;color:#555;margin-bottom:0.4rem;"><span class="ko-only">약 5분 · 주방 완비 · 무료 조식 · 장기숙박 최적</span><span class="en-only">About 5 min · Full kitchen · Free breakfast · Extended stay</span></div>
             <a href="https://www.extendedstayamerica.com/hotels/wa/seattle/lynnwood" target="_blank" rel="noopener" style="font-size:0.82rem;color:var(--gold);text-decoration:none;">예약 &amp; 상세 정보 →</a>
           </div>
 
         </div>
         <div style="margin-top:1.2rem;padding:0.9rem 1rem;background:rgba(201,168,76,0.08);border-radius:8px;font-size:0.83rem;color:#666;line-height:1.8;">
-          💡 <strong>예약 팁:</strong> 7월 17일(금) 체크인을 권장합니다.<br>
+          <svg class="icon-inline"><use href="#ic-bulb"></use></svg> <strong>예약 팁:</strong> 7월 17일(금) 체크인을 권장합니다.<br>
           숙소 예약은 개별적으로 진행하시고, 문의는 행정 간사 <strong>박보라</strong> (<a href="mailto:info@ijiguchon.org" style="color:var(--gold); text-decoration:none;">info@ijiguchon.org</a>)에게 연락해 주세요.
         </div>
       </div>
@@ -2593,7 +2664,7 @@ function compileLectureText(lectureIdx) {
       lines.push('   ' + subEl2.textContent.trim().replace(/\s+/g, ' '));
     }
     if (ta && ta.value.trim()) {
-      lines.push('   ✏️ 나의 메모:');
+      lines.push('   <svg class="icon-inline"><use href="#ic-pencil"></use></svg> 나의 메모:');
       ta.value.trim().split('\n').forEach(function(l) {
         lines.push('      ' + l);
       });
@@ -2627,9 +2698,20 @@ function emailLectureNotes(lectureIdx) {
   var mailto = 'mailto:?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(text);
 
   if (mailto.length > 1800) {
-    alert('메모 내용이 길어 이메일 본문이 잘릴 수 있습니다.\n먼저 "📄 텍스트 다운로드"로 파일을 저장하신 후,\n메일 작성 시 파일로 첨부해서 보내시는 것을 권장합니다.\n\n지금 메일 앱을 열겠습니다 (내용이 잘릴 수 있어요).');
+    alert('메모 내용이 길어 이메일 본문이 잘릴 수 있습니다.\n먼저 "<svg class="icon-inline"><use href="#ic-file"></use></svg> 텍스트 다운로드"로 파일을 저장하신 후,\n메일 작성 시 파일로 첨부해서 보내시는 것을 권장합니다.\n\n지금 메일 앱을 열겠습니다 (내용이 잘릴 수 있어요).');
   }
   window.location.href = mailto;
+}
+
+// 강의 노트 맨 위로 스크롤
+function scrollLectureTop(lectureIdx) {
+  var navTop = document.querySelector('.tab-nav-wrapper');
+  if (navTop) {
+    var top = navTop.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: top - 8, behavior: 'smooth' });
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
 
 // 페이지 로드 시 저장된 노트 복원
