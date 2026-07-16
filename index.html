@@ -1410,6 +1410,46 @@
     flex-shrink: 0;
   }
 
+
+  .recorder-box {
+    max-width: 480px;
+    margin: 0 auto 2rem;
+    padding: 1.4rem 1.2rem;
+    background: #fdfaf3;
+    border: 1.5px solid rgba(201,168,76,0.4);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .recorder-status {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--gold-dark, #8a6d1f);
+    margin-bottom: 0.6rem;
+  }
+  .recorder-timer {
+    font-family: 'Courier New', monospace;
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--dark);
+    margin: 0.4rem 0 0.9rem;
+    letter-spacing: 0.05em;
+  }
+  .recorder-controls {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .rec-dot {
+    display: inline-block;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: #d9483a;
+    margin-right: 0.35rem;
+    animation: recBlink 1.2s infinite;
+  }
+  @keyframes recBlink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+
 </style>
 <body>
 <svg style="display:none;" aria-hidden="true">
@@ -1439,6 +1479,9 @@
   <symbol id="ic-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM3 17V11l2-5h14l2 5v6"/></symbol>
   <symbol id="ic-bulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></symbol>
   <symbol id="ic-pencil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></symbol>
+  <symbol id="ic-record" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/></symbol>
+  <symbol id="ic-stop" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="1"/></symbol>
+  <symbol id="ic-pause" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/></symbol>
 </svg>
 
 <!-- 언어 전환 -->
@@ -1664,12 +1707,12 @@
           </tr>
           <tr class="highlight-row">
             <td class="time" data-label="시간">9:00 – 9:30</td>
-            <td class="program" data-label="프로그램"><span class="ko-only">개회사 및 찬양</span><span class="en-only">Opening & Praise</span></td>
+            <td class="program" data-label="프로그램"><span class="ko-only">개회사, 오겹줄 조장(조별) 소개 및 찬양</span><span class="en-only">Opening, Prayer Group Leaders Introduction & Praise</span></td>
             <td class="person" data-label="담당"><span class="ko-only">사회자/시애틀우리교회</span><span class="en-only">MC / Seattle Woori Church</span></td>
           </tr>
           <tr>
             <td class="time" data-label="시간">9:30 – 10:45</td>
-            <td class="program" data-label="프로그램"><strong><a href="#" class="lecture-link" onclick="goToLecture(1); return false;"><span class="ko-only"><svg class="icon-inline"><use href="#ic-edit"></use></svg> 강의 I</span><span class="en-only"><svg class="icon-inline"><use href="#ic-edit"></use></svg> Lecture I</span></a></strong></td>
+            <td class="program" data-label="프로그램"><strong><a href="#" class="lecture-link" onclick="goToLecture(1); return false;"><span class="ko-only"><svg class="icon-inline"><use href="#ic-edit"></use></svg> 강의 I</span><span class="en-only"><svg class="icon-inline"><use href="#ic-edit"></use></svg> Lecture I</span></a></strong> <a href="#" class="lecture-link" onclick="goToLecture(1); return false;" title="녹음하기" style="margin-left:0.3rem;"><svg class="icon-inline"><use href="#ic-record"></use></svg></a></td>
             <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr class="break-row">
@@ -1679,12 +1722,12 @@
           </tr>
           <tr>
             <td class="time" data-label="시간">11:20 – 11:40</td>
-            <td class="program" data-label="프로그램"><span class="ko-only">간증 1</span><span class="en-only">Testimony 1</span></td>
+            <td class="program" data-label="프로그램"><span class="ko-only">간증 1</span><span class="en-only">Testimony 1</span> <a href="#" class="lecture-link" onclick="goToLecture(4); return false;" title="녹음하기" style="margin-left:0.3rem;"><svg class="icon-inline"><use href="#ic-record"></use></svg></a></td>
             <td class="person" data-label="담당"><span class="ko-only">조신호 목자 (벤쿠버 사랑의 교회)</span><span class="en-only">Shepherd Shinho Cho (Vancouver Sarang Church)</span></td>
           </tr>
           <tr>
             <td class="time" data-label="시간">11:40 – 12:55</td>
-            <td class="program" data-label="프로그램"><strong><a href="#" class="lecture-link" onclick="goToLecture(2); return false;"><span class="ko-only"><svg class="icon-inline"><use href="#ic-edit"></use></svg> 강의 II</span><span class="en-only"><svg class="icon-inline"><use href="#ic-edit"></use></svg> Lecture II</span></a></strong></td>
+            <td class="program" data-label="프로그램"><strong><a href="#" class="lecture-link" onclick="goToLecture(2); return false;"><span class="ko-only"><svg class="icon-inline"><use href="#ic-edit"></use></svg> 강의 II</span><span class="en-only"><svg class="icon-inline"><use href="#ic-edit"></use></svg> Lecture II</span></a></strong> <a href="#" class="lecture-link" onclick="goToLecture(2); return false;" title="녹음하기" style="margin-left:0.3rem;"><svg class="icon-inline"><use href="#ic-record"></use></svg></a></td>
             <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr>
@@ -1709,7 +1752,7 @@
           </tr>
           <tr>
             <td class="time" data-label="시간">3:00 – 3:20</td>
-            <td class="program" data-label="프로그램"><span class="ko-only">간증 2</span><span class="en-only">Testimony 2</span></td>
+            <td class="program" data-label="프로그램"><span class="ko-only">간증 2</span><span class="en-only">Testimony 2</span> <a href="#" class="lecture-link" onclick="goToLecture(5); return false;" title="녹음하기" style="margin-left:0.3rem;"><svg class="icon-inline"><use href="#ic-record"></use></svg></a></td>
             <td class="person" data-label="담당"><span class="ko-only">오규범 목자 (온누리성결교회)</span><span class="en-only">Shepherd Kyubum Oh (Onnuri Sungkyul Church)</span></td>
           </tr>
           <tr>
@@ -1719,7 +1762,7 @@
           </tr>
           <tr class="highlight-row">
             <td class="time" data-label="시간">4:10 – 4:50</td>
-            <td class="program" data-label="프로그램"><strong><span class="ko-only">결단의 시간</span><span class="en-only">Time of Commitment</span></strong></td>
+            <td class="program" data-label="프로그램"><strong><a href="#" class="lecture-link" onclick="goToLecture(3); return false;"><span class="ko-only">결단의 시간</span><span class="en-only">Time of Commitment</span></a></strong> <a href="#" class="lecture-link" onclick="goToLecture(3); return false;" title="녹음하기" style="margin-left:0.3rem;"><svg class="icon-inline"><use href="#ic-record"></use></svg></a></td>
             <td class="person" data-label="담당">성승현 총무</td>
           </tr>
           <tr>
@@ -1733,7 +1776,7 @@
       <div style="margin-top:2rem; padding:1.5rem; background:rgba(201,168,76,0.08); border-radius:8px; font-size:0.9rem; color:#666; line-height:1.8;">
         <strong style="color:var(--dark);">행사 담당</strong><br>
         사회 및 진행: 김성수 목사 &nbsp;&nbsp;|&nbsp;&nbsp; 서기: 오은석 목사 &nbsp;&nbsp;|&nbsp;&nbsp; 회계: 안대선 목사 &nbsp;&nbsp;|&nbsp;&nbsp; 홍보 및 목회자 퍼포먼스: 강재원 목사 &nbsp;&nbsp;|&nbsp;&nbsp; 오겹줄 기도: 이은진 목사 &nbsp;&nbsp;|&nbsp;&nbsp; 행정 간사: 박보라 목녀<br>
-        찬양: 시애틀우리교회(전성현 목자외 7명) &nbsp;&nbsp;|&nbsp;&nbsp; 간증 1: 조신호 목자 (벤쿠버 사랑의 교회) &nbsp;&nbsp;|&nbsp;&nbsp; 간증 2: 오규범 목자 (온누리성결교회) &nbsp;&nbsp;|&nbsp;&nbsp; 사진: 최요환 목사, 박성건 목자 &nbsp;&nbsp;|&nbsp;&nbsp; 미디어: 박성건 목자, TFC 교회(히스패닉교회) &nbsp;&nbsp;|&nbsp;&nbsp; 호스트: 시애틀지구촌교회
+        찬양: 시애틀우리교회(전성현 목자외 7명) &nbsp;&nbsp;|&nbsp;&nbsp; 간증 1: 조신호 목자 (벤쿠버 사랑의 교회) &nbsp;&nbsp;|&nbsp;&nbsp; 간증 2: 오규범 목자 (온누리성결교회) &nbsp;&nbsp;|&nbsp;&nbsp; 사진: 최요환 목사, 박성건 목자 &nbsp;&nbsp;|&nbsp;&nbsp; 미디어: 박성건 목자, TFD (히스패닉교회) &nbsp;&nbsp;|&nbsp;&nbsp; 호스트: 시애틀지구촌교회
       </div>
     </div>
   </div>
@@ -1752,6 +1795,9 @@
           <div class="lecture-tab-nav">
             <button class="lecture-tab-btn active" onclick="switchLectureTab(1)">강의 I</button>
             <button class="lecture-tab-btn" onclick="switchLectureTab(2)">강의 II</button>
+            <button class="lecture-tab-btn" onclick="switchLectureTab(3)">결단의 시간</button>
+            <button class="lecture-tab-btn" onclick="switchLectureTab(4)">간증 1</button>
+            <button class="lecture-tab-btn" onclick="switchLectureTab(5)">간증 2</button>
           </div>
 
           <!-- ══ 강의 I ══ -->
@@ -1763,6 +1809,19 @@
               <button class="lecture-tool-btn primary" onclick="printLecture(1)"><svg class="icon-inline"><use href="#ic-download"></use></svg> PDF로 저장</button>
             </div>
             <div class="lecture-save-status" id="save-status-1">✓ 자동 저장됨</div>
+
+            <div class="recorder-box">
+              <div class="recorder-status" id="rec-status-1">🎙️ 준비됨</div>
+              <div class="recorder-timer" id="rec-timer-1">00:00</div>
+              <div class="recorder-controls">
+                <button class="lecture-tool-btn primary" id="rec-start-1" onclick="startRecording(1)"><svg class="icon-inline"><use href="#ic-record"></use></svg> 녹음 시작</button>
+                <button class="lecture-tool-btn" id="rec-stop-1" onclick="stopRecording(1)" style="display:none;"><svg class="icon-inline"><use href="#ic-stop"></use></svg> 정지</button>
+                <button class="lecture-tool-btn" id="rec-reset-1" onclick="resetRecording(1)" style="display:none;">🔄 다시 녹음</button>
+              </div>
+              <audio id="rec-audio-1" controls style="display:none; width:100%; margin-top:0.9rem;"></audio>
+              <a id="rec-download-1" class="lecture-tool-btn primary" style="display:none; margin-top:0.8rem;" download><svg class="icon-inline"><use href="#ic-download"></use></svg> 녹음 파일 다운로드</a>
+              <div style="font-size:0.72rem;color:#999;margin-top:0.8rem;">이 기기(스마트폰/PC)에만 저장됩니다 · 반드시 다운로드하여 보관하세요</div>
+            </div>
 
             <div class="lecture-print-area" id="lecture-print-1">
               <div class="lecture-doc">
@@ -1887,6 +1946,19 @@
             </div>
             <div class="lecture-save-status" id="save-status-2">✓ 자동 저장됨</div>
 
+            <div class="recorder-box">
+              <div class="recorder-status" id="rec-status-2">🎙️ 준비됨</div>
+              <div class="recorder-timer" id="rec-timer-2">00:00</div>
+              <div class="recorder-controls">
+                <button class="lecture-tool-btn primary" id="rec-start-2" onclick="startRecording(2)"><svg class="icon-inline"><use href="#ic-record"></use></svg> 녹음 시작</button>
+                <button class="lecture-tool-btn" id="rec-stop-2" onclick="stopRecording(2)" style="display:none;"><svg class="icon-inline"><use href="#ic-stop"></use></svg> 정지</button>
+                <button class="lecture-tool-btn" id="rec-reset-2" onclick="resetRecording(2)" style="display:none;">🔄 다시 녹음</button>
+              </div>
+              <audio id="rec-audio-2" controls style="display:none; width:100%; margin-top:0.9rem;"></audio>
+              <a id="rec-download-2" class="lecture-tool-btn primary" style="display:none; margin-top:0.8rem;" download><svg class="icon-inline"><use href="#ic-download"></use></svg> 녹음 파일 다운로드</a>
+              <div style="font-size:0.72rem;color:#999;margin-top:0.8rem;">이 기기(스마트폰/PC)에만 저장됩니다 · 반드시 다운로드하여 보관하세요</div>
+            </div>
+
             <div class="lecture-print-area" id="lecture-print-2">
               <div class="lecture-doc">
                 <div class="lecture-doc-title">'교회 평신도 리더'의 역할 및 수행 요소</div>
@@ -1969,6 +2041,123 @@
                   <button class="lecture-scroll-top-btn" onclick="scrollLectureTop(2)"><svg class="icon-inline"><use href="#ic-home"></use></svg> <span class="ko-only">맨 위로</span><span class="en-only">Back to Top</span></button>
                 </div>
 
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ 결단의 시간 ══ -->
+          <div class="lecture-panel" id="lecture-panel-3">
+            <div class="lecture-toolbar">
+              <button class="lecture-tool-btn" onclick="clearLectureNotes(3)"><svg class="icon-inline"><use href="#ic-trash"></use></svg> 내용 지우기</button>
+              <button class="lecture-tool-btn" onclick="downloadLectureText(3)"><svg class="icon-inline"><use href="#ic-file"></use></svg> <span class="ko-only">텍스트 다운로드</span><span class="en-only">Download Text</span></button>
+              <button class="lecture-tool-btn" onclick="emailLectureNotes(3)"><svg class="icon-inline"><use href="#ic-mail"></use></svg> <span class="ko-only">이메일로 보내기</span><span class="en-only">Email My Notes</span></button>
+            </div>
+            <div class="lecture-save-status" id="save-status-3">✓ 자동 저장됨</div>
+
+            <div class="recorder-box">
+              <div class="recorder-status" id="rec-status-3">🎙️ 준비됨</div>
+              <div class="recorder-timer" id="rec-timer-3">00:00</div>
+              <div class="recorder-controls">
+                <button class="lecture-tool-btn primary" id="rec-start-3" onclick="startRecording(3)"><svg class="icon-inline"><use href="#ic-record"></use></svg> 녹음 시작</button>
+                <button class="lecture-tool-btn" id="rec-stop-3" onclick="stopRecording(3)" style="display:none;"><svg class="icon-inline"><use href="#ic-stop"></use></svg> 정지</button>
+                <button class="lecture-tool-btn" id="rec-reset-3" onclick="resetRecording(3)" style="display:none;">🔄 다시 녹음</button>
+              </div>
+              <audio id="rec-audio-3" controls style="display:none; width:100%; margin-top:0.9rem;"></audio>
+              <a id="rec-download-3" class="lecture-tool-btn primary" style="display:none; margin-top:0.8rem;" download><svg class="icon-inline"><use href="#ic-download"></use></svg> 녹음 파일 다운로드</a>
+              <div style="font-size:0.72rem;color:#999;margin-top:0.8rem;">이 기기(스마트폰/PC)에만 저장됩니다 · 반드시 다운로드하여 보관하세요</div>
+            </div>
+
+            <div class="lecture-print-area" id="lecture-print-3">
+              <div class="lecture-doc">
+                <div class="lecture-doc-title">결단의 시간</div>
+                <div class="lecture-doc-sub">서북미 (시애틀 · 오레곤 · 밴쿠버) 목자·목녀 연합수련회 &middot; 2026년 7월 18일</div>
+
+                <div class="lecture-q-block" style="border-bottom:none;">
+                  <div class="lecture-q-text"><span>이번 수련회를 통해 하나님이 나에게 주신 마음, 결단하고 싶은 것을 적어보세요.</span></div>
+                  <textarea class="lecture-note-area" id="l3-note-1" style="min-height:260px;" placeholder="나의 결단..." oninput="saveLectureNote('l3-note-1')"></textarea>
+                </div>
+
+                <div class="lecture-scroll-top">
+                  <button class="lecture-scroll-top-btn" onclick="scrollLectureTop(3)"><svg class="icon-inline"><use href="#ic-home"></use></svg> <span class="ko-only">맨 위로</span><span class="en-only">Back to Top</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ 간증 1 ══ -->
+          <div class="lecture-panel" id="lecture-panel-4">
+            <div class="lecture-toolbar">
+              <button class="lecture-tool-btn" onclick="clearLectureNotes(4)"><svg class="icon-inline"><use href="#ic-trash"></use></svg> 내용 지우기</button>
+              <button class="lecture-tool-btn" onclick="downloadLectureText(4)"><svg class="icon-inline"><use href="#ic-file"></use></svg> <span class="ko-only">텍스트 다운로드</span><span class="en-only">Download Text</span></button>
+              <button class="lecture-tool-btn" onclick="emailLectureNotes(4)"><svg class="icon-inline"><use href="#ic-mail"></use></svg> <span class="ko-only">이메일로 보내기</span><span class="en-only">Email My Notes</span></button>
+            </div>
+            <div class="lecture-save-status" id="save-status-4">✓ 자동 저장됨</div>
+
+            <div class="recorder-box">
+              <div class="recorder-status" id="rec-status-4">🎙️ 준비됨</div>
+              <div class="recorder-timer" id="rec-timer-4">00:00</div>
+              <div class="recorder-controls">
+                <button class="lecture-tool-btn primary" id="rec-start-4" onclick="startRecording(4)"><svg class="icon-inline"><use href="#ic-record"></use></svg> 녹음 시작</button>
+                <button class="lecture-tool-btn" id="rec-stop-4" onclick="stopRecording(4)" style="display:none;"><svg class="icon-inline"><use href="#ic-stop"></use></svg> 정지</button>
+                <button class="lecture-tool-btn" id="rec-reset-4" onclick="resetRecording(4)" style="display:none;">🔄 다시 녹음</button>
+              </div>
+              <audio id="rec-audio-4" controls style="display:none; width:100%; margin-top:0.9rem;"></audio>
+              <a id="rec-download-4" class="lecture-tool-btn primary" style="display:none; margin-top:0.8rem;" download><svg class="icon-inline"><use href="#ic-download"></use></svg> 녹음 파일 다운로드</a>
+              <div style="font-size:0.72rem;color:#999;margin-top:0.8rem;">이 기기(스마트폰/PC)에만 저장됩니다 · 반드시 다운로드하여 보관하세요</div>
+            </div>
+
+            <div class="lecture-print-area" id="lecture-print-4">
+              <div class="lecture-doc">
+                <div class="lecture-doc-title">간증 1</div>
+                <div class="lecture-doc-sub">조신호 목자 (벤쿠버 사랑의 교회) &middot; 서북미 (시애틀 · 오레곤 · 밴쿠버) 목자·목녀 연합수련회 &middot; 2026년 7월 18일</div>
+
+                <div class="lecture-q-block" style="border-bottom:none;">
+                  <div class="lecture-q-text"><span>은혜받은 내용, 나누고 싶은 소감을 적어보세요.</span></div>
+                  <textarea class="lecture-note-area" id="l4-note-1" style="min-height:220px;" placeholder="느낀 점..." oninput="saveLectureNote('l4-note-1')"></textarea>
+                </div>
+
+                <div class="lecture-scroll-top">
+                  <button class="lecture-scroll-top-btn" onclick="scrollLectureTop(4)"><svg class="icon-inline"><use href="#ic-home"></use></svg> <span class="ko-only">맨 위로</span><span class="en-only">Back to Top</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ 간증 2 ══ -->
+          <div class="lecture-panel" id="lecture-panel-5">
+            <div class="lecture-toolbar">
+              <button class="lecture-tool-btn" onclick="clearLectureNotes(5)"><svg class="icon-inline"><use href="#ic-trash"></use></svg> 내용 지우기</button>
+              <button class="lecture-tool-btn" onclick="downloadLectureText(5)"><svg class="icon-inline"><use href="#ic-file"></use></svg> <span class="ko-only">텍스트 다운로드</span><span class="en-only">Download Text</span></button>
+              <button class="lecture-tool-btn" onclick="emailLectureNotes(5)"><svg class="icon-inline"><use href="#ic-mail"></use></svg> <span class="ko-only">이메일로 보내기</span><span class="en-only">Email My Notes</span></button>
+            </div>
+            <div class="lecture-save-status" id="save-status-5">✓ 자동 저장됨</div>
+
+            <div class="recorder-box">
+              <div class="recorder-status" id="rec-status-5">🎙️ 준비됨</div>
+              <div class="recorder-timer" id="rec-timer-5">00:00</div>
+              <div class="recorder-controls">
+                <button class="lecture-tool-btn primary" id="rec-start-5" onclick="startRecording(5)"><svg class="icon-inline"><use href="#ic-record"></use></svg> 녹음 시작</button>
+                <button class="lecture-tool-btn" id="rec-stop-5" onclick="stopRecording(5)" style="display:none;"><svg class="icon-inline"><use href="#ic-stop"></use></svg> 정지</button>
+                <button class="lecture-tool-btn" id="rec-reset-5" onclick="resetRecording(5)" style="display:none;">🔄 다시 녹음</button>
+              </div>
+              <audio id="rec-audio-5" controls style="display:none; width:100%; margin-top:0.9rem;"></audio>
+              <a id="rec-download-5" class="lecture-tool-btn primary" style="display:none; margin-top:0.8rem;" download><svg class="icon-inline"><use href="#ic-download"></use></svg> 녹음 파일 다운로드</a>
+              <div style="font-size:0.72rem;color:#999;margin-top:0.8rem;">이 기기(스마트폰/PC)에만 저장됩니다 · 반드시 다운로드하여 보관하세요</div>
+            </div>
+
+            <div class="lecture-print-area" id="lecture-print-5">
+              <div class="lecture-doc">
+                <div class="lecture-doc-title">간증 2</div>
+                <div class="lecture-doc-sub">오규범 목자 (온누리성결교회) &middot; 서북미 (시애틀 · 오레곤 · 밴쿠버) 목자·목녀 연합수련회 &middot; 2026년 7월 18일</div>
+
+                <div class="lecture-q-block" style="border-bottom:none;">
+                  <div class="lecture-q-text"><span>은혜받은 내용, 나누고 싶은 소감을 적어보세요.</span></div>
+                  <textarea class="lecture-note-area" id="l5-note-1" style="min-height:220px;" placeholder="느낀 점..." oninput="saveLectureNote('l5-note-1')"></textarea>
+                </div>
+
+                <div class="lecture-scroll-top">
+                  <button class="lecture-scroll-top-btn" onclick="scrollLectureTop(5)"><svg class="icon-inline"><use href="#ic-home"></use></svg> <span class="ko-only">맨 위로</span><span class="en-only">Back to Top</span></button>
+                </div>
               </div>
             </div>
           </div>
@@ -2712,6 +2901,93 @@ function scrollLectureTop(lectureIdx) {
   } else {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+}
+
+// ===== 오디오 녹음 시스템 =====
+var recorders = {};
+
+function fmtRecTime(sec) {
+  var mm = String(Math.floor(sec / 60)).padStart(2, '0');
+  var ss = String(sec % 60).padStart(2, '0');
+  return mm + ':' + ss;
+}
+
+function recFileLabel(idx) {
+  if (idx === 1) return '강의I_녹음';
+  if (idx === 2) return '강의II_녹음';
+  return '결단의시간_녹음';
+}
+
+async function startRecording(idx) {
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    alert('이 브라우저는 녹음 기능을 지원하지 않습니다.');
+    return;
+  }
+  try {
+    var stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    var mimeType = '';
+    if (window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported('audio/webm')) {
+      mimeType = 'audio/webm';
+    } else if (window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported('audio/mp4')) {
+      mimeType = 'audio/mp4';
+    }
+    var mr = new MediaRecorder(stream, mimeType ? { mimeType: mimeType } : undefined);
+    var chunks = [];
+    mr.ondataavailable = function(e) { if (e.data && e.data.size > 0) chunks.push(e.data); };
+    mr.onstop = function() {
+      var blob = new Blob(chunks, { type: mr.mimeType || 'audio/webm' });
+      var url = URL.createObjectURL(blob);
+      var ext = (mr.mimeType || '').indexOf('mp4') > -1 ? 'm4a' : 'webm';
+      var audioEl = document.getElementById('rec-audio-' + idx);
+      audioEl.src = url;
+      audioEl.style.display = 'block';
+      var dl = document.getElementById('rec-download-' + idx);
+      dl.href = url;
+      dl.download = recFileLabel(idx) + '.' + ext;
+      dl.style.display = 'inline-flex';
+      document.getElementById('rec-reset-' + idx).style.display = 'inline-flex';
+      document.getElementById('rec-status-' + idx).innerHTML = '✅ 녹음 완료';
+      stream.getTracks().forEach(function(t) { t.stop(); });
+    };
+
+    mr.start();
+    recorders[idx] = { mr: mr, stream: stream, startTime: Date.now(), timerInt: null };
+    document.getElementById('rec-status-' + idx).innerHTML = '<span class="rec-dot"></span>녹음 중...';
+    document.getElementById('rec-start-' + idx).style.display = 'none';
+    document.getElementById('rec-stop-' + idx).style.display = 'inline-flex';
+    document.getElementById('rec-reset-' + idx).style.display = 'none';
+    document.getElementById('rec-audio-' + idx).style.display = 'none';
+    document.getElementById('rec-download-' + idx).style.display = 'none';
+
+    recorders[idx].timerInt = setInterval(function() {
+      var sec = Math.floor((Date.now() - recorders[idx].startTime) / 1000);
+      document.getElementById('rec-timer-' + idx).textContent = fmtRecTime(sec);
+    }, 500);
+
+  } catch (err) {
+    alert('마이크 접근에 실패했습니다.\n브라우저의 마이크 권한을 허용해주세요.\n\n(' + err.message + ')');
+  }
+}
+
+function stopRecording(idx) {
+  var r = recorders[idx];
+  if (!r) return;
+  if (r.timerInt) clearInterval(r.timerInt);
+  if (r.mr && r.mr.state !== 'inactive') r.mr.stop();
+  document.getElementById('rec-stop-' + idx).style.display = 'none';
+}
+
+function resetRecording(idx) {
+  document.getElementById('rec-status-' + idx).innerHTML = '🎙️ 준비됨';
+  document.getElementById('rec-timer-' + idx).textContent = '00:00';
+  document.getElementById('rec-start-' + idx).style.display = 'inline-flex';
+  document.getElementById('rec-stop-' + idx).style.display = 'none';
+  document.getElementById('rec-reset-' + idx).style.display = 'none';
+  var audioEl = document.getElementById('rec-audio-' + idx);
+  audioEl.style.display = 'none';
+  audioEl.src = '';
+  document.getElementById('rec-download-' + idx).style.display = 'none';
+  delete recorders[idx];
 }
 
 // 페이지 로드 시 저장된 노트 복원
