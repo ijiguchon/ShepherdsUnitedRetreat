@@ -1793,11 +1793,11 @@
 
           <!-- 강의 선택 탭 -->
           <div class="lecture-tab-nav">
-            <button class="lecture-tab-btn active" onclick="switchLectureTab(1)">강의 I</button>
-            <button class="lecture-tab-btn" onclick="switchLectureTab(2)">강의 II</button>
-            <button class="lecture-tab-btn" onclick="switchLectureTab(3)">결단의 시간</button>
-            <button class="lecture-tab-btn" onclick="switchLectureTab(4)">간증 1</button>
-            <button class="lecture-tab-btn" onclick="switchLectureTab(5)">간증 2</button>
+            <button class="lecture-tab-btn active" data-lecture-idx="1" onclick="switchLectureTab(1)">강의 I</button>
+            <button class="lecture-tab-btn" data-lecture-idx="2" onclick="switchLectureTab(2)">강의 II</button>
+            <button class="lecture-tab-btn" data-lecture-idx="4" onclick="switchLectureTab(4)">간증 1</button>
+            <button class="lecture-tab-btn" data-lecture-idx="5" onclick="switchLectureTab(5)">간증 2</button>
+            <button class="lecture-tab-btn" data-lecture-idx="3" onclick="switchLectureTab(3)">결단의 시간</button>
           </div>
 
           <!-- ══ 강의 I ══ -->
@@ -2758,8 +2758,8 @@ function setLang(lang) {
 
 // 강의 탭 전환
 function switchLectureTab(idx) {
-  document.querySelectorAll('.lecture-tab-btn').forEach(function(b, i) {
-    b.classList.toggle('active', i === (idx - 1));
+  document.querySelectorAll('.lecture-tab-btn').forEach(function(b) {
+    b.classList.toggle('active', parseInt(b.getAttribute('data-lecture-idx'), 10) === idx);
   });
   document.querySelectorAll('.lecture-panel').forEach(function(p) {
     p.classList.remove('active');
