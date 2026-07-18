@@ -364,18 +364,18 @@
 <div id="toolbar" class="toolbar">
   <button id="fsBtn" class="tb-btn">⛶</button>
   <span class="tb-sep"></span>
-  <button id="modeBtn" class="tb-btn tb-mode">🔴 자동</button>
+  <button id="modeBtn" class="tb-btn tb-mode">🔴 AUTO</button>
   <span id="navGroup" class="tb-group" style="display:none;">
-    <button id="firstBtn" class="tb-btn">⏮ 처음</button>
+    <button id="firstBtn" class="tb-btn">⏮ FIRST</button>
     <button id="prevBtn" class="tb-btn">◀</button>
     <span id="manualLabel" class="tb-label">-</span>
     <button id="nextBtn" class="tb-btn">▶</button>
-    <button id="lastBtn" class="tb-btn">끝 ⏭</button>
+    <button id="lastBtn" class="tb-btn">LAST ⏭</button>
     <span class="tb-sep"></span>
-    <button id="startBtn" class="tb-btn tb-start">⏱ 시작</button>
-    <button id="pauseBtn" class="tb-btn" style="display:none;">⏸ 일시정지</button>
-    <button id="resumeBtn" class="tb-btn tb-start" style="display:none;">▶ 재개</button>
-    <button id="stopBtn" class="tb-btn" style="display:none;">⏹ 정지</button>
+    <button id="startBtn" class="tb-btn tb-start">⏱ START</button>
+    <button id="pauseBtn" class="tb-btn" style="display:none;">⏸ PAUSE</button>
+    <button id="resumeBtn" class="tb-btn tb-start" style="display:none;">▶ RESUME</button>
+    <button id="stopBtn" class="tb-btn" style="display:none;">⏹ STOP</button>
   </span>
   <span class="tb-sep"></span>
   <button id="zoomOutBtn" class="tb-btn">－</button>
@@ -702,10 +702,10 @@ modeBtn.addEventListener('click', () => {
     const nowMin = now.getHours()*60 + now.getMinutes();
     manualIndex = 0;
     for(let i=0;i<SCHEDULE.length;i++){ if(nowMin>=SCHEDULE[i].sMin) manualIndex = i; }
-    modeBtn.textContent = '🖐 수동';
+    modeBtn.textContent = '🖐 MANUAL';
     navGroup.style.display = 'flex';
   } else {
-    modeBtn.textContent = '🔴 자동';
+    modeBtn.textContent = '🔴 AUTO';
     navGroup.style.display = 'none';
   }
   resetManualTimer();
